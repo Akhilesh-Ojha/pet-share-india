@@ -1,0 +1,45 @@
+.container{
+    min-height: 100vh;
+    margin: auto;
+    padding-top: 100px;
+    columns: 4;
+    column-gap: 40px;
+}
+
+.Button {
+    border: none;
+    padding: 5px;
+    display: block;
+    font-size: 25px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
+    z-index: 1;
+}
+
+
+@media (max-width: 1200px) {
+    .container{
+        columns: 3;
+        width: calc(100%-40px);
+        padding: 100px 20px 20px 0;
+    }
+}
+
+@media (max-width: 760px) {
+    .container{
+        columns: 2;
+    }
+}
+
+@media (max-width: 480px) {
+    .container{
+        columns: 1;
+    }
+}

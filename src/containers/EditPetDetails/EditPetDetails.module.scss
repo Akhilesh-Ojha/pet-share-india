@@ -1,0 +1,124 @@
+.Container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    padding-top: 90px;
+}
+
+.FormContainer {
+    background-color: white;
+    width: 80%;
+    padding: 20px 10px;
+    // margin-top: 10px;
+    color: #828282;
+    text-align: center;
+    // border-radius: 25px;
+    position: relative;
+}
+
+.Form {
+    margin-bottom: 10px;
+    // display: flex;
+    // justify-content: space-around;
+}
+
+
+.Title {
+    // flex: 1;
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    background-color: #F0F0F0;
+    width: 65%;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding: 0 20px;
+    border-radius: 25px 0 0 25px;
+    margin-right: 5px;
+    // font-size: 2rem;
+    // margin: 10px 10px 20px 10px;
+    // width: 80%;
+    // padding: 10px;
+    // background-color: #f0f0f0;
+    // border: none;
+    // border-radius: 10px;
+    // outline: none;
+    // box-shadow: 0 10px 20px rgba(0,0,0,.1);
+}
+
+.ShortDesc {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    background-color: #F0F0F0;
+    width: 80%;
+    height: 50px;
+    border: none;
+    outline: none;
+    padding: 0 20px;
+    border-radius: 25px;
+    margin-right: 5px;
+    margin-top: 10px;
+}
+
+
+.UploadButton {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 0 25px 25px 0;
+    height: 50px;
+    // width: 30%;
+    cursor: pointer;
+    // width: 50%;
+    color: black;
+    background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
+    border: none;
+    // color: black;
+    // font-weight: bold;
+    // margin: 0 0 20px;
+    padding: 10px;
+    // font-size: 15px;
+    // text-transform: uppercase;
+    // border-radius: 20px;
+    outline: none;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 2px rgba(0,0,0,.2);
+    }
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    }
+    
+}
+
+// .SubmitButton {
+//     cursor: pointer;
+//     width: 20%;
+//     border: none;
+//     color: black;
+//     margin: 0 0 10px;
+//     font-weight: bold;
+//     padding: 10px;
+//     font-size: 15px;
+//     border-radius: 20px;
+//     text-transform: uppercase;
+//     outline: none;
+// }
+
+
+// .Title:active {
+//     border: none; 
+//     outline: none;
+// }
+// .Button{
+//     flex: 1;
+//     margin: 10px 10px 20px 10px;
+//     padding: 10px;
+//     // height: 400px;
+// }

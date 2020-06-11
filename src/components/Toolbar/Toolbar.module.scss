@@ -1,0 +1,439 @@
+
+header {
+    height: 70px;
+    background-color: #fff;
+    // background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    // padding: 40px 10px;
+
+    @media only screen and (max-width: 500px) {
+        flex-wrap: wrap;
+        height: 110px;
+        align-content: space-around;
+    }
+    // transition: 250ms ease-in;
+}
+
+
+header.sticky {
+    background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
+    padding: 5px 10px;
+}
+
+
+.Logo {
+    height: 40px;
+    margin-left: 30px;
+
+    @media only screen and (max-width: 500px) {
+        margin-left: 10px;
+        
+    }
+}
+
+.Search {
+    // background-color: orangered; 
+    flex: 0 0 50%;
+    display: flex;
+
+    @media only screen and (max-width: 500px) {
+     order: 1;   
+     flex: 0 0 100%;
+    //  margin-left: 10px;
+    margin-bottom: 20px;
+     background-color:#F0F0F0;
+
+     .Search{
+        &__Input {
+            &:focus {
+                background-color: #E0E0E0;
+            }
+        }
+     }
+
+    }
+
+    &__Input {
+        font-family: inherit;
+        font-size: 20px;
+        color:black;
+        background-color:#F0F0F0;
+        border: none;
+        border-radius: 100px;
+        width: 90%;
+        padding: 7px 20px;
+        transition: all .2s;
+        margin-right: -35px;
+        &:focus {
+            width: 95%;
+            background-color: #E0E0E0;
+            outline: none
+        }
+    }
+
+    &__Input:focus + &__Button {
+        background-color: #E0E0E0;
+    }
+
+    
+    &__Button {
+        cursor: pointer;
+        border: none;
+        background-color:#F0F0F0;
+        &:focus {
+            outline: none;
+        }
+        &:active {
+            transform: translateY(2px);
+        }
+    }
+    &__Icon {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+.Image__Button {
+        // margin-top: 68px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        border-radius: 50%;
+        // background: none;
+        background-color: transparent;
+       
+}
+
+header.sticky .Image__Button{
+    background: transparent;
+}
+
+// ul {
+//     // display: flex;
+//     // flex-direction: column;
+// }
+
+// .Image__Button:hover .DropDown {
+//     opacity: 1;
+//     visibility: visible;
+// }
+
+// .DropDown {
+//     background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
+//     font-weight: 500;
+//     border: 0.5px solid black;
+//     opacity: 0;
+//     visibility: hidden;
+//     transition: .5s;
+//     width: 100px;
+// }
+
+// ul li {
+//     list-style: none;
+//     font-size: 20px;
+// }
+
+
+
+// ul li a {
+//     color: #F0F0F0;
+//     text-decoration: none;
+// }
+
+
+.UserNav {
+    margin-right: 20px;
+    position: relative;
+    display: flex;
+}
+
+// .NavIcon {
+//     height: 2.25rem;
+//     width: 2.25rem;
+// }
+
+.Image {
+    border: none;
+    outline: none;
+    height: 35px;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+    // &:active {
+    //     transform: translateY(2px);
+    // }
+    &:hover {
+        transform: translateY(-2px);
+        outline: none;
+        box-shadow: 0 10px 2px rgba(0,0,0,.1);
+    }
+    &:active {
+        transform: translateY(-1px);
+        outline: none;
+        background-color: transparent;
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    }
+}
+
+
+header.sticky .UserNav{
+    color: black;
+    font-weight: 500;
+}
+
+// .LoginButton{
+//     border: none;
+//     padding: 5px;
+//     // display: block;
+//     font-weight: 500;
+//     color: #F4F2F2;
+//     font-size: 20px;
+//     outline: none;
+//     cursor: pointer;
+//     background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
+// }
+
+header.sticky .LoginButton{
+    background: transparent;
+    font-weight: 700;
+}
+
+header.sticky .Hamburger{
+    background: transparent;
+}
+
+// .MenuWrap {
+//     z-index: 5;
+//     // position: fixed;
+// }
+
+.Toggler{
+    // position: absolute;
+    // top: 0;
+    // right: 0;
+    // z-index: 6;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+}
+
+.Hamburger {
+    // position: absolute;
+    // top:0;
+    // right: 0;
+    cursor: pointer;
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 2px rgba(0,0,0,.1);
+    }
+
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    }
+}
+
+ .Hamburger > div {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+}
+
+ .Hamburger > div:before,
+.Hamburger > div:after {
+    content: '';
+    position: absolute;
+    z-index: 5;
+    top: -10px;
+    width: 100%;
+    height: 2px;
+    background-color: inherit;
+}
+
+ .Hamburger > div:after {
+    top: 10px; 
+}
+
+ .Toggler:checked + .Hamburger > div {
+    transform: rotate(135deg);
+}
+
+ .Toggler:checked + .Hamburger > div:before,
+ .Toggler:checked + .Hamburger > div:after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+ .Toggler:checked:hover + .Hamburger > div {
+    transform: rotate(225deg);
+}
+
+// .MenuWrap .Menu {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     overflow: hidden;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+.FullMenu {
+    // color: black;
+    // font-size: 30px;
+    position: fixed;
+    overflow: hidden;
+    top:0;
+    left: 0;
+    z-index: 4;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    // opacity: 0;
+    // visibility: hidden;
+    // background: red;
+    background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
+    opacity: 0.95;
+
+    transform: scale(1);
+    // transition: opacity 0.4s ease;
+    // transition:  2s;
+    animation: moveInFromRight 0.3s ease-out
+}
+
+.Content  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    // text-decoration: none;
+}
+
+.Content .PageMenu {
+    font-size: 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 300;
+    // text-decoration: underline;
+    list-style: none;
+    cursor: pointer; 
+
+    &:hover {
+        transform: scale(1);
+        opacity: 0.7;
+        // filter: blur(2px);
+    }
+}
+
+.Content .PageMenu .List button {
+        width: 250px;
+        border: none;
+        outline: none;  
+        cursor: pointer;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 15px 40px;
+        display: inline-block;
+        transition: all .2s;
+        font-weight: 300;
+        letter-spacing: 1px;
+        font-size: 14px;
+        transition: 0.5s;
+        margin-bottom: 10px;
+
+        &:hover {
+            // transform: translateY(-3px);
+            transform: scale(1.5);
+            opacity: 1;
+            filter: blur(0);
+            box-shadow: 0 10px 2px rgba(0,0,0,.2);
+        }
+        &:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        }
+}
+
+.FullMenu .ModalClose {
+    position: absolute;
+    z-index: 1000;
+    top: 8px;
+    right: 12px;
+    height: 25px;
+    width: 25px;
+    // border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: all .2s;
+    font-weight: 700;
+    transition: 0.5s;
+    // transition:  2s;
+
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 2px rgba(0,0,0,.2);
+    }
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    }   
+}
+
+
+
+
+@keyframes moveInFromRight{
+
+    
+    0% {
+        opacity: 0;
+        // transform: translateX(100px);
+        transform: scale(0);
+
+    }
+
+    // 80% {
+    //     transform: translateX(-10px);
+    // }
+
+    100% {
+        opacity: 0.9;
+        transform: scale(1);
+
+        // transform: translateX(0);
+    }
+}
+

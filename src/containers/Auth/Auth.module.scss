@@ -1,0 +1,197 @@
+.Section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    padding-top: 90px;
+}
+
+.Section .Container {
+    position: relative;
+    width: 800px;
+    height: 450px;
+    background: #fff;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.Section .Container .User {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+
+.Section .Container .User .ImageBox {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    animation: moveInFromRight 0.5s ease-out
+    // background: #ff0;
+    // transition: 0.5s;
+    // background-size: cover;
+}
+
+.Section .Container .User .ImageBox .Image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.Section .Container .User .FormBox {
+    position: relative;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // font-size: 35px;
+    transition: 0.5s;
+    padding: 40px;
+}
+
+.Section .Container .User .FormBox form h2 {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.Section .Container .User .FormBox form input {
+    font-size: 14px;
+    position: relative;
+    width: 100%;
+    background: #f5f5f5;
+    border: none;
+    outline: none;
+    margin: 8px 0;
+    color: #333;
+    box-shadow: none;
+    padding: 10px;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+.Section .Container .User .FormBox form .AnchorButton {
+    margin-top: 0px;
+    border: none;
+    outline: none;
+    width: 35%;
+    background-color: white; 
+    margin-left: -8%;
+    color: green; 
+    cursor: pointer; 
+}
+
+.Section .Container .User .FormBox form .Button {
+    font-size: 14px;
+    position: relative;
+    width: 100%;
+    background: #f5f5f5;
+    border: none;
+    outline: none;
+    margin: 8px 0;
+    color: #333 !important;
+    box-shadow: none;
+    padding: 10px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.Section .Container .User .FormBox form button{
+    font-size: 14px;
+    position: relative;
+    width: 100%;
+    border: none;
+    outline: none;
+    margin: 8px 0;
+    color: #f5f5f5;
+    box-shadow: none;
+    padding: 10px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.Section .Container .User .FormBox form .SignUp {
+    position: relative;
+    margin-top: 12px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+
+// .Section .Container .User .SignIn .ImageBox .Image {
+//     animation: moveInFromLeft 1s ease-out
+// }
+
+// .Section .Container .User .SignUp .ImageBox .Image{
+//     animation: moveInFromRight 1s ease-out
+// }
+
+@keyframes moveInFromLeft{
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInFromRight{
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+@media (max-width: 1000px) {
+    .Section .Container {
+        max-width: 400px;
+    }
+
+    .Section .Container .ImageBox {
+        display: none;
+    }
+
+    .Section .Container .User .FormBox {
+        width: 100%;
+    }
+
+
+}
+
+
