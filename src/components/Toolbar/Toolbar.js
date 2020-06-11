@@ -3,7 +3,7 @@ import classes from './Toolbar.module.scss';
 import Logo from '../../assets/logo.png';
 import searchIcon from '../../assets/search.png';
 import { NavLink }  from 'react-router-dom';
-import Aux from '../../hoc/Aux';
+import Aux from '../../hoc/Auxx';
 
 class Toolbar extends Component {
 

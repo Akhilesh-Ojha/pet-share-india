@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './RichTextEditor.module.scss';
-import Aux from '../../hoc/Aux';
+import Aux from '../../hoc/Auxx';
 import axios from '../../axios';
 
 class RichText extends Component {
