@@ -64,6 +64,36 @@
     margin-top: 10px;
 }
 
+::ng-deep .Type{
+    background-color: #F0F0F0 !important;
+    form-control{
+        // .rbt-input-multi form-control rbt-input{
+        position: relative;
+        display: inline-block;
+        font-size: 20px;
+        background-color: #F0F0F0 !important;
+        width: 80%;
+        height: 50px;
+        border: none;
+        outline: none;
+        padding: 0 20px;
+        border-radius: 25px;
+        margin-right: 5px;
+        margin-top: 10px;
+    // }   
+    }
+}
+
+// .Typeahead {
+//     #typeAhead{
+//         ::ng-deep{
+//             .rbt .rbt-input{
+//                 background-color: green !important;
+//             }
+//         }
+//     }
+// }
+
 
 .UploadButton {
     position: relative;
@@ -97,6 +127,17 @@
     }
     
 }
+
+.rbt-input-hint-container input {
+    height: 64px;
+    background-color: green;
+}
+// .Typeahead {
+//     width: 80%;
+//     font-size: 40px;
+//     position: absolute;
+//     top:100px;
+// }
 
 // .SubmitButton {
 //     cursor: pointer;

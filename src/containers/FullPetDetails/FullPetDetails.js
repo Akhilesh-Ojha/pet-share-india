@@ -108,7 +108,7 @@ class FullPetDetails extends Component {
                         <div className={classes.Rating}>
                             <p className={classes.Rating__Text}>Liked this Post? Send a Cookie.</p>
                             <div className={classes.Treatos}>
-                                <img src={CookieCrumbs} className={classes.CookieIcon} onClick={this.treatIncrement}></img>
+                                <img src={CookieCrumbs} className={classes.CookieIcon} alt={""} onClick={this.treatIncrement}></img>
                                 <p className={classes.TreatCount}>Treatos: <span>{this.state.treats}</span></p>
                             </div>
                         </div>

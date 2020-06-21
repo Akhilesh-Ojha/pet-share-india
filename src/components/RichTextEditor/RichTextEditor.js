@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './RichTextEditor.module.scss';
 import Aux from '../../hoc/Auxx';
 import axios from '../../axios';
+import imageCompression from 'browser-image-compression';
 
 class RichText extends Component {
 
@@ -82,12 +83,27 @@ class RichText extends Component {
         let formData = new FormData();
         let selectedFile = event.target.files[0];
         let userToken = sessionStorage.getItem('accessToken');
-        formData.append('image', selectedFile);
 
-        axios.post('/api/v1/blogs/image' , formData ,  { headers: {"Authorization" : userToken}}).then(res => {
-            console.log('response from POST Request', res.data.result);
-            this.execCommandWithArgs('insertImage', res.data.result)
+        var options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 50,
+        }
+
+        imageCompression(event.target.files[0] , options)
+        .then(response => {
+            console.log('response of image', response);
+            // console.log('new image' , event);
+            this.setState({
+                selectedFile: response
+            });
+            formData.append('image', selectedFile);
+    
+            axios.post('/api/v1/blogs/image' , formData ,  { headers: {"Authorization" : userToken}}).then(res => {
+                console.log('response from POST Request', res.data.result);
+                this.execCommandWithArgs('insertImage', res.data.result)
+            });
         });
+        
     }
 
     parseHTML = () => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Toolbar.module.scss';
-import Logo from '../../assets/logo.png';
+// import Logo from '../../assets/logo.png';
 import searchIcon from '../../assets/search.png';
 import { NavLink }  from 'react-router-dom';
 import Aux from '../../hoc/Auxx';
@@ -67,7 +67,7 @@ class Toolbar extends Component {
     }
 
     render () {
-        console.log('Props in toolbar', this.props);
+        // console.log('Props in toolbar', this.props);
         // console.log('session', sessionStorage.getItem('accessToken') , sessionStorage.getItem('username') );
         let userToken = sessionStorage.getItem('accessToken');
         let name = sessionStorage.getItem('username');

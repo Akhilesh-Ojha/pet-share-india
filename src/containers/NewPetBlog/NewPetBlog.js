@@ -5,8 +5,20 @@ import axios from '../../axios';
 import Loader from '../../components/UI/Spinner/Spinner';
 import { Redirect } from 'react-router-dom';
 import imageCompression from 'browser-image-compression';
+// import ReactTags from 'react-tag-autocomplete'
+// import 'react-bootstrap-typeahead/css/Typeahead.css';
+import Aux from '../../hoc/Auxx';
+// import { Typeahead } from 'react-bootstrap-typeahead';
 
+// const KeyCodes = {
+//     comma: 188,
+//     enter: 13,
+// };
+
+// const delimiters = [KeyCodes.comma, KeyCodes.enter];
 class NewPetBlog extends Component {
+
+    
 
     state = {
         title: '',
@@ -14,7 +26,15 @@ class NewPetBlog extends Component {
         shortDesc: '',
         selectedFile: null,
         postedData: null,
-        loading: false
+        loading: false,
+        // tags: [
+        //     { id: 1, name: "Apples" },
+        //     { id: 2, name: "Pears" },
+        //     { id: 3, name: "Bananas" },
+        //     { id: 4, name: "Mangos" },
+        //     { id: 5, name: "Lemons" },
+        //     { id: 6, name: "Apricots" }
+        //   ],
     }
 
     componentDidMount() {
@@ -36,7 +56,19 @@ class NewPetBlog extends Component {
             this.setState({
                 selectedFile: response
             });
-        })
+        });
+    }
+    
+    handleDelete = (i) => {
+        const tags = this.state.tags.slice(0)
+        tags.splice(i, 1)
+        this.setState({ tags })
+      }
+     
+    handleAddition = (tag) => {
+    console.log('tag' ,tag);
+    const tags = [].concat(this.state.tags, tag)
+    this.setState({ tags })
     }
 
     inputTitleHandler = event => {
@@ -99,6 +131,9 @@ class NewPetBlog extends Component {
             redirect = <Redirect to="/" />
         } else {
             form = (
+                <Aux>
+
+                
                 <div className={classes.Container}>
                     <div className={classes.FormContainer}>
                         {/* <h1>Add Your Blog</h1> */}
@@ -113,10 +148,33 @@ class NewPetBlog extends Component {
                             {uploadFileText}
                             {/* </div> */}
                             <input className={classes.ShortDesc} type="text" maxLength="250" onChange={this.inputDescHandler} value={this.state.shortDesc}  placeholder="Enter a Short Description"/>
+
+                            {/* <div className={classes.Typeahead} > */}
+                                {/* <Typeahead
+                                    className={classes.Type}
+                                    id="typeAhead"
+                                    labelKey="name"
+                                    multiple
+                                    options={this.state.tags}
+                                    placeholder="Choose a Fruit..."
+                                /> */}
+                            {/* </div> */}
                         </div>
+                        <div>
+
+                        </div>
+
+                        
+
                         <RichTextEditor sendDataToParent={this.handleSubmit}/>
                     </div>
                 </div>
+
+                {/* <div className={classes.Typeahead}> */}
+
+                
+                {/* </div> */}
+                </Aux>
             )
         }
         return(
@@ -124,6 +182,7 @@ class NewPetBlog extends Component {
             <div>
                 {redirect}
                 {form}
+               
             </div>
             
         )
