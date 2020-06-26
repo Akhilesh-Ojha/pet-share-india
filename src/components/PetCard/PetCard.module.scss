@@ -2,7 +2,8 @@
     width: 92%;
     margin: 0 15px 30px ;
     padding: 10px;
-    background: #fff;
+    // background: #fff;
+    background-color: #dfcc99 ;
     overflow: hidden;
     border-radius: 15px;
     transition: all 1s ease;
@@ -10,9 +11,9 @@
     text-decoration: none;
 
     transition: all .3s;
-    &:hover{
-        transform: translateY(-5px) scale(1.03);
-    }
+    // &:hover{
+    //     transform: translateY(-2px) scale(1);
+    // }
 }
 
 .title{

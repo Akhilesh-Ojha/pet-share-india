@@ -1,0 +1,306 @@
+.Banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -70px;
+}
+
+.FitBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.Content{
+    position: relative;
+    // z-index: 10;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.Box {
+    color: #5a5757;
+    cursor: pointer;
+    font-size: 20px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-weight: 700;
+    height: 180px;
+    width: 300px;
+    border-radius:20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(	223,204,153, 0.7);
+}
+
+.Card {
+    height: 500px;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.Card h1 {
+    margin-left: 12%;
+}
+
+.Card .Button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(	223,204,153, 0.7) ;
+    color: white;
+    font-size: 20px;
+    border: none;
+    padding: 5px 25px;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50px;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 2px rgba(0,0,0,.2);
+    }
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    }
+}
+
+.PetList {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.PetList .PetBox {
+    cursor: pointer;
+    position: relative;
+    min-width: 220px;
+    height: 350px;
+    transition: 0.5s;
+    margin: 10px;
+}
+
+.PetList:hover .PetBox {
+    opacity: 0.6;
+}
+
+.PetList .PetBox:hover {
+    opacity: 1;
+}
+
+.PetBox .ImgBox {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+.PetBox .ContentBox {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(	223,204,153, 0.7) ;
+    color: #5a5757;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+
+}
+
+.PetBox .ContentBox h2 {
+    
+    font-weight: 500;
+    line-height: 1.2em;
+}
+.PetBox .ContentBox h2 p span {
+    font-size: 0.8em;
+    font-weight: 300;
+    opacity: 0.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.Works {
+    padding-top: 50px;
+    height: 900px;
+    background-color: rgba(	223,204,153, 0.8);
+    display: flex;
+    color: white;
+    justify-content: space-around;
+    width: 100%;
+    padding: 50px;
+}
+
+.Col1 , .Col2, .Col3 {
+    width: 33%;
+    // display: flex;
+    // flex-direction: column;
+}
+
+.Col1 p  , .Col3 p{
+    margin-bottom: 20px;
+    // max-width: 300px;
+}
+
+.Col2 h4 {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+    margin-left: 35%;
+    margin-bottom: 20px;
+}
+
+.Col2 h3, .Col2 p {
+    margin-left: 10%;
+}
+
+.Col3 .FirstStatement {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.ArrowFirst span {
+    display: flex;
+    font-size: 100px;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 100px;
+}
+
+.Arrow span {
+    display: flex;
+    font-size: 100px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 100px;
+}
+
+.ArrowLast span {
+    display: flex;
+    font-size: 180px;
+    justify-content: flex-end;
+    align-items: right;
+}
+
+.ArrowLastCol3 span {
+    display: flex;
+    font-size: 180px;
+    justify-content: flex-end;
+    align-items: right;
+    position: absolute;
+    left: 66%;
+}
+
+.ArrowFirstLastCol span {
+    
+    font-size: 100px;
+}
+
+
+.Img1 {
+    position: relative;
+    width: 220px;
+    height: 150px;   
+    transform: skewX(5deg);
+    
+}
+
+.Img1 img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 5px solid white;
+    border-radius: 10px;
+    
+}
+
+.Img2 {
+    position: relative;
+    width: 220px;
+    height: 150px;   
+    transform: skewX(-5deg);
+}
+
+.Img2 img {
+    position: absolute;
+    left: 165px;
+    top: -30px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+.Img3 {
+    position: relative;
+    width: 220px;
+    height: 150px;   
+    transform: skewX(8deg);
+}
+
+.Img3 img {
+    position: absolute;
+    left: 0;
+    top: -40px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+.Img4 {
+    position: relative;
+    width: 220px;
+    height: 150px;  
+}
+
+.Img4 img {
+    position: absolute;
+    left: 150px;
+    top: -50px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+
+

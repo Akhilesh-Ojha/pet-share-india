@@ -1,12 +1,16 @@
 import React , {Component} from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Layout from './containers/Layout/Layout';
+import Layout from './components/Layout/Layout';
+import Blogs from './containers/Blogs/Blogs'
+import Auth from './containers/Auth/Auth';
 
 class App extends Component  {  
   render() {
     return (
       <BrowserRouter>
-          <Layout />
+          <Layout> 
+            <Blogs></Blogs>
+          </Layout>
       </BrowserRouter>
     );
   }

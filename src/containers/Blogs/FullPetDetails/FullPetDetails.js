@@ -1,11 +1,11 @@
 import React , { Component } from 'react';
 import classes from './FullPetDetails.module.scss';
-import axios from '../../axios';
-import Loader from '../../components/UI/Spinner/Spinner';
+import axios from '../../../axios';
+import Loader from '../../../components/UI/Spinner/Spinner';
 import ReactHtmlParser from 'react-html-parser';
 import { NavLink } from 'react-router-dom';
-import CookieCrumbs from '../../assets/cookie_crumbs.svg';
-
+// import CookieCrumbs from '../../assets/cookie_crumbs.svg';
+import CookieCrumbs from '../../../assets/cookie_crumbs.svg';
 class FullPetDetails extends Component {
 
     counter = 0;
@@ -86,7 +86,7 @@ class FullPetDetails extends Component {
             if(this.state.loadedPost.is_owner) {
                 buttons = (
                     <div className={classes.Button}>
-                        <NavLink to={'/' + this.props.match.params.id + '/edit'}>
+                        <NavLink to={'/blogs/' + this.props.match.params.id + '/edit'}>
                             <button className={classes.Button__Edit}>Edit</button>
                         </NavLink>
                         <button className={classes.Button__Delete} onClick={this.deletePostHandler}>Delete</button>

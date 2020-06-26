@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import classes from './NewPetBlog.module.scss';
-import RichTextEditor from '../../components/RichTextEditor/RichTextEditor';
-import axios from '../../axios';
-import Loader from '../../components/UI/Spinner/Spinner';
+import RichTextEditor from '../../../components/RichTextEditor/RichTextEditor';
+import axios from '../../../axios';
+import Loader from '../../../components/UI/Spinner/Spinner';
 import { Redirect } from 'react-router-dom';
 import imageCompression from 'browser-image-compression';
 // import ReactTags from 'react-tag-autocomplete'
 // import 'react-bootstrap-typeahead/css/Typeahead.css';
-import Aux from '../../hoc/Auxx';
+import Aux from '../../../hoc/Auxx';
 // import { Typeahead } from 'react-bootstrap-typeahead';
 
 // const KeyCodes = {
@@ -39,6 +39,7 @@ class NewPetBlog extends Component {
 
     componentDidMount() {
         window.scrollTo(0,0);
+        console.log('Here');
     }
     
     fileSelectedHandler = event => {
@@ -121,7 +122,7 @@ class NewPetBlog extends Component {
         let form;
         if(this.state.loading) {
             form = (
-                <div style={{ height:'100vh' , paddingTop: '100px'}}>
+                <div style={{ height:'100vh' , paddingTop: '20px'}}>
                     <Loader />
                     <p style={{fontSize: '30px' , textAlign: 'center'}}>Hang On! Publishing Blog!</p>
                 </div>

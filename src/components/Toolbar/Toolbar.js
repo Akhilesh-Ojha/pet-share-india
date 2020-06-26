@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import classes from './Toolbar.module.scss';
-// import Logo from '../../assets/logo.png';
 import searchIcon from '../../assets/search.png';
 import { NavLink }  from 'react-router-dom';
 import Aux from '../../hoc/Auxx';
@@ -14,7 +13,8 @@ class Toolbar extends Component {
             value: '',
             isSticky: false,
             showDropDown: true,
-            showFullMenu: false
+            showFullMenu: false,
+            isOnHomePage: false
         }
 
     }
@@ -35,11 +35,6 @@ class Toolbar extends Component {
         });
     }
 
-    // componentDidUpdate(prevProps , prevState) {
-    //     console.log('prevProps', prevProps);
-    //     console.log('prevStae', prevState);
-    // }
-
     onInptChangeHandler = (event) => {
         this.setState({
             value: event.target.value
@@ -47,7 +42,6 @@ class Toolbar extends Component {
     }
 
     openFullMenu = () => {
-        console.log('here');
         this.setState({
             showFullMenu: true
         })
@@ -67,7 +61,13 @@ class Toolbar extends Component {
     }
 
     render () {
-        // console.log('Props in toolbar', this.props);
+        console.log('Props in toolbar', this.props);
+        console.log('window', window.location.pathname);
+        // if(window.location.pathname === '/') {
+        //     this.setState({
+        //         isOnHomePage: true
+        //     })
+        // }
         // console.log('session', sessionStorage.getItem('accessToken') , sessionStorage.getItem('username') );
         let userToken = sessionStorage.getItem('accessToken');
         let name = sessionStorage.getItem('username');
@@ -75,11 +75,32 @@ class Toolbar extends Component {
         let userNav = null;
         let fullContainer = null;
         let authOption = null;
+        let seacrhBar = null;
+
+        if(window.location.pathname === '/blogs') {
+            seacrhBar = (
+                <Aux>
+                    <input placeholder="Search" type="text" className={classes.Search__Input} value={this.state.value} onChange={this.onInptChangeHandler} ></input>
+                    <button className={classes.Search__Button}>
+                    <img src={searchIcon} alt={""} className={classes.Search__Icon}></img>
+                    </button>
+                </Aux>
+            )
+        } else {
+            seacrhBar = (
+                <Aux>
+                    <input placeholder="Search" type="text" className={classes.Search__Input} value={this.state.value} onChange={this.onInptChangeHandler} ></input>
+                    <button className={classes.Search__Button}>
+                    <img src={searchIcon} alt={""} className={classes.Search__Icon}></img>
+                    </button>
+                </Aux>
+            )
+        }
 
         if(userToken !== null) {
             authOption = (
                 <NavLink to={{pathname: '/auth'}}>
-                                <li className={classes.List}><button onClick={this.closeModalWithLogOff}>Sign Out</button></li>
+                    <li className={classes.List}><button onClick={this.closeModalWithLogOff}>Sign Out</button></li>
                 </NavLink>
             )
             userNav=(
@@ -127,17 +148,14 @@ class Toolbar extends Component {
             )
         } else {
             fullContainer = (
-                <header className={(this.state.isSticky) ? classes.sticky : ''} ref={header => this.header = header}> 
+                <header className={(this.state.isSticky && window.location.pathname !== '/') ? classes.sticky : ''} ref={header => this.header = header}> 
                     <NavLink style={{textDecoration: 'none'}}  to={{pathname: '/'}}>
                         {/* <img src={Logo} alt={"Logo"} className={classes.Logo}></img> */}
-                        <div style={{fontSize: '20px' , marginLeft:'10px', textDecoration: 'underline', color: 'black' , fontWeight: 'bold'}}>𝓟𝓮𝓽 𝓢𝓱𝓪𝓻𝓮</div>
+                        <div style={{fontSize: '20px' , marginLeft:'10px', textDecoration: 'underline', color: '#5a5757' , fontWeight: 'bold'}}>𝓟𝓮𝓽 𝓢𝓱𝓪𝓻𝓮</div>
                     </NavLink>
                 
                     <div className={classes.Search}>
-                        <input placeholder="Search" type="text" className={classes.Search__Input} value={this.state.value} onChange={this.onInptChangeHandler} ></input>
-                        <button className={classes.Search__Button}>
-                            <img src={searchIcon} alt={""} className={classes.Search__Icon}></img>
-                        </button>
+                        {seacrhBar}
                     </div>
 
                     <div className={classes.UserNav}>

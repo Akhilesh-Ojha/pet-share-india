@@ -16,13 +16,18 @@ class FacebookLogin extends Component {
         console.log('Button Clicked');
     }
     responseFacebook = (response) => {
+        let firstName = '';
         if(response.status !== 'unknown') {
             this.props.handleSuccessfulAuth(response);
             sessionStorage.setItem('accessToken', response.accessToken);
-            let name = response.name.lastIndexOf(' ');
-            let firstName = response.name.substring(0,name);
-            sessionStorage.setItem('username', firstName);
-            sessionStorage.setItem('profilePic', response.picture.data.url )
+            if(response.name) {
+                let name = response.name.lastIndexOf(' ');
+                firstName = response.name.substring(0,name);
+                sessionStorage.setItem('username', firstName);
+            }
+            if(response.picture && response.picture.data) {
+                sessionStorage.setItem('profilePic', response.picture.data.url )
+            }
             this.setState({
                 auth: true,
                 name: firstName,
@@ -30,9 +35,8 @@ class FacebookLogin extends Component {
                 loading: false
             });
             axios.get('/api/v1/fb/login?access_token=' + response.accessToken).then(response => {
-                // console.log('RES USER',response);
                 this.props.handleSuccessfulAuth(response);
-                return <Redirect to='/'  />
+                return <Redirect to='/blogs'/>
             }) 
         }
     }
@@ -45,7 +49,7 @@ class FacebookLogin extends Component {
                 </div>)
         }
         if(this.state.auth) {
-        redirect = <Redirect to="/" />
+        redirect = <Redirect to="/blogs" />
         facebookData = (<div style={{fontSize:'30px'}}> Hello {this.state.name}</div>) 
          } else {
             facebookData = (<FacebookLoginBtn

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classes from './EditPetDetails.module.scss';
-import RichTextEditor from '../../components/RichTextEditor/RichTextEditor';
-import axios from '../../axios';
-import Loader from '../../components/UI/Spinner/Spinner';
+import RichTextEditor from '../../../components/RichTextEditor/RichTextEditor';
+import axios from '../../../axios';
+import Loader from '../../../components/UI/Spinner/Spinner';
 // import { Redirect } from 'react-router-dom';
 class EditPetDetails extends Component {
 

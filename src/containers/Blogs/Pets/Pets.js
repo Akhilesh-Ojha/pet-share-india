@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import classes from './Pets.module.scss';
-import PetCard from '../../components/PetCard/PetCard';
-import Aux from '../../hoc/Auxx';
+import PetCard from '../../../components/PetCard/PetCard';
+import Aux from '../../../hoc/Auxx';
 import { NavLink } from 'react-router-dom';
-import axios from '../../axios';
-import Loader from '../../components/UI/Spinner/Spinner';
+import axios from '../../../axios';
+import Loader from '../../../components/UI/Spinner/Spinner';
 
 class Pets extends Component {
     state = {
@@ -45,7 +45,7 @@ class Pets extends Component {
         
             petBlogs = this.state.petDetails.map(petDetail => {
                 return(
-                    <NavLink style={{ textDecoration: 'none', color: 'black' }} to={'/' + petDetail.id}  key={petDetail.id} >
+                    <NavLink style={{ textDecoration: 'none', color: 'black' }} to={'/blogs/' + petDetail.id}  key={petDetail.id} >
                         <PetCard key={petDetail.title} title={petDetail.title} shortDesc={petDetail.shortDesc} image={petDetail.image_url}/>
                     </NavLink>
                     
@@ -57,7 +57,7 @@ class Pets extends Component {
                 <div className={classes.container}>
                     {petBlogs}
                 </div>
-                <NavLink className={classes.Anchor} to={{pathname: '/new-blog'}}>
+                <NavLink className={classes.Anchor} to={{pathname: '/blogs/new-blog'}}>
                  <button className={classes.Button}><i style={{width: '100%', height:'100%', fontSize: '16px' ,  marginTop: '4px', color: 'black'}} className="fa fa-plus"></i></button>
                 </NavLink>
             </Aux>
