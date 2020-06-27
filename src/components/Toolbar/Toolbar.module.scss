@@ -116,35 +116,35 @@ header.sticky {
        
 }
 
-header.sticky .Search {
-    &__Input {
+// header.sticky .Search {
+//     &__Input {
 
-        background-color: transparent ;
-        border: 2px solid gray;
-    }
+//         // background-color: transparent ;
+//         border: 2px solid gray;
+//     }
 
-    &__Input:focus + &__Button {
+//     &__Input:focus + &__Button {
         
-        background-color: #dfcc99 ;
-    }
-    &__Button {
-        background-color: transparent ;
+//         background-color: #dfcc99 ;
+//     }
+//     &__Button {
+//         background-color: transparent ;
            
-    }
+//     }
 
-    &__Button {
-        cursor: pointer;
-        border: none;
-        background-color: transparent;
-        &:focus {
-            outline: none;
-        }
-        &:active {
-            transform: translateY(2px);
-        }
-    }
+//     &__Button {
+//         cursor: pointer;
+//         border: none;
+//         background-color: transparent;
+//         &:focus {
+//             outline: none;
+//         }
+//         &:active {
+//             transform: translateY(2px);
+//         }
+//     }
 
-}
+// }
 
 header.sticky .Image__Button{
     background: transparent;

@@ -39,7 +39,19 @@
     align-items: center;
     justify-content: center;
     background-color: rgba(	223,204,153, 0.7);
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 2px rgba(0,0,0,.2);
+    }
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    }
+    
 }
+
+
 
 .Card {
     height: 500px;
@@ -289,6 +301,7 @@
     position: relative;
     width: 220px;
     height: 150px;  
+    transform: skewX(-8deg);
 }
 
 .Img4 img {
@@ -302,5 +315,13 @@
     border-radius: 10px;
 }
 
+.Img1 , .Img2 , .Img3 , .Img4 {
+    transition: all .6s;
+    &:hover {
+        transform: skewX(0);
+        transform: scale(1.2);
+        z-index: 2;
+    }
+}
 
 

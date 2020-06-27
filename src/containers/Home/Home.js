@@ -14,9 +14,9 @@ class Home extends Component {
         return(
             <Aux>
                 <section className={classes.Banner}>
-                    <img src={BackgroundImage} className={classes.FitBg}></img>
-                    <div className={classes.Content}>
-                        <div className={classes.Box}>
+                    <img src={BackgroundImage} alt="bg" className={classes.FitBg}></img>
+                    <div className={classes.Content} >
+                        <div className={classes.Box} data-0-top="opacity:0;left:100px;" data-200-top="opacity:1;left:0px;">
                             Adoption
                         </div>
                         <div className={classes.Box}>
@@ -35,7 +35,7 @@ class Home extends Component {
                     <div className={classes.PetList}>
                         <div className={classes.PetBox}>
                             <div className={classes.ImgBox}>
-                                <img src={Pet4} className={classes.FitBg}></img>
+                                <img src={Pet4} alt="" className={classes.FitBg}></img>
                             </div>
 
                             <div className={classes.ContentBox}>
@@ -46,18 +46,18 @@ class Home extends Component {
 
                         <div className={classes.PetBox}>
                             <div className={classes.ImgBox}>
-                            <img src={Pet2} className={classes.FitBg}></img>
+                            <img alt="" src={Pet2} className={classes.FitBg}></img>
                             </div>
 
                             <div className={classes.ContentBox}>
-                                <h2> Ceaser </h2>
+                                <h2> Caesar </h2>
                                 <p>Golden Ret | <span>10 months |</span> <span>Male</span></p>
                             </div>
                         </div>
 
                         <div className={classes.PetBox}>
                             <div className={classes.ImgBox}>
-                            <img src={Pet1} className={classes.FitBg}></img>
+                            <img alt="" src={Pet1} className={classes.FitBg}></img>
                             </div>
 
                             <div className={classes.ContentBox}>
@@ -68,7 +68,7 @@ class Home extends Component {
 
                         <div className={classes.PetBox}>
                             <div className={classes.ImgBox}>
-                            <img src={Pet3} className={classes.FitBg}></img>
+                            <img alt="" src={Pet3} className={classes.FitBg}></img>
                             </div>
 
                             <div className={classes.ContentBox}>
@@ -117,16 +117,16 @@ class Home extends Component {
                     <div className={classes.Col2}>
                         <h4>How it works</h4>
                         <div className={classes.Img1}> 
-                            <img src={Pet1}></img>
+                            <img alt="" src={Pet1}></img>
                         </div>
                         <div className={classes.Img2} > 
-                            <img src={Pet2}></img>
+                            <img alt="" src={Pet2}></img>
                         </div>
                         <div className={classes.Img3} > 
-                            <img src={Pet3}></img>
+                            <img alt="" src={Pet3}></img>
                         </div>
                         <div className={classes.Img4} > 
-                            <img src={Pet4}></img>
+                            <img alt="" src={Pet4}></img>
                         </div>
                         
                         <h3>Meet up and make a legal adoption</h3>
