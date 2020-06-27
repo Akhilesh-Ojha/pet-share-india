@@ -18,6 +18,7 @@ class Auth extends Component {
     }
 
     handleSuccessfulAuth = (data) => {
+        console.log('Data from FB', data);
         this.props.handleLogin(data)
         this.props.history.push('/blogs');
     }

@@ -13,8 +13,7 @@ class Pets extends Component {
     }
 
     componentDidMount () {
-        let userToken = sessionStorage.getItem('accessToken');
-        axios.get( '/api/v1/blogs' , { headers: {"Authorization" : userToken} } )
+        axios.get( '/api/v1/blogs')
             .then( response => {
                 console.log('RESPONSE', response);
                 const posts = response.data;

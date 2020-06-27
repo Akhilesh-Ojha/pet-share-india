@@ -8,14 +8,26 @@ import EditPetDetails from '../../containers/Blogs/EditPetDetails/EditPetDetails
 
 class Blogs extends Component {
     render () {
-        console.log('Props', this.props);
         return (
             <div>
                 <Switch>
                     <Route path="/blogs" exact component={Pets} />
-                    <Route path="/blogs/new-blog" exact component={NewPetBlog}/>
+                    <Route
+                            path={"/blogs/new-blog"}
+                            render={ props => (
+                                <NewPetBlog {...props} accessToken={this.props.accessToken}/>
+                            )}
+                    />
+                    {/* <Route path="/blogs/new-blog" exact component={NewPetBlog}/> */}
                     <Route path="/blogs/:id" exact component={FullPetDetails}/>
-                    <Route path="/blogs/:id/edit" exact  component={EditPetDetails}/>
+
+                    <Route
+                            path={"/blogs/:id/edit"}
+                            render={ props => (
+                                <EditPetDetails {...props} accessToken={this.props.accessToken}/>
+                            )}
+                    />
+                    {/* <Route path="/blogs/:id/edit" exact  component={EditPetDetails}/> */}
                 </Switch>
             </div>
         );

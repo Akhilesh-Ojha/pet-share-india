@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classes from './Toolbar.module.scss';
 import searchIcon from '../../assets/search.png';
-import { NavLink }  from 'react-router-dom';
+import { NavLink , withRouter }  from 'react-router-dom';
 import Aux from '../../hoc/Auxx';
 
 class Toolbar extends Component {
@@ -11,7 +11,7 @@ class Toolbar extends Component {
         this.dropDownStyle = null;
         this.state = {
             value: '',
-            isSticky: false,
+            isSticky: false, 
             showDropDown: true,
             showFullMenu: false,
             isOnHomePage: false
@@ -68,7 +68,6 @@ class Toolbar extends Component {
         //         isOnHomePage: true
         //     })
         // }
-        // console.log('session', sessionStorage.getItem('accessToken') , sessionStorage.getItem('username') );
         let userToken = sessionStorage.getItem('accessToken');
         let name = sessionStorage.getItem('username');
         let profilePic = sessionStorage.getItem('profilePic');
@@ -77,7 +76,7 @@ class Toolbar extends Component {
         let authOption = null;
         let seacrhBar = null;
 
-        if(window.location.pathname === '/blogs') {
+        if(this.props.location.pathname === '/blogs') {
             seacrhBar = (
                 <Aux>
                     <input placeholder="Search" type="text" className={classes.Search__Input} value={this.state.value} onChange={this.onInptChangeHandler} ></input>
@@ -87,14 +86,7 @@ class Toolbar extends Component {
                 </Aux>
             )
         } else {
-            seacrhBar = (
-                <Aux>
-                    <input placeholder="Search" type="text" className={classes.Search__Input} value={this.state.value} onChange={this.onInptChangeHandler} ></input>
-                    <button className={classes.Search__Button}>
-                    <img src={searchIcon} alt={""} className={classes.Search__Icon}></img>
-                    </button>
-                </Aux>
-            )
+            seacrhBar = null
         }
 
         if(userToken !== null) {
@@ -176,7 +168,7 @@ class Toolbar extends Component {
     
 }
 
-export default Toolbar;
+export default withRouter(Toolbar);
 
 // {/* <div className={classes.NavIcon}>
 //                         <button className={classes.Button}><i className="fa fa-user-circle" style={{color: '#191919'}} aria-hidden="true"></i></button>

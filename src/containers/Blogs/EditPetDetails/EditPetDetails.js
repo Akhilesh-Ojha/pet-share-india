@@ -21,8 +21,7 @@ class EditPetDetails extends Component {
     }
 
     getPetDetailsData() {
-        let userToken = sessionStorage.getItem('accessToken');
-        axios.get( '/api/v1/blogs/' +  this.props.match.params.id  ,  { headers: {"Authorization" : userToken} } )
+        axios.get( '/api/v1/blogs/' +  this.props.match.params.id)
         .then(response => {
             let petDetails = response.data.data.Blog;
             console.log('petDeetails', petDetails);
@@ -66,7 +65,6 @@ class EditPetDetails extends Component {
             'id': this.props.match.params.id
         }
         console.log('data', data);
-        let userToken = sessionStorage.getItem('accessToken');
         if(this.state.selectedFile) {
             formData.append('image', this.state.selectedFile);
         }
@@ -74,7 +72,7 @@ class EditPetDetails extends Component {
         this.setState({
             loading: true
         })
-        axios.post('/api/v1/blogs' , formData ,  { headers: {"Authorization" : userToken}}).then(res => {
+        axios.post('/api/v1/blogs' , formData).then(res => {
             console.log('response from POST Request', res);
             this.setState({
                 postedData: res.data.data,

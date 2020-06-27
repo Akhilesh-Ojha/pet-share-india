@@ -18,8 +18,8 @@ class FacebookLogin extends Component {
     responseFacebook = (response) => {
         let firstName = '';
         if(response.status !== 'unknown') {
-            this.props.handleSuccessfulAuth(response);
-            sessionStorage.setItem('accessToken', response.accessToken);
+            // this.props.handleSuccessfulAuth(response);
+            // sessionStorage.setItem('accessToken', response.accessToken);
             if(response.name) {
                 let name = response.name.lastIndexOf(' ');
                 firstName = response.name.substring(0,name);
@@ -35,6 +35,7 @@ class FacebookLogin extends Component {
                 loading: false
             });
             axios.get('/api/v1/fb/login?access_token=' + response.accessToken).then(response => {
+                console.log('Response from FB', response.data.access_token);
                 this.props.handleSuccessfulAuth(response);
                 return <Redirect to='/blogs'/>
             }) 

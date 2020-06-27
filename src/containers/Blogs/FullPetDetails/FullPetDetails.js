@@ -20,8 +20,7 @@ class FullPetDetails extends Component {
         window.scrollTo(0,0);
         if ( this.props.match.params.id ) {
             if ( !this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id) ) {
-                let userToken = sessionStorage.getItem('accessToken');
-                axios.get( '/api/v1/blogs/' +  this.props.match.params.id  ,  { headers: {"Authorization" : userToken} } )
+                axios.get( '/api/v1/blogs/' +  this.props.match.params.id)
                     .then( response => {
                         console.log('response of full desc', response.data.data.Blog);
                         var wordCount = ReactHtmlParser(response.data.data.Blog.description.split(' ').length);

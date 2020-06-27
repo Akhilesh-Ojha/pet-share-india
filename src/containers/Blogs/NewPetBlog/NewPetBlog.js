@@ -91,13 +91,13 @@ class NewPetBlog extends Component {
             'description': event,
             'shortDesc': this.state.shortDesc
         }
-        let userToken = sessionStorage.getItem('accessToken');
+        // let userToken = sessionStorage.getItem('accessToken');
         formData.append('image', this.state.selectedFile);
         formData.append('data', JSON.stringify(data));
         this.setState({
             loading: true
         })
-        axios.post('/api/v1/blogs' , formData ,  { headers: {"Authorization" : userToken}}).then(res => {
+        axios.post('/api/v1/blogs' , formData ,  { headers: {"Authorization" : this.props.accessToken}}).then(res => {
             console.log('response from POST Request', res);
             this.setState({
                 postedData: res.data.data,
@@ -112,6 +112,7 @@ class NewPetBlog extends Component {
     })
 
     render() {
+        console.log('THISPROPS IN NEW PET BLOG', this.props);
         let uploadFileText = null;
         let redirect = null;
         if(this.state.selectedFile) {
