@@ -22,10 +22,11 @@ class FullPetDetails extends Component {
         if ( this.props.match.params.id ) {
             if ( !this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id) ) {
                 if(this.props.accessToken !== '') {
-                     headerToken =  this.props.accessToken
+                    //  headerToken =  this.props.accessToken
+                     headerToken = {"Authorization" : this.props.accessToken}
                 }
                 console.log('HD', headerToken);
-                axios.get( '/api/v1/blogs/' +  this.props.match.params.id, { headers: {"Authorization" : headerToken}})
+                axios.get( '/api/v1/blogs/' +  this.props.match.params.id, { headers: headerToken})
                     .then( response => {
                         console.log('response of full desc', response.data.data.Blog);
                         var wordCount = ReactHtmlParser(response.data.data.Blog.description.split(' ').length);
