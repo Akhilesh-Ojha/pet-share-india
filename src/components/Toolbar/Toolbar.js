@@ -11,7 +11,7 @@ class Toolbar extends Component {
         this.dropDownStyle = null;
         this.state = {
             value: '',
-            // isSticky: false, 
+            isSticky: false, 
             showDropDown: true,
             showFullMenu: false,
             isOnHomePage: false
@@ -19,21 +19,21 @@ class Toolbar extends Component {
 
     }
 
-    // componentDidMount() {
-    //     var headerDetail = this.header;
-    //     window.addEventListener('scroll', () => {
-    //         headerDetail.classList.toggle("sticky", window.scrollY > 0);
-    //         if(window.scrollY > 0) {
-    //             this.setState({
-    //                 isSticky: true
-    //             });
-    //         } else if (window.scrollY === 0) {
-    //             this.setState({
-    //                 isSticky: false
-    //             });
-    //         }
-    //     });
-    // }
+    componentDidMount() {
+        var headerDetail = this.header;
+        window.addEventListener('scroll', () => {
+            headerDetail.classList.toggle("sticky", window.scrollY > 0);
+            if(window.scrollY > 0) {
+                this.setState({
+                    isSticky: true
+                });
+            } else if (window.scrollY === 0) {
+                this.setState({
+                    isSticky: false
+                });
+            }
+        });
+    }
 
     onInptChangeHandler = (event) => {
         this.setState({
@@ -55,6 +55,7 @@ class Toolbar extends Component {
 
     closeModalWithLogOff = () => {
         sessionStorage.clear();
+        this.props.handleLogout();
         this.setState({
             showFullMenu: false
         })
@@ -63,18 +64,28 @@ class Toolbar extends Component {
     render () {
         console.log('Props in toolbar', this.props);
         console.log('window', window.location.pathname);
-        // if(window.location.pathname === '/') {
-        //     this.setState({
-        //         isOnHomePage: true
-        //     })
-        // }
-        let userToken = sessionStorage.getItem('accessToken');
-        let name = sessionStorage.getItem('username');
-        let profilePic = sessionStorage.getItem('profilePic');
+        let userToken = null;
+        let name = '';
+        let profilePic = '';
+        if(this.props.userData.data) {
+
+            userToken = this.props.userData.data.access_token;
+
+            if(this.props.userData.data.data.name && this.props.userData.data.data.picture) {
+                
+                let shortName = this.props.userData.data.data.name.lastIndexOf(' ');
+                name = this.props.userData.data.data.name.substring(0,shortName);
+        
+                profilePic = this.props.userData.data.data.picture.data.url;
+            }
+    
+        }
+
         let userNav = null;
         let fullContainer = null;
         let authOption = null;
         let seacrhBar = null;
+        let imageButton = null;
 
         if(false) {
             seacrhBar = (
@@ -89,6 +100,18 @@ class Toolbar extends Component {
             seacrhBar = null
         }
 
+        if(profilePic === '') {
+            imageButton = (
+                <button onClick={this.openFullMenu}  className={classes.ButtonWithoutPic}><i className="fa fa-user-circle" style={{color: '#5a5757'}} aria-hidden="true"></i></button>
+            )
+        } else {
+            imageButton = (
+                <button className={classes.Image__Button} onClick={this.openFullMenu} >
+                            <img src={profilePic} alt={""} className={classes.Image}></img>
+                </button>
+            )
+        }
+
         if(userToken !== null) {
             authOption = (
                 <NavLink to={{pathname: '/auth'}}>
@@ -99,9 +122,7 @@ class Toolbar extends Component {
                 <Aux>
                     <p style={{fontSize: '20px', fontWeight:'500' ,marginRight: '5px', display:'flex', alignSelf:'center'}}>Hey, {name} </p>
                     <div style={{display: 'flex' , flexDirection: "column"}}>
-                        <button className={classes.Image__Button} onClick={this.openFullMenu} >
-                            <img src={profilePic} alt={""} className={classes.Image}></img>
-                        </button>
+                        {imageButton}
                     </div>
                 </Aux>
             )
@@ -128,11 +149,6 @@ class Toolbar extends Component {
                             <li className={classes.List}><button>Adopt a Pet</button></li>
                             {authOption}
                             <li className={classes.List}><button>Contact Us</button></li>
-                            {/* <li className={classes.Social}>
-                                <button><i class="fa fa-facebook" aria-hidden="true"></i></button>
-                                <button><i class="fa fa-instagram" aria-hidden="true"></i></button>
-                            </li> */}
-                            {/* <li className={classes.Social}></li> */}
                         </ul>
                     </div>
                     <button onClick={this.closeModal} className={classes.ModalClose}>X</button>
@@ -170,23 +186,6 @@ class Toolbar extends Component {
 }
 
 export default withRouter(Toolbar);
-
-// {/* <div className={classes.NavIcon}>
-//                         <button className={classes.Button}><i className="fa fa-user-circle" style={{color: '#191919'}} aria-hidden="true"></i></button>
-//                     </div> */}
-
-
-
-// {/* {`${classes.User} ${classes.SignIn}`} */}
-
-//                 {/* <div className={`${classes.User} ${classes.SignIn}`}>
-
-//                 </div> */}
-
-
-
-
-//             {/* </Aux> */}
 
 
 

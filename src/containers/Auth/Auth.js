@@ -3,10 +3,17 @@ import classes from './Auth.module.scss';
 import Image1 from '../../assets/pet0.jpg';
 import Image2 from '../../assets/pet3.jpg';
 import FacebookLogin from '../../components/FacebookLogin/FacebookLogin';
+import axios from '../../axios';
 
 class Auth extends Component {
     state = {
-        toggleForm: false
+        toggleForm: false,
+        userName: '',
+        setPassword: '',
+        confirmPassword: '',
+        email: '',
+        loginEmail: '',
+        loginPass: ''
     }
 
     
@@ -18,17 +25,76 @@ class Auth extends Component {
     }
 
     handleSuccessfulAuth = (data) => {
-        console.log('Data from FB', data);
         this.props.handleLogin(data)
-        this.props.history.push('/blogs');
+        this.props.history.push('/');
     }
 
-    // eventhandler = (data) => {
-    //     console.log(data);
-    // }
+    onUserNameHandler = (event) => {
+        this.setState({
+            userName: event.target.value
+        })
+    }
+
+    emailHandler = (event) => {
+        this.setState({
+            email: event.target.value
+        })
+    }
+
+    passwordHandler = (event) => {
+        this.setState({
+            setPassword: event.target.value
+        })
+    }
+
+    confirmPasswordHandler = (event) => {
+        // this.setState({
+        //     confirmPassword: event.target.value
+        // })
+    }
+
+
+    handleSignUp =  (e) => {
+        e.preventDefault();
+        let body = {
+            'email': this.state.email,
+            'password': this.state.setPassword,     
+            'userName': this.state.userName      
+        }
+
+        axios.post('/api/v1/petshare/signup' , body).then(res => {
+            console.log('response from POST Request', res);
+            this.handleSuccessfulAuth(res);
+        });
+    };
+
+    onUserNameLoginHandler = (event) => {
+        this.setState({
+            loginEmail: event.target.value
+        })
+
+    }
+
+    onPasswordLoginHandler = (event) => {
+        this.setState({
+            loginPass: event.target.value
+        })
+    }
+
+    handleLogin = (e) => {
+        e.preventDefault();
+        let body = {
+            'email': this.state.loginEmail,
+            'password': this.state.loginPass,     
+        }
+        axios.post('/api/v1/petshare/login' , body).then(res => {
+            console.log('response from POST login Request', res);
+            this.handleSuccessfulAuth(res);
+        });
+    }
+
 
     render() {
-        console.log('props in Auth', this.props);
         let initialRender
         initialRender = (
             <div className={`${classes.User} ${classes.SignIn}`}>
@@ -38,9 +104,9 @@ class Auth extends Component {
                         <div className={classes.FormBox}>
                             <form>
                                 <h2> Sign In </h2>
-                                <input type="text" name="" placeholder="Username"></input>
-                                <input type="text" name="" placeholder="Pawwsword"></input>
-                                <button className={classes.Button} type="submit" value="Login">Ready to Adopt? <i className="fa fa-paw" style={{fontSize: '25px'}} aria-hidden="true"></i></button>
+                                <input type="text" onChange={this.onUserNameLoginHandler} name="" placeholder="Username"></input>
+                                <input type="text" onChange={this.onPasswordLoginHandler} name="" placeholder="Pawwsword"></input>
+                                <button className={classes.Button} onClick={(e) => this.handleLogin(e)} type="submit" value="Login">Ready to Adopt? <i className="fa fa-paw" style={{fontSize: '25px'}} aria-hidden="true"></i></button>
                                 <p className={classes.SignUp}>Don't have an account?</p> 
                                 <button className={classes.AnchorButton} onClick={this.toggleForm}>Sign Up</button> 
                                 <FacebookLogin handleSuccessfulAuth={this.handleSuccessfulAuth} className={classes.FaceBookButton} />
@@ -55,11 +121,11 @@ class Auth extends Component {
                     <div className={classes.FormBox}>
                         <form>
                             <h2> Create an account </h2>
-                            <input type="text" name="" placeholder="User Name"></input>
-                            <input type="email" name="" placeholder="Email"></input>
-                            <input type="text" name="" placeholder="Enter Password"></input>
-                            <input type="text" name="" placeholder="Confirm Password"></input>
-                            <button className={classes.Button} type="submit" value="Login">I am all set<i className="fa fa-paw" style={{fontSize: '25px'}} aria-hidden="true"></i></button>
+                            <input type="text" name="" onChange={this.onUserNameHandler} placeholder="User Name"></input>
+                            <input type="email" name="" onChange={this.emailHandler} placeholder="Email"></input>
+                            <input type="password" name="" onChange={this.passwordHandler} placeholder="Enter Password"></input>
+                            <input type="password" name="" onChange={this.confirmPasswordHandler} placeholder="Confirm Password"></input>
+                            <button className={classes.Button} type="submit" onClick={(e) => this.handleSignUp(e)} value="Login">I am all set<i className="fa fa-paw" style={{fontSize: '25px'}} aria-hidden="true"></i></button>
                             <p className={classes.SignUp}>Already have an account?  </p> <button className={classes.AnchorButton} onClick={this.toggleForm}>Login </button>
                         </form>
                     </div>

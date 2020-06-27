@@ -21,17 +21,14 @@ class EditPetDetails extends Component {
     }
 
     getPetDetailsData() {
-        axios.get( '/api/v1/blogs/' +  this.props.match.params.id)
+        axios.get( '/api/v1/blogs/' +  this.props.match.params.id  ,  { headers: {"Authorization" : this.props.accessToken}} )
         .then(response => {
             let petDetails = response.data.data.Blog;
-            console.log('petDeetails', petDetails);
             this.setState({
                 title: petDetails.title,
                 description: petDetails.description,
                 shortDesc: petDetails.shortDesc
             });
-            console.log('updatedState', this.state);
-
         })
     }
     
@@ -64,7 +61,6 @@ class EditPetDetails extends Component {
             'shortDesc': this.state.shortDesc,
             'id': this.props.match.params.id
         }
-        console.log('data', data);
         if(this.state.selectedFile) {
             formData.append('image', this.state.selectedFile);
         }
@@ -72,7 +68,7 @@ class EditPetDetails extends Component {
         this.setState({
             loading: true
         })
-        axios.post('/api/v1/blogs' , formData).then(res => {
+        axios.post('/api/v1/blogs' , formData , { headers: {"Authorization" : this.props.accessToken}}).then(res => {
             console.log('response from POST Request', res);
             this.setState({
                 postedData: res.data.data,
@@ -82,7 +78,6 @@ class EditPetDetails extends Component {
                 shortDesc: '',
                 selectedFile: null,
             })
-            // return <Redirect to='/'/>
             this.props.history.push('/');
         });
     });
@@ -97,7 +92,7 @@ class EditPetDetails extends Component {
         let form;
         if(this.state.loading) {
             form = (
-                <div style={{ height:'100vh' , paddingTop: '100px'}}>
+                <div style={{ height:'87.5vh' , paddingTop: '100px'}}>
                     <Loader />
                     <p style={{fontSize: '30px' , textAlign: 'center'}}>Hang On! Publishing Blog!</p>
                 </div>

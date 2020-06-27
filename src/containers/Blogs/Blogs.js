@@ -14,15 +14,25 @@ class Blogs extends Component {
                     <Route path="/blogs" exact component={Pets} />
                     <Route
                             path={"/blogs/new-blog"}
+                            exact
                             render={ props => (
                                 <NewPetBlog {...props} accessToken={this.props.accessToken}/>
                             )}
                     />
                     {/* <Route path="/blogs/new-blog" exact component={NewPetBlog}/> */}
-                    <Route path="/blogs/:id" exact component={FullPetDetails}/>
+
+                    <Route
+                            path={"/blogs/:id"}
+                            exact
+                            render={ props => (
+                                <FullPetDetails {...props} accessToken={this.props.accessToken}/>
+                            )}
+                    />
+                    {/* <Route path="/blogs/:id" exact component={FullPetDetails}/> */}
 
                     <Route
                             path={"/blogs/:id/edit"}
+                            exact
                             render={ props => (
                                 <EditPetDetails {...props} accessToken={this.props.accessToken}/>
                             )}

@@ -4,7 +4,6 @@ import axios from '../../../axios';
 import Loader from '../../../components/UI/Spinner/Spinner';
 import ReactHtmlParser from 'react-html-parser';
 import { NavLink } from 'react-router-dom';
-// import CookieCrumbs from '../../assets/cookie_crumbs.svg';
 import CookieCrumbs from '../../../assets/cookie_crumbs.svg';
 class FullPetDetails extends Component {
 
@@ -18,9 +17,15 @@ class FullPetDetails extends Component {
     
     componentDidMount() {
         window.scrollTo(0,0);
+        let headerToken = null
+        console.log('PROPS IN FULL', this.props);
         if ( this.props.match.params.id ) {
             if ( !this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id) ) {
-                axios.get( '/api/v1/blogs/' +  this.props.match.params.id)
+                if(this.props.accessToken !== '') {
+                     headerToken =  this.props.accessToken
+                }
+                console.log('HD', headerToken);
+                axios.get( '/api/v1/blogs/' +  this.props.match.params.id, { headers: {"Authorization" : headerToken}})
                     .then( response => {
                         console.log('response of full desc', response.data.data.Blog);
                         var wordCount = ReactHtmlParser(response.data.data.Blog.description.split(' ').length);
@@ -32,7 +37,6 @@ class FullPetDetails extends Component {
                         } else {
                             finalTime = time
                         }
-                        console.log('FT', finalTime);
                         this.setState( { loadedPost: response.data.data.Blog , readTime: finalTime } );
                         var sectionDetails = this.section;
                         window.addEventListener('scroll', () => {
@@ -47,11 +51,9 @@ class FullPetDetails extends Component {
     }
 
     deletePostHandler = () => {
-        console.log('this.props', this.props);
-        let userToken = sessionStorage.getItem('accessToken');
         var confirmation = window.confirm("Are you sure you want to delete the post?");
         if(confirmation) {
-            axios.delete('/api/v1/blogs/' + this.props.match.params.id ,  { headers: {"Authorization" : userToken} } )
+            axios.delete('/api/v1/blogs/' + this.props.match.params.id ,  { headers: {"Authorization" : this.props.accessToken} } )
                 .then(response => {
                     console.log(response);
                     this.props.history.push('/');
@@ -85,7 +87,8 @@ class FullPetDetails extends Component {
             if(this.state.loadedPost.is_owner) {
                 buttons = (
                     <div className={classes.Button}>
-                        <NavLink to={'/blogs/' + this.props.match.params.id + '/edit'}>
+                        <NavLink to={{pathname: '/blogs/' + this.props.match.params.id + '/edit'}}>
+                        {/* <NavLink to={'/blogs/' + this.props.match.params.id + '/edit'}> */}
                             <button className={classes.Button__Edit}>Edit</button>
                         </NavLink>
                         <button className={classes.Button__Delete} onClick={this.deletePostHandler}>Delete</button>

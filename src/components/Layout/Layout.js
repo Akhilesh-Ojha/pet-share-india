@@ -19,6 +19,7 @@ class Layout extends Component {
     }
 
     handleLogin = (response) => {
+        console.log('response in handle Login', response);
         sessionStorage.setItem('accessToken', response.data.access_token);
         this.setState({
             loggedInStatus: 'Logged In',
@@ -27,17 +28,34 @@ class Layout extends Component {
         })
     }
 
+    handleLogout = () => {
+        this.setState({
+            loggedInStatus: "Not_Logged_In",
+            user: {}
+        })
+    }
+
     checkLoginStatus = () => {
         let accessToken = sessionStorage.getItem('accessToken');
-        axios.get('/api/v1/token?access_token=' + accessToken).then(response => {
-            if(response.data.is_valid === true) {
-                this.setState({
-                    loggedInStatus: 'Logged In',
-                    user: response,
-                    accessToken: accessToken
-                })
-            }
-        });
+        if(accessToken) {
+            axios.get('/api/v1/token?access_token=' + accessToken).then(response => {
+                console.log("RESP", response);
+                if(response.data.is_valid === true) {
+                    this.setState({
+                        loggedInStatus: 'Logged In',
+                        user: response
+                    });
+                } else {
+                    this.setState({
+                        loggedInStatus: 'Not_Logged_In'
+                    });
+                }
+            });
+        } else {
+            this.setState({
+                loggedInStatus: 'Not_Logged_In'
+            });
+        }
     }
 
     componentDidMount() {
@@ -47,7 +65,7 @@ class Layout extends Component {
     render() {
         return(
             <div className={classes.Container}>
-                <Toolbar isLoggedIn={this.state.loggedInStatus} userData={this.state.user} />
+                <Toolbar isLoggedIn={this.state.loggedInStatus} handleLogout={this.handleLogout} userData={this.state.user} />
                 <main className={classes.Content}>
                     <Switch>
                         <Route
