@@ -1,5 +1,5 @@
 .container{
-    min-height: 100vh;
+    min-height: 87.5vh;
     margin: auto;
     padding-top: 30px;
     columns: 4;
@@ -19,7 +19,9 @@
     position: fixed;
     right: 20px;
     bottom: 20px;
-    background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
+    background-color: #dfcc99 ;
+    color: #5a5757;
+    // background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
     z-index: 1;
 }
 

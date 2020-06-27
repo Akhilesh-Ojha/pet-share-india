@@ -4,6 +4,8 @@ header {
     background-color: transparent;
     height: 70px;
     // background-color: rgba(	223,204,153, 0.7);
+    background-color: rgba(	223,204,153, 1);
+    color: #5a5757;
     // background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
     display: flex;
     justify-content: space-between;
@@ -20,7 +22,6 @@ header {
     }
     // transition: 250ms ease-in;
 }
-
 
 header.sticky {
     background-color: #f5f5f5 ;

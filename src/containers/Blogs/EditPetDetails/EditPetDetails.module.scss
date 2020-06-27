@@ -74,8 +74,10 @@
     // width: 30%;
     cursor: pointer;
     // width: 50%;
-    color: black;
-    background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
+    // background-color: #dfcc99 ;
+    color: #5a5757;
+    // color: black;
+    // background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
     border: none;
     // color: black;
     // font-weight: bold;
@@ -87,7 +89,7 @@
     outline: none;
 
     &:hover {
-        transform: translateY(-3px);
+        transform: translateY(-2px);
         box-shadow: 0 10px 2px rgba(0,0,0,.2);
     }
     &:active {

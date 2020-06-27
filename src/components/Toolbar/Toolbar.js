@@ -11,7 +11,7 @@ class Toolbar extends Component {
         this.dropDownStyle = null;
         this.state = {
             value: '',
-            isSticky: false, 
+            // isSticky: false, 
             showDropDown: true,
             showFullMenu: false,
             isOnHomePage: false
@@ -19,21 +19,21 @@ class Toolbar extends Component {
 
     }
 
-    componentDidMount() {
-        var headerDetail = this.header;
-        window.addEventListener('scroll', () => {
-            headerDetail.classList.toggle("sticky", window.scrollY > 0);
-            if(window.scrollY > 0) {
-                this.setState({
-                    isSticky: true
-                });
-            } else if (window.scrollY === 0) {
-                this.setState({
-                    isSticky: false
-                });
-            }
-        });
-    }
+    // componentDidMount() {
+    //     var headerDetail = this.header;
+    //     window.addEventListener('scroll', () => {
+    //         headerDetail.classList.toggle("sticky", window.scrollY > 0);
+    //         if(window.scrollY > 0) {
+    //             this.setState({
+    //                 isSticky: true
+    //             });
+    //         } else if (window.scrollY === 0) {
+    //             this.setState({
+    //                 isSticky: false
+    //             });
+    //         }
+    //     });
+    // }
 
     onInptChangeHandler = (event) => {
         this.setState({
@@ -76,7 +76,7 @@ class Toolbar extends Component {
         let authOption = null;
         let seacrhBar = null;
 
-        if(this.props.location.pathname === '/blogs') {
+        if(false) {
             seacrhBar = (
                 <Aux>
                     <input placeholder="Search" type="text" className={classes.Search__Input} value={this.state.value} onChange={this.onInptChangeHandler} ></input>
@@ -140,7 +140,8 @@ class Toolbar extends Component {
             )
         } else {
             fullContainer = (
-                <header className={(this.state.isSticky && window.location.pathname !== '/') ? classes.sticky : ''} ref={header => this.header = header}> 
+                // <header className={(this.state.isSticky && window.location.pathname !== '/') ? classes.sticky : ''} ref={header => this.header = header}> 
+                <header ref={header => this.header = header}> 
                     <NavLink style={{textDecoration: 'none'}}  to={{pathname: '/'}}>
                         {/* <img src={Logo} alt={"Logo"} className={classes.Logo}></img> */}
                         <div style={{fontSize: '20px' , marginLeft:'10px', textDecoration: 'underline', color: '#5a5757' , fontWeight: 'bold'}}>𝓟𝓮𝓽 𝓢𝓱𝓪𝓻𝓮</div>
