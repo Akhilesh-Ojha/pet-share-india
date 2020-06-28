@@ -465,10 +465,20 @@
     .Img1 , .Img2 , .Img3 , .Img4 {
         width: 100px;
         height: 60px; 
+        margin-top: 50px;
+        // margin: 50px 0;
     }
+
+    // .Img1 , .Img2 , .Img3 {
+    //     margin-top: 50px;
+    // }
 
     .Col3 .Arrow {
         margin-left: 50px;
+    }
+
+    .Col2{
+        margin-top: -90px;
     }
 
     .Col2 h4 {
