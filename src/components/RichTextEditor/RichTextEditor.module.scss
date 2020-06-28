@@ -1,18 +1,13 @@
-// *,
-// *::after,
-// *::before {
-//     font-size: 62.5%; 
-// }
 
 .toolList{
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
     margin: 0 10px;
-    // margin-right: 50px;
     margin-bottom: 0;
-    overflow: auto;
+    // overflow: auto;
     width: 85%;
     justify-content: center;
     border-radius: 10px;
@@ -40,7 +35,6 @@
 }
 
 .RichTextButtonPlus {
-    // font-size: 100%; 
     border: none;
     padding: 5px;
     display: block;
@@ -52,19 +46,14 @@
     cursor: pointer;
     position: absolute;
     left:6%;
-    // background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
-    // background-color: #dfcc99 ;
     color: #5a5757;
 
     &:hover {
         transform: translateY(-2px);
-        // box-shadow: 0 10px 2px rgba(0,0,0,.2);
     }
     &:active {
         transform: translateY(-1px);
-        // box-shadow: 0 5px 10px rgba(0,0,0,.2);
     }
-    // color: white;
 
 }
 
@@ -73,7 +62,6 @@
     border: none;
     padding: 5px;
     display: block;
-    // font-size: 20px;
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -81,25 +69,19 @@
     cursor: pointer;
     position: absolute;
     left:6%;
-    // background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
-    // background-color: #dfcc99 ;
     color: #5a5757;
 
     &:hover {
         transform: translateY(-2px);
-        // box-shadow: 0 10px 2px rgba(0,0,0,.2);
     }
     &:active {
         transform: translateY(-1px);
-        // box-shadow: 0 5px 10px rgba(0,0,0,.2);
     }
-    // color: white;
 }
 
 
 
 .DropDown{
-    // font-size: 100%; 
     border: none;
     padding: 5px;
     display: block;
@@ -122,8 +104,15 @@
     border: none;
     padding: 5px;
     display: block;
-    // font-size: 20px;
     
+}
+
+.RichTextButtonPlus, .RichTextButtonMinus i {
+    width: '100%'; 
+    height:'100%'; 
+    font-size:'16px'; 
+    color:'black';
+    margin-top: '4px'
 }
 
 .TextArea{
@@ -143,15 +132,12 @@
     font-size: 62.5%; 
     border: none;
     padding: 5px 25px;
-    // color: black;
-    // background-color: #dfcc99 ;
     color: #5a5757;
     font-weight: 500;
     font-size: 25px;
     outline: none;
     cursor: pointer;
     border-radius: 100px;
-    // background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
 
     &:hover {
         transform: translateY(-2px);
@@ -304,25 +290,51 @@
     }
 
     .RichTextButton {
+        font-size: 9px; 
+    }
+
+    .DropDown{
+        font-size: 9px; 
+    }
+
+    .RichTextButtonMinus {
+        font-size: 9px; 
+        height: 16px;
+        width: 16px;
+    }
+
+    .RichTextButtonPlus {
+        font-size: 9px; 
+        height: 16px;
+        width: 16px;
+    }
+    
+
+}
+
+
+
+@media (max-width: 600px) {
+    
+    .toolList{
+        margin-left: 30px;     
+        // width: 100%;  
+        // display: block;
+        // flex-wrap: wrap;
+        // width: 200px;     
+    }
+
+    i {
+        border-radius: 0;
+    }
+
+    .RichTextButton {
         font-size: 8px; 
     }
 
     .DropDown{
         font-size: 8px; 
     }
-
-    .RichTextButtonMinus {
-        font-size: 8px; 
-        height: 16px;
-        width: 16px;
-    }
-
-    .RichTextButtonPlus {
-        font-size: 8px; 
-        height: 16px;
-        width: 16px;
-    }
-    
 
 }
 

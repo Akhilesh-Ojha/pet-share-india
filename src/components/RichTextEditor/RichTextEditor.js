@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import classes from './RichTextEditor.module.scss';
 import Aux from '../../hoc/Auxx';
-import axios from '../../axios';
-import imageCompression from 'browser-image-compression';
+import Resizer from 'react-image-file-resizer';
 
 class RichText extends Component {
 
     state = {
-        showToolbar: true,
+        showToolbar: false,
         data: ''
     }
     
@@ -80,30 +79,22 @@ class RichText extends Component {
     }
 
     fileSelectedHandler = event => {
-        let formData = new FormData();
         let selectedFile = event.target.files[0];
-        let userToken = sessionStorage.getItem('accessToken');
-
-        var options = {
-            maxSizeMB: 1,
-            maxWidthOrHeight: 50,
-        }
-
-        imageCompression(event.target.files[0] , options)
-        .then(response => {
-            console.log('response of image', response);
-            // console.log('new image' , event);
-            this.setState({
-                selectedFile: response
-            });
-            formData.append('image', selectedFile);
-    
-            axios.post('/api/v1/blogs/image' , formData ,  { headers: {"Authorization" : userToken}}).then(res => {
-                console.log('response from POST Request', res.data.result);
-                this.execCommandWithArgs('insertImage', res.data.result)
-            });
-        });
-        
+        let compressedImage = null;
+        console.log('Selected file before', selectedFile);
+        Resizer.imageFileResizer(
+            event.target.files[0],
+            300,
+            300,
+            'JPEG',
+            100,
+            0,
+            uri => {
+                compressedImage = uri
+                this.execCommandWithArgs('insertImage', compressedImage)
+            },
+            'base64'
+        );  
     }
 
     parseHTML = () => {
@@ -121,9 +112,9 @@ class RichText extends Component {
             <Aux className={classes.toolbar}>
                 { this.state.showToolbar ?
                     <Aux>
-                        <button className={classes.RichTextButtonMinus}  onClick={() => this.toggleToolBar()}><i style={{width: '100%', height:'100%', fontSize:'16px', color:'black', marginTop: '4px'}} className="fa fa-minus"></i></button>
+                        <button className={classes.RichTextButtonMinus}  onClick={() => this.toggleToolBar()}><i className="fa fa-minus"></i></button>
                         <ul className={classes.toolList}>
-                            <li className={classes.tool}><button style={{borderRadius: '25px 0 0 25px' , paddingLeft:'10px'} } className={classes.RichTextButton}  onClick={() => this.execCommand('bold')}><i className="fa fa-bold"></i></button></li>
+                            <li className={classes.tool}><button  className={classes.RichTextButton}  onClick={() => this.execCommand('bold')}><i className="fa fa-bold"></i></button></li>
 
                             <li className={classes.tool}> <button className={classes.RichTextButton} onClick={() => this.execCommand('italic')}><i className="fa fa-italic"></i></button></li>
 
@@ -137,7 +128,7 @@ class RichText extends Component {
 
                             <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.execCommand('indent')}><i className="fa fa-indent"></i></button></li>
 
-                            <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.execCommandWithArgs('insertImage', prompt('Enter the Image URL', ''))}><i className="fa fa-picture-o"></i></button></li>
+                            {/* <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.execCommandWithArgs('insertImage', prompt('Enter the Image URL', ''))}><i className="fa fa-picture-o"></i></button></li> */}
 
                             
                            
@@ -164,14 +155,25 @@ class RichText extends Component {
                             </select></li>
 
                             <li className={classes.tool}><select className={classes.DropDown} ref = {(input)=> this.font = input} onChange={() => this.execCommandWithArgs('fontName', this.font.value)}>
-                                <option value="Arial">Arial</option>
-                                <option value="Comic Sans MS">Comic Sans MS</option>
-                                <option value="Courier">Courier</option>
-                                <option value="Georgia">Georgia</option>
+                                <option value="Arial" style={{fontFamily: 'Arial'}}>Arial</option>
+                                <option value="Arial Black" style={{fontFamily: 'Arial Black'}}> Arial Black</option>
+                                <option value="Avant Garde" style={{fontFamily: 'Avant Garde'}}>Avant Garde</option>
+                                <option value="Comic Sans MS" style={{fontFamily: 'Comic Sans MS'}}>Comic Sans MS</option>
+                                <option value="Courier" style={{fontFamily: 'Courier'}}>Courier</option>
+                                <option value="Georgia" style={{fontFamily: 'Georgia'}}>Georgia</option>
+                                <option value="Helvetica" style={{fontFamily: 'Helvetica'}}>Helvetica</option>
+                                <option value="Roboto" style={{fontFamily: 'Roboto'}}>Roboto</option>
+                                <option value="Times" style={{fontFamily: 'Times'}}>Times</option>
+                                <option value="Calibri" style={{fontFamily: 'Calibri'}}>Calibri</option>
+                                <option value="Brush Script MT" style={{fontFamily: 'Brush Script MT'}}>Brush Script MT</option>
+                                {/* <option value="Palatino" style={{fontFamily: 'Palatino'}}>Palatino</option> */}
+                                {/* <option value="Roboto">Roboto</option> */}
+                                {/* <option value="Roboto">Roboto</option> */}
+
                                 <option value="Times New Roman">Times New Roman</option>
                             </select></li>
 
-                            <li className={classes.tool}><select style={{borderRadius: '0 25px 25px 0'}} className={classes.DropDown} ref = {(input)=> this.fontSize = input} onChange={() => this.execCommandWithArgs('fontSize', this.fontSize.value)}>
+                            <li className={classes.tool}><select className={classes.DropDown} ref = {(input)=> this.fontSize = input} onChange={() => this.execCommandWithArgs('fontSize', this.fontSize.value)}>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -185,7 +187,7 @@ class RichText extends Component {
                         
                     </Aux>
                     
-                :  <button className={classes.RichTextButtonPlus}  onClick={() => this.toggleToolBar()}><i style={{width: '100%', height:'100%', fontSize:'16px', color:'black', marginTop: '4px'}} className="fa fa-plus"></i></button>
+                :  <button className={classes.RichTextButtonPlus}  onClick={() => this.toggleToolBar()}><i className="fa fa-plus"></i></button>
 
             }
             <iframe className={classes.TextArea}  title="Enter Description"

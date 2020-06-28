@@ -28,8 +28,6 @@ class NewPetBlog extends Component {
     fileSelectedHandler = event => {
         var options = {
             maxSizeMB: 1,
-            maxWidth: 1200,
-            maxHeight: 500
         }
         
         imageCompression(event.target.files[0] , options)
