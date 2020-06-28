@@ -425,6 +425,8 @@
         width: 160px;
         height: 80px; 
     }
+
+    
 }
 
 @media(max-width: 490px) {
@@ -450,6 +452,12 @@
         width: 100px;
         height: 100px;
     }
+
+    .Works {
+        
+        min-height: 100vh;
+        
+    }
 }
 
 @media(max-width: 450px) {
@@ -467,6 +475,12 @@
         height: 60px; 
         margin-top: 50px;
         // margin: 50px 0;
+    }
+
+    .Works {
+        
+        min-height: 100vh;
+        
     }
 
     // .Img1 , .Img2 , .Img3 {
