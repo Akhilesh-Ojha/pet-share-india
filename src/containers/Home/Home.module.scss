@@ -275,7 +275,8 @@
     justify-content: flex-end;
     align-items: right;
     position: absolute;
-    left: 66%;
+    // left: 66%;
+    // right: 30%;
 }
 
 .ArrowFirstLastCol span {  
@@ -367,12 +368,116 @@
 }
 
 
-// @media(max-width: 950px) {
-//     .Img1 , .Img2 , .Img3 , .Img4 {
-//         width: 180px;
-//         height: 100px; 
-//     }
-// }
+@media(max-width: 870px) {
+    .Img1 {
+        margin-top: 50px;
+    }
+    .Img4 {
+        margin-bottom: 15px;
+    }
+    .Img1 , .Img2 , .Img3 , .Img4 {
+        margin: 5px 0;
+        width: 200px;
+        height: 120px; 
+    }
+}
+
+@media(max-width: 770px) {
+    .Img1 {
+        margin-top: 70px;
+    }
+    .Img4 {
+        margin-bottom: 15px;
+    }
+    .Img1 , .Img2 , .Img3 , .Img4 {
+        margin: 20px 0;
+        width: 180px;
+        height: 100px; 
+    }
+}
+
+@media(max-width: 770px) {
+    .Img1 {
+        margin-top: 70px;
+    }
+    .Img4 {
+        margin-bottom: 15px;
+    }
+    .Img1 , .Img2 , .Img3 , .Img4 {
+        margin: 20px 0;
+        width: 180px;
+        height: 100px; 
+    }
+}
+
+@media(max-width: 770px) {
+    section {
+        font-size: 12px;
+    }
+    .Img1 {
+        margin-top: 70px;
+    }
+    .Img4 {
+        margin-bottom: 15px;
+    }
+    .Img1 , .Img2 , .Img3 , .Img4 {
+        margin: 20px 0;
+        width: 160px;
+        height: 80px; 
+    }
+}
+
+@media(max-width: 490px) {
+    section {
+        font-size: 8px;
+    }
+    .Img1 {
+        margin-left: -10px;
+    }
+    .Img4 {
+        margin-bottom: 15px;
+    }
+    .Img1 , .Img2 , .Img3 , .Img4 {
+        width: 120px;
+        height: 80px; 
+    }
+
+    .Col3 .Arrow {
+        margin-left: 50px;
+    }
+
+    .Col2 h4 {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media(max-width: 450px) {
+    section {
+        font-size: 7px;
+    }
+    .Img1 {
+        margin-left: -20px;
+    }
+    .Img4 {
+        margin-bottom: 15px;
+    }
+    .Img1 , .Img2 , .Img3 , .Img4 {
+        width: 100px;
+        height: 60px; 
+    }
+
+    .Col3 .Arrow {
+        margin-left: 50px;
+    }
+
+    .Col2 h4 {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+
 
 
 .Footer {
