@@ -20,19 +20,19 @@ class Toolbar extends Component {
     }
 
     componentDidMount() {
-        var headerDetail = this.header;
-        window.addEventListener('scroll', () => {
-            headerDetail.classList.toggle("sticky", window.scrollY > 0);
-            if(window.scrollY > 0) {
-                this.setState({
-                    isSticky: true
-                });
-            } else if (window.scrollY === 0) {
-                this.setState({
-                    isSticky: false
-                });
-            }
-        });
+        // var headerDetail = this.header;
+        // window.addEventListener('scroll', () => {
+        //     headerDetail.classList.toggle("sticky", window.scrollY > 0);
+        //     if(window.scrollY > 0) {
+        //         this.setState({
+        //             isSticky: true
+        //         });
+        //     } else if (window.scrollY === 0) {
+        //         this.setState({
+        //             isSticky: false
+        //         });
+        //     }
+        // });
     }
 
     onInptChangeHandler = (event) => {

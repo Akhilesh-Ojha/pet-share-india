@@ -1,16 +1,18 @@
 .Banner {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 87.5vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    top: -70px;
+    // top: -70px;
 }
+
+
 
 .FitBg {
     position: absolute;
-    top: 0;
+    // top: -70px;
     left: 0;
     object-fit: cover;
     width: 100%;
@@ -19,7 +21,6 @@
 
 .Content{
     position: relative;
-    // z-index: 10;
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -52,10 +53,21 @@
 }
 
 
+@media(max-width: 950px) {
+    .Banner .Content{
+        flex-direction: column;
+    }
+
+    .Banner .Box {
+        height: 120px;
+        margin: 20px auto;
+    }
+}
+
 
 .Card {
-    height: 500px;
-    margin-top: -40px;
+    min-height: 100vh;
+    margin-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -148,6 +160,27 @@
 
 
 
+@media(max-width: 950px) {
+    .Card .PetList .PetBox{
+        cursor: pointer;
+        position: relative;
+        max-width: 220px;
+        min-width: initial;
+        width: 220px;
+        height: 300px;
+        transition: 0.5s;
+        margin: 10px;
+    }
+
+    .Card .PetList .PetBox .ImgBox {
+        height: 150px;
+    }
+
+    // .Banner .Box {
+    //     height: 120px;
+    //     margin: 20px auto;
+    // }
+}
 
 
 
@@ -159,7 +192,7 @@
 
 .Works {
     padding-top: 50px;
-    height: 900px;
+    min-height: 120vh;
     background-color: rgba(	223,204,153, 0.8);
     display: flex;
     color: white;
@@ -170,13 +203,22 @@
 
 .Col1 , .Col2, .Col3 {
     width: 33%;
-    // display: flex;
-    // flex-direction: column;
 }
+
+// .Col2 {
+//     margin: 10px auto;
+// }
 
 .Col1 p  , .Col3 p{
     margin-bottom: 20px;
     // max-width: 300px;
+}
+
+.Col2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .Col2 h4 {
@@ -188,7 +230,8 @@
     border: 5px solid #fff;
     border-radius: 50%;
     text-align: center;
-    margin-left: 35%;
+    // margin-left: 35%;
+
     margin-bottom: 20px;
 }
 
@@ -235,8 +278,7 @@
     left: 66%;
 }
 
-.ArrowFirstLastCol span {
-    
+.ArrowFirstLastCol span {  
     font-size: 100px;
 }
 
@@ -251,8 +293,8 @@
 
 .Img1 img {
     position: absolute;
-    left: 0;
-    top: 0;
+    // left: 0;
+    // top: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -270,8 +312,8 @@
 
 .Img2 img {
     position: absolute;
-    left: 165px;
-    top: -30px;
+    // left: 165px;
+    // top: -30px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -289,7 +331,7 @@
 .Img3 img {
     position: absolute;
     left: 0;
-    top: -40px;
+    // top: -40px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -306,8 +348,8 @@
 
 .Img4 img {
     position: absolute;
-    left: 150px;
-    top: -50px;
+    // left: 150px;
+    // top: -50px;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -323,5 +365,50 @@
         z-index: 2;
     }
 }
+
+
+// @media(max-width: 950px) {
+//     .Img1 , .Img2 , .Img3 , .Img4 {
+//         width: 180px;
+//         height: 100px; 
+//     }
+// }
+
+
+.Footer {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Footer .Social {
+    position: relative;
+    display: flex;
+}
+
+.Footer .Social li {
+    list-style: none;
+    background-color: transparent;
+    outline: none;
+
+}
+
+.Footer .Social li button {
+    background-color: transparent;
+    outline: none;
+    padding: 10px;
+    border: none;
+}
+.Footer .Social li i {
+    margin: 0 20px;
+    font-size: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+}
+
+
 
 

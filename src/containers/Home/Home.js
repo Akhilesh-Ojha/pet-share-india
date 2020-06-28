@@ -168,6 +168,14 @@ class Home extends Component {
 
                     
                 </section>
+
+                <section className={classes.Footer}>
+                    <h2>Connect with us</h2>
+                    <ul className={classes.Social}>
+                        <li ><button><i className="fa fa-instagram" aria-hidden="true"></i></button></li>
+                        <li><button><i className="fa fa-facebook" aria-hidden="true"></i></button></li>
+                    </ul>
+                </section>
             </Aux>
         )
     }
