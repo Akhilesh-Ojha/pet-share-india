@@ -3,6 +3,7 @@ import classes from './Auth.module.scss';
 import Image1 from '../../assets/pet0.jpg';
 import Image2 from '../../assets/pet3.jpg';
 import FacebookLogin from '../../components/FacebookLogin/FacebookLogin';
+import { ToastContainer, toast } from 'react-toastify';
 import axios from '../../axios';
 
 class Auth extends Component {
@@ -63,8 +64,9 @@ class Auth extends Component {
         }
 
         axios.post('/api/v1/petshare/signup' , body).then(res => {
-            console.log('response from POST Request', res);
             this.handleSuccessfulAuth(res);
+        }).catch(error => {
+            toast.error('There is some error signing you up ' + error );
         });
     };
 
@@ -88,8 +90,9 @@ class Auth extends Component {
             'password': this.state.loginPass,     
         }
         axios.post('/api/v1/petshare/login' , body).then(res => {
-            console.log('response from POST login Request', res);
             this.handleSuccessfulAuth(res);
+        }).catch(error => {
+            toast.error('There is some error logging you in ' + error );
         });
     }
 
@@ -143,6 +146,17 @@ class Auth extends Component {
                     {initialRender}
                     
                 </div>
+
+                <ToastContainer position="bottom-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             </section>
         )
     }

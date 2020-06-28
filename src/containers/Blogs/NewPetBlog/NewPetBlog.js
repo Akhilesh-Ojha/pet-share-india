@@ -5,6 +5,8 @@ import axios from '../../../axios';
 import Loader from '../../../components/UI/Spinner/Spinner';
 import { Redirect } from 'react-router-dom';
 import imageCompression from 'browser-image-compression';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import ReactTags from 'react-tag-autocomplete'
 // import 'react-bootstrap-typeahead/css/Typeahead.css';
 import Aux from '../../../hoc/Auxx';
@@ -18,8 +20,6 @@ import Aux from '../../../hoc/Auxx';
 // const delimiters = [KeyCodes.comma, KeyCodes.enter];
 class NewPetBlog extends Component {
 
-    
-
     state = {
         title: '',
         description: '',
@@ -27,50 +27,41 @@ class NewPetBlog extends Component {
         selectedFile: null,
         postedData: null,
         loading: false,
-        // tags: [
-        //     { id: 1, name: "Apples" },
-        //     { id: 2, name: "Pears" },
-        //     { id: 3, name: "Bananas" },
-        //     { id: 4, name: "Mangos" },
-        //     { id: 5, name: "Lemons" },
-        //     { id: 6, name: "Apricots" }
-        //   ],
+        loadingText: ''
     }
 
     componentDidMount() {
         window.scrollTo(0,0);
-        console.log('Here');
     }
     
     fileSelectedHandler = event => {
-        console.log(event.target.files[0]);
         var options = {
             maxSizeMB: 1,
             maxWidth: 1200,
             maxHeight: 500
         }
-
+        
         imageCompression(event.target.files[0] , options)
         .then(response => {
-            console.log('response of image', response);
-            // console.log('new image' , event);
             this.setState({
-                selectedFile: response
+                selectedFile: response,
+                loading: false,
+                loadingText: ''
             });
         });
     }
     
-    handleDelete = (i) => {
-        const tags = this.state.tags.slice(0)
-        tags.splice(i, 1)
-        this.setState({ tags })
-      }
+    // handleDelete = (i) => {
+    //     const tags = this.state.tags.slice(0)
+    //     tags.splice(i, 1)
+    //     this.setState({ tags })
+    //   }
      
-    handleAddition = (tag) => {
-    console.log('tag' ,tag);
-    const tags = [].concat(this.state.tags, tag)
-    this.setState({ tags })
-    }
+    // handleAddition = (tag) => {
+    // console.log('tag' ,tag);
+    // const tags = [].concat(this.state.tags, tag)
+    // this.setState({ tags })
+    // }
 
     inputTitleHandler = event => {
         this.setState({
@@ -91,51 +82,58 @@ class NewPetBlog extends Component {
             'description': event,
             'shortDesc': this.state.shortDesc
         }
-        // let userToken = sessionStorage.getItem('accessToken');
         formData.append('image', this.state.selectedFile);
         formData.append('data', JSON.stringify(data));
-        this.setState({
-            loading: true
-        })
-        axios.post('/api/v1/blogs' , formData ,  { headers: {"Authorization" : this.props.accessToken}}).then(res => {
-            console.log('response from POST Request', res);
+
+        if(this.state.title === '' && this.state.shortDesc === '' && event === '' && this.state.selectedFile === null ) {
+            toast.error('Please fill all the details');
+
+        } else {
             this.setState({
-                postedData: res.data.data,
-                loading: false,
-                title: '',
-                description: '',
-                shortDesc: '',
-                selectedFile: null,
-            })
-            this.props.history.push('/');
-        });
+                loading: true,
+                loadingText: 'Hang On! Publishing Blog!'
+            });
+
+            axios.post('/api/v1/blogs' , formData ,  { headers: {"Authorization" : this.props.accessToken}}).then(res => {
+                this.setState({
+                    postedData: res.data.data,
+                    loading: false,
+                    title: '',
+                    description: '',
+                    shortDesc: '',
+                    selectedFile: null,
+                    loadingText: ''
+                })
+                    this.props.history.push('/');
+            }).catch(error => {
+                toast.error('There is some error posting Blog ' + error);
+                // this.props.history.push('/auth');
+            });
+        }
     })
 
     render() {
-        console.log('THISPROPS IN NEW PET BLOG', this.props);
         let uploadFileText = null;
         let redirect = null;
         if(this.state.selectedFile) {
             uploadFileText = (<span style={{display: 'block', fontSize: '16px', marginTop:'10px'}}>Uploaded Image: {this.state.selectedFile.name} </span>)
-
         }
-
         let form;
+
         if(this.state.loading) {
             form = (
-                <div style={{ height:'100vh' , paddingTop: '20px'}}>
+                        
+                <div style={{height: '75vh'}}>
                     <Loader />
-                    <p style={{fontSize: '30px' , textAlign: 'center'}}>Hang On! Publishing Blog!</p>
-                </div>
-            )
+                    <p style={{fontSize: '30px' , textAlign: 'center'}}>{this.state.loadingText}</p>
+                </div>            
+        )
+
         } else if (this.state.postedData && !this.state.loading) {
-            console.log('Hereeeeee');
             redirect = <Redirect to="/" />
         } else {
             form = (
                 <Aux>
-
-                
                 <div className={classes.Container}>
                     <div className={classes.FormContainer}>
                         {/* <h1>Add Your Blog</h1> */}
@@ -184,7 +182,16 @@ class NewPetBlog extends Component {
             <div>
                 {redirect}
                 {form}
-               
+                <ToastContainer position="bottom-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             </div>
             
         )

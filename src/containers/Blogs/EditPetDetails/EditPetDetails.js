@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './EditPetDetails.module.scss';
 import RichTextEditor from '../../../components/RichTextEditor/RichTextEditor';
 import axios from '../../../axios';
+import { ToastContainer, toast } from 'react-toastify';
 import Loader from '../../../components/UI/Spinner/Spinner';
 // import { Redirect } from 'react-router-dom';
 class EditPetDetails extends Component {
@@ -29,6 +30,8 @@ class EditPetDetails extends Component {
                 description: petDetails.description,
                 shortDesc: petDetails.shortDesc
             });
+        }).catch(error => {
+            toast.error('There is some error in editing Blog ' + error);
         })
     }
     
@@ -79,6 +82,8 @@ class EditPetDetails extends Component {
                 selectedFile: null,
             })
             this.props.history.push('/');
+        }).catch(error => {
+            toast.error('There is some error in editing Blog ' + error);
         });
     });
 
@@ -122,8 +127,17 @@ class EditPetDetails extends Component {
         return(
             
             <div>
-                {/* {redirect} */}
                 {form}
+                <ToastContainer position="bottom-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             </div>
             
         )
@@ -131,10 +145,4 @@ class EditPetDetails extends Component {
 }
 
 export default EditPetDetails;
-
-
-// else if (this.state.postedData && !this.state.loading) {
-//     console.log('Hereeeeee, redirext please');
-//     redirect = <Redirect to="/" />
-// } 
 

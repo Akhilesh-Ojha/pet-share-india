@@ -5,17 +5,24 @@ import Aux from '../../../hoc/Auxx';
 import { NavLink } from 'react-router-dom';
 import axios from '../../../axios';
 import Loader from '../../../components/UI/Spinner/Spinner';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 class Pets extends Component {
     state = {
             petDetails:[],
-            loading: true
+            loading: false
     }
 
     componentDidMount () {
+        this.setState({
+            loading: true
+        })
         axios.get( '/api/v1/blogs')
             .then( response => {
-                console.log('RESPONSE', response);
+                if(response.data.data.length === 0)  {
+                    toast.info('There is are no blogs to show');
+                }
                 const posts = response.data;
                 const updatedPosts = posts.data.map(post => {
                     return {
@@ -23,33 +30,31 @@ class Pets extends Component {
                     }
                 });
                 this.setState({petDetails: updatedPosts , loading: false});
-            } )
+            })
             .catch(error => {
-                 console.log(error);
+                 toast.error('There is some error retrieving blogs ' + error );
             });
     }
 
     render() {
-            console.log('PROPS, PEts', this.props);
             let petBlogs;
-
             if(this.state.loading) {
-                // console.log('Loadingggg');
                 petBlogs = (
-                    <div style={{height: '100vh' , paddingTop: '100px'}}>
+                    <div style={{height: '75vh', width: '100vw', marginTop: '20px'}}>
                         <Loader />
                     </div>
                 )
+            } else {
+                petBlogs = this.state.petDetails.map(petDetail => {
+                    return(
+                        <NavLink style={{ textDecoration: 'none', color: 'black' }} to={'/blogs/' + petDetail.id}  key={petDetail.id} >
+                            <PetCard key={petDetail.title} title={petDetail.title} shortDesc={petDetail.shortDesc} image={petDetail.image_url}/>
+                        </NavLink>
+                        
+                    );
+                });
             }
         
-            petBlogs = this.state.petDetails.map(petDetail => {
-                return(
-                    <NavLink style={{ textDecoration: 'none', color: 'black' }} to={'/blogs/' + petDetail.id}  key={petDetail.id} >
-                        <PetCard key={petDetail.title} title={petDetail.title} shortDesc={petDetail.shortDesc} image={petDetail.image_url}/>
-                    </NavLink>
-                    
-                );
-            });
 
         return(
             <Aux>
@@ -57,8 +62,18 @@ class Pets extends Component {
                     {petBlogs}
                 </div>
                 <NavLink className={classes.Anchor} to={{pathname: '/blogs/new-blog'}}>
-                 <button className={classes.Button}><i style={{width: '100%', height:'100%', fontSize: '16px' ,  marginTop: '4px', color: 'black'}} className="fa fa-plus"></i></button>
+                    <button className={classes.Button}><i style={{width: '100%', height:'100%', fontSize: '16px' ,  marginTop: '4px', color: 'black'}} className="fa fa-plus"></i></button>
                 </NavLink>
+                <ToastContainer position="bottom-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
             </Aux>
         );
     }

@@ -4,7 +4,10 @@ import axios from '../../../axios';
 import Loader from '../../../components/UI/Spinner/Spinner';
 import ReactHtmlParser from 'react-html-parser';
 import { NavLink } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import CookieCrumbs from '../../../assets/cookie_crumbs.svg';
+import Aux from '../../../hoc/Auxx';
+
 class FullPetDetails extends Component {
 
     counter = 0;
@@ -22,7 +25,6 @@ class FullPetDetails extends Component {
         if ( this.props.match.params.id ) {
             if ( !this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id) ) {
                 if(this.props.accessToken !== '') {
-                    //  headerToken =  this.props.accessToken
                      headerToken = {"Authorization" : this.props.accessToken}
                 }
                 console.log('HD', headerToken);
@@ -31,7 +33,6 @@ class FullPetDetails extends Component {
                         console.log('response of full desc', response.data.data.Blog);
                         var wordCount = ReactHtmlParser(response.data.data.Blog.description.split(' ').length);
                         var time = Math.round(wordCount[0] / 200);
-                        // console.log('time', Math.round(time));
                         var finalTime
                         if(time < 1) {
                             finalTime = 1
@@ -46,6 +47,8 @@ class FullPetDetails extends Component {
                                 sectionDetails.style.clipPath  = "circle("+ value + "px at center)";
                             }
                         });
+                    }).then(error => {
+                        toast.error('There is some error retrieving this Blog ' + error);
                     });
             }
         }
@@ -58,13 +61,13 @@ class FullPetDetails extends Component {
                 .then(response => {
                     console.log(response);
                     this.props.history.push('/');
+            }).then(error => {
+                toast.error('There is some error deleting this Blog ' + error);
             });
-
         }
     }
 
     treatIncrement = () => {
-        
         ++this.counter;
         if(this.counter <= 20) {
 
@@ -79,7 +82,7 @@ class FullPetDetails extends Component {
         let buttons = null
         if ( this.props.match.params.id ) {
             blog = (
-                <div style={{height: '100vh' , paddingTop: '100px'}}>
+                <div style={{height: '75vh'}}>
                     <Loader />
                 </div>
             )
@@ -120,7 +123,21 @@ class FullPetDetails extends Component {
                 </div >
             );
         }
-        return (blog);
+        return (
+            <Aux>
+                {blog}
+                <ToastContainer position="bottom-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
+            </Aux>
+        );
     }
 }
 
