@@ -31,7 +31,8 @@ class Layout extends Component {
     handleLogout = () => {
         this.setState({
             loggedInStatus: "Not_Logged_In",
-            user: {}
+            user: {},
+            accessToken: ''
         })
     }
 

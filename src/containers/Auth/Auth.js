@@ -6,13 +6,39 @@ import FacebookLogin from '../../components/FacebookLogin/FacebookLogin';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from '../../axios';
 
+const emailRegex = RegExp(
+    /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+);
+
+const formValid = ({ formErrors, ...rest }) => {
+    let valid = true;
+  
+    // validate form errors being empty
+    Object.values(formErrors).forEach(val => {
+      val.length > 0 && (valid = false);
+    });
+  
+    // validate the form was filled out
+    Object.values(rest).forEach(val => {
+      val === null && (valid = false);
+    });
+  
+    return valid;
+};
+
 class Auth extends Component {
     state = {
         toggleForm: false,
-        userName: '',
-        setPassword: '',
-        confirmPassword: '',
-        email: '',
+        firstName: null,
+        lastName: null,
+        email: null,
+        password: null,
+        formErrors: {
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: ""
+        },
         loginEmail: '',
         loginPass: ''
     }
@@ -30,44 +56,57 @@ class Auth extends Component {
         this.props.history.push('/');
     }
 
-    onUserNameHandler = (event) => {
-        this.setState({
-            userName: event.target.value
-        })
-    }
 
-    emailHandler = (event) => {
-        this.setState({
-            email: event.target.value
-        })
-    }
-
-    passwordHandler = (event) => {
-        this.setState({
-            setPassword: event.target.value
-        })
-    }
-
-    confirmPasswordHandler = (event) => {
-        // this.setState({
-        //     confirmPassword: event.target.value
-        // })
-    }
+    handleChange = e => {
+        e.preventDefault();
+        const { name, value } = e.target;
+        let formErrors = { ...this.state.formErrors };
+    
+        switch (name) {
+          case "firstName":
+            formErrors.firstName = value.length < 3 ? "Minimum 3 characaters required" : "";
+            break;
+          case "lastName":
+            formErrors.lastName = value.length < 3 ? "Minimum 3 characaters required" : "";
+            break;
+          case "email":
+            formErrors.email = emailRegex.test(value) ? "" : "Invalid email address";
+            break;
+          case "password":
+            formErrors.password = value.length < 6 ? "Minimum 6 characaters required" : "";
+            break;
+          default:
+            break;
+        }
+    
+        this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+      };
 
 
     handleSignUp =  (e) => {
         e.preventDefault();
-        let body = {
-            'email': this.state.email,
-            'password': this.state.setPassword,     
-            'userName': this.state.userName      
-        }
 
-        axios.post('/api/v1/petshare/signup' , body).then(res => {
-            this.handleSuccessfulAuth(res);
-        }).catch(error => {
-            toast.error('There is some error signing you up ' + error );
-        });
+        if (formValid(this.state)) {
+            if(this.state.firstName === null || this.state.lastName === null || this.state.email === null || this.state.password === null) {
+                toast.error('All the fields are required');
+            } else {
+                let name = this.state.firstName + ' ' + this.state.lastName;
+                let body = {
+                    'firstName': this.state.firstName,
+                    'lastName': this.state.lastName,
+                    'email': this.state.email,
+                    'password': this.state.password,
+                    'name': name
+                }
+                axios.post('/api/v1/petshare/signup' , body).then(res => {
+                    this.handleSuccessfulAuth(res);
+                }).catch(error => {
+                    toast.error('There is some error signing you up ' + error );
+                });
+            }
+        } else {
+            toast.error('Please fill valid datas');
+        }
     };
 
     onUserNameLoginHandler = (event) => {
@@ -98,6 +137,8 @@ class Auth extends Component {
 
 
     render() {
+        const { formErrors } = this.state;
+
         let initialRender
         initialRender = (
             <div className={`${classes.User} ${classes.SignIn}`}>
@@ -124,10 +165,22 @@ class Auth extends Component {
                     <div className={classes.FormBox}>
                         <form>
                             <h2> Create an account </h2>
-                            <input type="text" name="" onChange={this.onUserNameHandler} placeholder="User Name"></input>
-                            <input type="email" name="" onChange={this.emailHandler} placeholder="Email"></input>
-                            <input type="password" name="" onChange={this.passwordHandler} placeholder="Enter Password"></input>
-                            <input type="password" name="" onChange={this.confirmPasswordHandler} placeholder="Confirm Password"></input>
+                            <input required="required"  type="text" name="firstName" maxLength="15" noValidate onChange={this.handleChange} placeholder="First Name"></input>
+                            {formErrors.firstName.length > 0  && (
+                                <span className="errorMessage" style={{color: 'red'}}>{formErrors.firstName}</span>
+                            )}
+                            <input required type="text" name="lastName" maxLength="15" noValidate onChange={this.handleChange} placeholder="Last Name"></input>
+                            {formErrors.firstName.length > 0 && (
+                                <span className="errorMessage" style={{color: 'red'}}>{formErrors.lastName}</span>
+                            )}
+                            <input required type="email" name="email" noValidate onChange={this.handleChange} placeholder="Email"></input>
+                            {formErrors.firstName.length > 0  && (
+                                <span className="errorMessage" style={{color: 'red'}}>{formErrors.email}</span>
+                            )}
+                            <input required type="password" name="password" noValidate onChange={this.handleChange} placeholder="Enter Password"></input>
+                            {formErrors.firstName.length > 0  && (
+                                <span className="errorMessage" style={{color: 'red'}}>{formErrors.password}</span>
+                            )}
                             <button className={classes.Button} type="submit" onClick={(e) => this.handleSignUp(e)} value="Login">I am all set<i className="fa fa-paw" style={{fontSize: '25px'}} aria-hidden="true"></i></button>
                             <p className={classes.SignUp}>Already have an account?  </p> <button className={classes.AnchorButton} onClick={this.toggleForm}>Login </button>
                         </form>
