@@ -7,17 +7,8 @@ import { Redirect } from 'react-router-dom';
 import imageCompression from 'browser-image-compression';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import ReactTags from 'react-tag-autocomplete'
-// import 'react-bootstrap-typeahead/css/Typeahead.css';
 import Aux from '../../../hoc/Auxx';
-// import { Typeahead } from 'react-bootstrap-typeahead';
 
-// const KeyCodes = {
-//     comma: 188,
-//     enter: 13,
-// };
-
-// const delimiters = [KeyCodes.comma, KeyCodes.enter];
 class NewPetBlog extends Component {
 
     state = {
@@ -85,9 +76,8 @@ class NewPetBlog extends Component {
         formData.append('image', this.state.selectedFile);
         formData.append('data', JSON.stringify(data));
 
-        if(this.state.title === '' && this.state.shortDesc === '' && event === '' && this.state.selectedFile === null ) {
+        if(this.state.title === '' || this.state.shortDesc === '' || event === '' || this.state.selectedFile === null ) {
             toast.error('Please fill all the details');
-
         } else {
             this.setState({
                 loading: true,

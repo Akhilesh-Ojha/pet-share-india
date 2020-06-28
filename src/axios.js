@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'https://35.154.113.82/'
+    baseURL: 'https://dev.pranavgoel.in/'
 })
 
 export default instance;

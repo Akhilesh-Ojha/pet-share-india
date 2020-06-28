@@ -47,7 +47,7 @@ class FullPetDetails extends Component {
                                 sectionDetails.style.clipPath  = "circle("+ value + "px at center)";
                             }
                         });
-                    }).then(error => {
+                    }).catch(error => {
                         toast.error('There is some error retrieving this Blog ' + error);
                     });
             }
@@ -61,7 +61,7 @@ class FullPetDetails extends Component {
                 .then(response => {
                     console.log(response);
                     this.props.history.push('/');
-            }).then(error => {
+            }).catch(error => {
                 toast.error('There is some error deleting this Blog ' + error);
             });
         }
