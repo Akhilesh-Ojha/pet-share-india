@@ -10,6 +10,9 @@ import Pet4 from '../../assets/pic4.jpg';
 
 
 class Home extends Component {
+    componentDidMount() {
+        window.scrollTo(0,0);
+    }
     render() {
         return(
             <Aux>
