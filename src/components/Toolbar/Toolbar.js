@@ -143,7 +143,7 @@ class Toolbar extends Component {
                     <div className={classes.Content}>
                         <ul className={classes.PageMenu}>
                             <NavLink to={{pathname: '/'}}>
-                                <li className={classes.List}><button>Home</button></li>
+                                <li className={classes.List} onClick={this.closeModal}><button>Home</button></li>
                             </NavLink>
                             <li className={classes.List}><button>Your Post</button></li>
                             <li className={classes.List}><button>Adopt a Pet</button></li>

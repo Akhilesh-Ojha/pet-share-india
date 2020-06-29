@@ -22,8 +22,8 @@ class RichText extends Component {
     componentDidMount() {
         this.editor = this.richTextContainer.contentWindow.document;
         this.editor.designMode = 'On';
-        let body = this.editor.querySelector('body')
-        body.style.color = "white"
+        // let body = this.editor.querySelector('body')
+        // body.style.color = "white"
         // this.editor.getElementsByTagName('body')[0].innerHTML = this.props.description
     }
    
