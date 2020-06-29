@@ -28,6 +28,9 @@ class FacebookLogin extends Component {
                 onClick={this.componentClicked}
                 callback={this.responseFacebook} 
                 isMobile={false}
+                cookie={true}
+                xfbml={true}
+                version={"3.2"}
                 disableMobileRedirect={true}/>
     
                 <ToastContainer position="bottom-right"
