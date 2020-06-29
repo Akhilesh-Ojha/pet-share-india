@@ -3,11 +3,10 @@ import classes from './NewPetBlog.module.scss';
 import RichTextEditor from '../../../components/RichTextEditor/RichTextEditor';
 import axios from '../../../axios';
 import Loader from '../../../components/UI/Spinner/Spinner';
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import imageCompression from 'browser-image-compression';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Aux from '../../../hoc/Auxx';
 
 class NewPetBlog extends Component {
 
@@ -104,7 +103,7 @@ class NewPetBlog extends Component {
         let uploadFileText = null;
         let redirect = null;
         if(this.state.selectedFile) {
-            uploadFileText = (<span style={{display: 'block', fontSize: '16px', marginTop:'10px'}}>Uploaded Image: {this.state.selectedFile.name} </span>)
+            uploadFileText = (<span style={{display: 'block', color:' #c5ecfd', fontSize: '16px', marginTop:'10px'}}>Uploaded Image: {this.state.selectedFile.name} </span>)
         }
         let form;
 
@@ -121,48 +120,44 @@ class NewPetBlog extends Component {
             redirect = <Redirect to="/" />
         } else {
             form = (
-                <Aux>
-                <div className={classes.Container}>
-                    <div className={classes.FormContainer}>
-                        {/* <h1>Add Your Blog</h1> */}
-                        <div className={classes.Form}>
-                            <input className={classes.Title} type="text" maxLength="60" onChange={this.inputTitleHandler} value={this.state.title}  placeholder="Title"/>
+                // <Aux>
+                <div className={classes.Bg}>
 
 
-                            <input style={{display: 'none'}} type="file" onChange={this.fileSelectedHandler} ref={fileInput => this.fileInput = fileInput}></input>
+                    <div className={classes.Wrapper}>
+                        <NavLink style={{textDecoration: 'none' , color: 'rgba(223,204,153, 1)'} } to={{pathname: '/blogs'}}>
+                            <i style={{fontSize: '30px'}} className="fa fa-arrow-left" aria-hidden="true"></i>
+                        </NavLink>
+                        <div className={classes.ContactForm}>
+                            
+                            <div className={classes.InputFields}>
+                                <input className={classes.Change} type="text" maxLength="60" onChange={this.inputTitleHandler} value={this.state.title}  placeholder="Title"/>
 
-                            {/* <div className={classes.Button}> */}
-                            <button className={classes.UploadButton} onClick={() => this.fileInput.click()}>Upload Image</button>
-                            {uploadFileText}
-                            {/* </div> */}
-                            <input className={classes.ShortDesc} type="text" maxLength="250" onChange={this.inputDescHandler} value={this.state.shortDesc}  placeholder="Enter a Short Description"/>
+                                <input className={classes.Change} type="text" maxLength="250" onChange={this.inputDescHandler} value={this.state.shortDesc}  placeholder="Enter a Short Description"/>
 
-                            {/* <div className={classes.Typeahead} > */}
-                                {/* <Typeahead
-                                    className={classes.Type}
-                                    id="typeAhead"
-                                    labelKey="name"
-                                    multiple
-                                    options={this.state.tags}
-                                    placeholder="Choose a Fruit..."
-                                /> */}
-                            {/* </div> */}
+                                <input style={{display: 'none'}} type="file" onChange={this.fileSelectedHandler} ref={fileInput => this.fileInput = fileInput}></input>
+                                <button className={classes.InputButton} onClick={() => this.fileInput.click()}>Upload Image</button>
+                                {uploadFileText}
+                                
+
+                            </div>
+                            
+                            <div className={classes.Msg}>
+
+                                <RichTextEditor sendDataToParent={this.handleSubmit}/>
+                            </div>
+                            
+
                         </div>
-                        <div>
-
-                        </div>
-
-                        
-
-                        <RichTextEditor sendDataToParent={this.handleSubmit}/>
                     </div>
                 </div>
+                
 
-                {/* <div className={classes.Typeahead}> */}
+                // {/* <div className={classes.Typeahead}> */}
 
                 
-                {/* </div> */}
-                </Aux>
+                // {/* </div> */}
+                // </Aux>
             )
         }
         return(

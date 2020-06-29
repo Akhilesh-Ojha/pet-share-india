@@ -281,7 +281,8 @@ header.sticky .Hamburger{
     height: 100vh;
     width: 100%;
     background-size: cover;
-    background-color: #dfcc99 ;
+    background: rgba(0,0,0,0.9);
+    // background-color: #dfcc99 ;
     opacity: 0.95;
     transform: scale(1);
     animation: moveInFromRight 0.3s ease-out

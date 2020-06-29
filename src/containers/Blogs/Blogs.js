@@ -11,7 +11,16 @@ class Blogs extends Component {
         return (
             <div>
                 <Switch>
-                    <Route path="/blogs" exact component={Pets} />
+                    {/* <Route path="/blogs" exact component={Pets} /> */}
+
+                    <Route
+                            path={"/blogs"}
+                            exact
+                            render={ props => (
+                                <Pets {...props} accessToken={this.props.accessToken}/>
+                            )}
+                    />
+
                     <Route
                             path={"/blogs/new-blog"}
                             exact

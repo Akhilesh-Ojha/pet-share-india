@@ -6,6 +6,7 @@ import Auth from '../../containers/Auth/Auth';
 import Toolbar from '../../components/Toolbar/Toolbar';
 import Home from '../../containers/Home/Home';
 import axios from '../../axios';
+import { withRouter }  from 'react-router-dom';
 
 class Layout extends Component {
 
@@ -44,7 +45,8 @@ class Layout extends Component {
                 if(response.data.is_valid === true) {
                     this.setState({
                         loggedInStatus: 'Logged In',
-                        user: response
+                        user: response,
+                        accessToken: response.data.access_token
                     });
                 } else {
                     this.setState({
@@ -64,9 +66,15 @@ class Layout extends Component {
     }
 
     render() {
+        let toolBar = (
+            <Toolbar isLoggedIn={this.state.loggedInStatus} handleLogout={this.handleLogout} userData={this.state.user} />
+        )
+        if(this.props.location.pathname === '/blogs/new-blog') {
+            toolBar = null
+        }
         return(
             <div className={classes.Container}>
-                <Toolbar isLoggedIn={this.state.loggedInStatus} handleLogout={this.handleLogout} userData={this.state.user} />
+                {toolBar}
                 <main className={classes.Content}>
                     <Switch>
                         <Route
@@ -97,4 +105,4 @@ class Layout extends Component {
     
 }
 
-export default Layout;
+export default withRouter(Layout);

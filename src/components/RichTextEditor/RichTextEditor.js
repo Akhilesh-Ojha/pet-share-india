@@ -6,13 +6,12 @@ import Resizer from 'react-image-file-resizer';
 class RichText extends Component {
 
     state = {
-        showToolbar: false,
+        showToolbar: true,
         data: ''
     }
     
     constructor(props) {
         super(props);
-        console.log('PROP', props); 
         this.richTextContainer = null;
         this.showingSourceCode = false;
         this.isInEditMode = true;
@@ -23,6 +22,8 @@ class RichText extends Component {
     componentDidMount() {
         this.editor = this.richTextContainer.contentWindow.document;
         this.editor.designMode = 'On';
+        let body = this.editor.querySelector('body')
+        body.style.color = "white"
         // this.editor.getElementsByTagName('body')[0].innerHTML = this.props.description
     }
    
@@ -112,7 +113,7 @@ class RichText extends Component {
             <Aux className={classes.toolbar}>
                 { this.state.showToolbar ?
                     <Aux>
-                        <button className={classes.RichTextButtonMinus}  onClick={() => this.toggleToolBar()}><i className="fa fa-minus"></i></button>
+                        {/* <button className={classes.RichTextButtonMinus}  onClick={() => this.toggleToolBar()}><i className="fa fa-minus"></i></button> */}
                         <ul className={classes.toolList}>
                             <li className={classes.tool}><button  className={classes.RichTextButton}  onClick={() => this.execCommand('bold')}><i className="fa fa-bold"></i></button></li>
 
@@ -187,12 +188,13 @@ class RichText extends Component {
                         
                     </Aux>
                     
-                :  <button className={classes.RichTextButtonPlus}  onClick={() => this.toggleToolBar()}><i className="fa fa-plus"></i></button>
+                :  null
+                // <button className={classes.RichTextButtonPlus}  onClick={() => this.toggleToolBar()}><i className="fa fa-plus"></i></button>
 
             }
             <iframe className={classes.TextArea}  title="Enter Description"
                         ref={richTextContainer => this.richTextContainer = richTextContainer} 
-                        id="richTextContainer" name="richTextContainer" frameBorder="0" ></iframe>
+                        id="richTextContainer" style={{color: 'white'}} name="richTextContainer" frameBorder="0" ></iframe>
 
             <div className={classes.SubmitArea}>
                 {buttonValue}
