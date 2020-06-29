@@ -120,7 +120,7 @@ class Toolbar extends Component {
             )
             userNav=(
                 <Aux>
-                    <p style={{fontSize: '20px', fontWeight:'500' ,marginRight: '5px', display:'flex', alignSelf:'center'}}>Hey, {name} </p>
+                    <p style={{fontSize: '20px', fontWeight:'500' ,marginRight: '5px', display:'flex', alignSelf:'center' , color: 'rgba(223,204,153, 1)' }}>Hey, {name} </p>
                     <div style={{display: 'flex' , flexDirection: "column"}}>
                         {imageButton}
                     </div>
@@ -160,7 +160,7 @@ class Toolbar extends Component {
                 <header ref={header => this.header = header}> 
                     <NavLink style={{textDecoration: 'none'}}  to={{pathname: '/'}}>
                         {/* <img src={Logo} alt={"Logo"} className={classes.Logo}></img> */}
-                        <div style={{fontSize: '20px' , marginLeft:'10px', textDecoration: 'underline', color: '#5a5757' , fontWeight: 'bold'}}>𝓟𝓮𝓽 𝓢𝓱𝓪𝓻𝓮</div>
+                        <div style={{fontSize: '20px' , marginLeft:'10px', textDecoration: 'underline', color: 'rgb(223,204,153)'  , fontWeight: 'bold'}}>𝓟𝓮𝓽 𝓢𝓱𝓪𝓻𝓮</div>
                     </NavLink>
                 
                     <div className={classes.Search}>
