@@ -32,7 +32,7 @@ class FacebookLogin extends Component {
                 // xfbml={true}
                 // version={"3.2"}
                 // disableMobileRedirect={true}
-                redirectUri='https://my-site.com'/>
+                redirectUri='https://petshare-india.netlify.app/'/>
     
                 <ToastContainer position="bottom-right"
                         autoClose={5000}
