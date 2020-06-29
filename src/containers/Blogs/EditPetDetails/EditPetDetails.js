@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './EditPetDetails.module.scss';
 import RichTextEditor from '../../../components/RichTextEditor/RichTextEditor';
 import axios from '../../../axios';
+import { NavLink } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Loader from '../../../components/UI/Spinner/Spinner';
 // import { Redirect } from 'react-router-dom';
@@ -81,7 +82,7 @@ class EditPetDetails extends Component {
                 shortDesc: '',
                 selectedFile: null,
             })
-            this.props.history.push('/');
+            this.props.history.push('/blogs');
         }).catch(error => {
             toast.error('There is some error in editing Blog ' + error);
         });
@@ -91,36 +92,49 @@ class EditPetDetails extends Component {
         let uploadFileText = null;
         // let redirect = null;
         if(this.state.selectedFile) {
-            uploadFileText = (<span style={{display: 'block'}}>Uploaded Image: {this.state.selectedFile.name} </span>)
+            uploadFileText = (<span style={{display: 'block', color: 'rgba(223,204,153, 1)'}}>Uploaded Image: {this.state.selectedFile.name} </span>)
         }
 
         let form;
         if(this.state.loading) {
             form = (
-                <div style={{ height:'87.5vh' , paddingTop: '100px'}}>
+                <div style={{ height:'100vh'}}>
                     <Loader />
                     <p style={{fontSize: '30px' , textAlign: 'center'}}>Hang On! Publishing Blog!</p>
                 </div>
             )
         } else {
             form = (
-                <div className={classes.Container}>
-                    <div className={classes.FormContainer}>
-                        {/* <h1>Add Your Blog</h1> */}
-                        <div className={classes.Form}>
-                            <input className={classes.Title} type="text" maxLength="60" onChange={this.inputTitleHandler} value={this.state.title}  placeholder="Title"/>
 
+                <div className={classes.Bg}>
+                <div className={classes.Wrapper}>
+                        <NavLink style={{textDecoration: 'none' , color: 'rgba(223,204,153, 1)'} } to={{pathname: '/blogs'}}>
+                            <i style={{fontSize: '30px'}} className="fa fa-arrow-left" aria-hidden="true"></i>
+                        </NavLink>
 
-                            <input style={{display: 'none'}} type="file" onChange={this.fileSelectedHandler} ref={fileInput => this.fileInput = fileInput}></input>
+                    <div className={classes.ContactForm}>
+                            
+                            <div className={classes.InputFields}>
+                                <input className={classes.Change} type="text" maxLength="60" onChange={this.inputTitleHandler} value={this.state.title}  placeholder="Title"/>
 
-                            {/* <div className={classes.Button}> */}
-                            <button className={classes.UploadButton} onClick={() => this.fileInput.click()}>Upload Image</button>
-                            {uploadFileText}
-                            {/* </div> */}
-                            <input className={classes.ShortDesc} type="text" maxLength="250" onChange={this.inputDescHandler} value={this.state.shortDesc}  placeholder="Enter a Short Description"/>
-                        </div>
-                        <RichTextEditor sendDataToParent={this.handleSubmit} description={this.state.description} title={this.state.title} shortDesc={this.state.shortDesc} />
+                                <input className={classes.Change} type="text" maxLength="250" onChange={this.inputDescHandler} value={this.state.shortDesc}  placeholder="Enter a Short Description"/>
+
+                                <input style={{display: 'none'}} type="file" onChange={this.fileSelectedHandler} ref={fileInput => this.fileInput = fileInput}></input>
+                                <button className={classes.InputButton} onClick={() => this.fileInput.click()}>Upload Image</button>
+                                {uploadFileText}
+                                
+
+                            </div>
+                            
+                            <div className={classes.Msg}>
+
+                                <RichTextEditor sendDataToParent={this.handleSubmit} description={this.state.description} title={this.state.title} shortDesc={this.state.shortDesc}/>
+                            </div>
+                            
+
                     </div>
+                    
+                </div>
                 </div>
             )
         }

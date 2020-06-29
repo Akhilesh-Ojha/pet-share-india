@@ -1,126 +1,125 @@
-.Container {
+.Bg {
+    
+    // background-image: url(../../../assets/pet11.jpg);
+    background-position: top center;
+    min-height: 100vh;
+    background: rgba(0,0,0,0.8);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+
+.Wrapper{
+    position: absolute;
+    top: 50%;
     width: 100%;
-    height: 100%;
+    // background: rgba(0,0,0,0.8);
+    transform: translateY(-50%);
+    padding: 0 20px;
+}
+
+.ContactForm {
+    max-width: 1000px;
+    margin: 0 auto;
+    // background: rgba(0,0,0,0.8);
+    background:#F8F8FF;
+    padding: 30px;
+    border-radius: 5px;
     display: flex;
-    justify-content: center;
-    font-size: 50px;
-    padding-top: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
-.FormContainer {
-    background-color: white;
-    width: 80%;
-    padding: 20px 10px;
-    // margin-top: 10px;
-    color: #828282;
-    text-align: center;
-    // border-radius: 25px;
-    position: relative;
-}
-
-.Form {
-    margin-bottom: 10px;
-    // display: flex;
-    // justify-content: space-around;
-}
-
-
-.Title {
-    // flex: 1;
-    position: relative;
-    display: inline-block;
-    font-size: 20px;
-    background-color: #F0F0F0;
-    width: 65%;
-    height: 50px;
-    border: none;
+.InputFields {
+    display: flex;
+    
+    // background: rgba(0,0,0,0.7);
+    flex-direction: column;
+    margin-right: 4%;
     outline: none;
-    padding: 0 20px;
-    border-radius: 25px 0 0 25px;
-    margin-right: 5px;
-    // font-size: 2rem;
-    // margin: 10px 10px 20px 10px;
-    // width: 80%;
-    // padding: 10px;
-    // background-color: #f0f0f0;
-    // border: none;
-    // border-radius: 10px;
-    // outline: none;
-    // box-shadow: 0 10px 20px rgba(0,0,0,.1);
+    flex: 1;
+
+}
+.Msg {
+    flex: 1.5;
 }
 
-.ShortDesc {
-    position: relative;
-    display: inline-block;
-    font-size: 20px;
-    background-color: #F0F0F0;
+.InputFields , .Msg {
     width: 80%;
-    height: 50px;
-    border: none;
-    outline: none;
-    padding: 0 20px;
-    border-radius: 25px;
-    margin-right: 5px;
-    margin-top: 10px;
 }
 
-
-.UploadButton {
-    position: relative;
-    display: inline-block;
+.InputFields input[type="text"] {
+    margin: 20px 0;
+    background: transparent;
     font-size: 20px;
-    border-radius: 0 25px 25px 0;
-    height: 50px;
-    // width: 30%;
-    cursor: pointer;
-    // width: 50%;
-    // background-color: #dfcc99 ;
-    color: #5a5757;
-    // color: black;
-    // background-image: linear-gradient(to right ,#6782B4 ,#B1BFD8);
-    border: none;
-    // color: black;
-    // font-weight: bold;
-    // margin: 0 0 20px;
+    border: 0;
+    border-bottom: 2px solid rgba(223,204,153, 1)  ;
     padding: 10px;
-    // font-size: 15px;
-    // text-transform: uppercase;
-    // border-radius: 20px;
-    outline: none;
+    // color: rgba(223,204,153, 1) ;
+    width: 100%;
+    color: black;
+}
 
+.Change::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: rgba(223,204,153, 1) ;
+}
+
+.InputFields .InputButton {
+    margin: 20px 0;
+    background: transparent;
+    text-transform: uppercase;
+    font-size: 20px;
+    // border: 0;
+    border: 2px solid rgba(223,204,153, 1);
+    padding: 10px;
+    // color: #c5ecfd;
+    color: rgba(223,204,153, 1) ;
+    width: 100%;
+    cursor: pointer;
     &:hover {
-        transform: translateY(-2px);
+        transform: translateY(-3px);
         box-shadow: 0 10px 2px rgba(0,0,0,.2);
     }
     &:active {
         transform: translateY(-1px);
         box-shadow: 0 5px 10px rgba(0,0,0,.2);
     }
-    
 }
 
-// .SubmitButton {
-//     cursor: pointer;
-//     width: 20%;
-//     border: none;
-//     color: black;
-//     margin: 0 0 10px;
-//     font-weight: bold;
-//     padding: 10px;
-//     font-size: 15px;
-//     border-radius: 20px;
-//     text-transform: uppercase;
-//     outline: none;
-// }
 
+@media screen and (max-width: 600px) {
+    .ContactForm {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    
+    .InputFields {
+        flex: 1;
+        width: 100%;
+        margin: 5px 0;
+    
+    }
+    .Msg {
+        flex: 1;
+        width: 100%;
+        margin: 5px 0;
+    }   
 
-// .Title:active {
-//     border: none; 
-//     outline: none;
-// }
-// .Button{
-//     flex: 1;
-//     margin: 10px 10px 20px 10px;
-//     padding: 10px;
-//     // height: 400px;
-// }
+    .InputFields input[type="text"] {
+        font-size: 14px;
+    
+    }
+
+    .InputFields .InputButton {
+        font-size: 14px;
+    }
+
+    .Wrapper{
+        
+        top: 40%;
+        
+    }
+}

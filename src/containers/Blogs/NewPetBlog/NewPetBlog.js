@@ -104,21 +104,21 @@ class NewPetBlog extends Component {
         let uploadFileText = null;
         let redirect = null;
         if(this.state.selectedFile) {
-            uploadFileText = (<span style={{display: 'block', color:' #c5ecfd', fontSize: '16px', marginTop:'10px'}}>Uploaded Image: {this.state.selectedFile.name} </span>)
+            uploadFileText = (<span style={{display: 'block', color:'rgba(223,204,153, 1)', fontSize: '16px', marginTop:'10px'}}>Uploaded Image: {this.state.selectedFile.name} </span>)
         }
         let form;
 
         if(this.state.loading) {
             form = (
                         
-                <div style={{height: '75vh'}}>
+                <div style={{height: '100vh'}}>
                     <Loader />
                     <p style={{fontSize: '30px' , textAlign: 'center'}}>{this.state.loadingText}</p>
                 </div>            
         )
 
         } else if (this.state.postedData && !this.state.loading) {
-            redirect = <Redirect to="/" />
+            redirect = <Redirect to="/blogs" />
         } else {
             form = (
                 // <Aux>

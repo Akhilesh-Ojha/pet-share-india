@@ -177,7 +177,8 @@
     border: 0;
     border-bottom: 2px solid rgba(223,204,153, 1)  ;
     padding: 10px;
-    color: rgba(223,204,153, 1) ;
+    color: black;
+    // color: rgba(223,204,153, 1) ;
     width: 100%;
 
 }
@@ -196,6 +197,7 @@
     border: 2px solid rgba(223,204,153, 1);
     padding: 10px;
     // color: #c5ecfd;
+    // color: black;
     color: rgba(223,204,153, 1) ;
     width: 100%;
     cursor: pointer;
@@ -279,5 +281,11 @@
 
     .InputFields .InputButton {
         font-size: 14px;
+    }
+
+    .Wrapper{
+        
+        top: 40%;
+        
     }
 }

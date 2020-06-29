@@ -77,7 +77,7 @@ class FullPetDetails extends Component {
         });
         if(this.counter <= 10) {
             this.setState({
-                treats: this.state.treats + 1
+                treats: +this.state.treats + 1
             })
         }
     }
