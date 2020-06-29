@@ -26,7 +26,9 @@ class FacebookLogin extends Component {
                 autoLoad={false}
                 fields="name,email,picture,about,address,friends,gender,birthday"
                 onClick={this.componentClicked}
-                callback={this.responseFacebook} />
+                callback={this.responseFacebook} 
+                isMobile={true}
+                disableMobileRedirect={true}/>
     
                 <ToastContainer position="bottom-right"
                         autoClose={5000}
