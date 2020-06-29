@@ -31,8 +31,8 @@ class FacebookLogin extends Component {
                 // cookie={true}
                 // xfbml={true}
                 // version={"3.2"}
-                // disableMobileRedirect={true}
-                redirectUri='https://petshare-india.netlify.app/'/>
+                disableMobileRedirect={true}
+                />
     
                 <ToastContainer position="bottom-right"
                         autoClose={5000}
