@@ -39,7 +39,7 @@ class FullPetDetails extends Component {
                         } else {
                             finalTime = time
                         }
-                        this.setState( { loadedPost: response.data.data.Blog , readTime: finalTime } );
+                        this.setState( { loadedPost: response.data.data.Blog , readTime: finalTime, treats: response.data.data.Blog.cookie } );
                         var sectionDetails = this.section;
                         window.addEventListener('scroll', () => {
                             var value = window.scrollY;

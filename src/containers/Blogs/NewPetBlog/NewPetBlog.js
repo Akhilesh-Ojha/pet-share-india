@@ -68,7 +68,8 @@ class NewPetBlog extends Component {
         let data = {
             'title': this.state.title,
             'description': event,
-            'shortDesc': this.state.shortDesc
+            'shortDesc': this.state.shortDesc,
+            'cookie': 0
         }
         formData.append('image', this.state.selectedFile);
         formData.append('data', JSON.stringify(data));
