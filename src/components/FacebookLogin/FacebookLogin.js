@@ -27,11 +27,12 @@ class FacebookLogin extends Component {
                 fields="name,email,picture,about,address,friends,gender,birthday"
                 onClick={this.componentClicked}
                 callback={this.responseFacebook} 
-                isMobile={false}
-                cookie={true}
-                xfbml={true}
-                version={"3.2"}
-                disableMobileRedirect={true}/>
+                // isMobile={false}
+                // cookie={true}
+                // xfbml={true}
+                // version={"3.2"}
+                // disableMobileRedirect={true}
+                redirectUri='https://my-site.com'/>
     
                 <ToastContainer position="bottom-right"
                         autoClose={5000}
