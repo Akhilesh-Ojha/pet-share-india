@@ -120,6 +120,9 @@ class Toolbar extends Component {
             )
             userNav=(
                 <Aux>
+                    <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs/user'}}>
+                    <p style={{fontSize: '20px', textDecoration: 'underline', fontWeight:'500' ,marginRight: '20px' , color: 'rgba(223,204,153, 1)' }}>𝓨𝓸𝓾𝓻 𝓫𝓵𝓸𝓰𝓼</p>
+                    </NavLink>
                     <p style={{fontSize: '20px', fontWeight:'500' ,marginRight: '5px', display:'flex', alignSelf:'center' , color: 'rgba(223,204,153, 1)' }}>Hey, {name} </p>
                     <div style={{display: 'flex' , flexDirection: "column"}}>
                         {imageButton}

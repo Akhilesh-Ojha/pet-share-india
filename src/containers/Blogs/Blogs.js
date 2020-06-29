@@ -4,6 +4,7 @@ import NewPetBlog from '../../containers/Blogs/NewPetBlog/NewPetBlog';
 import Pets from '../../containers/Blogs/Pets/Pets';
 import FullPetDetails from '../../containers/Blogs/FullPetDetails/FullPetDetails';
 import EditPetDetails from '../../containers/Blogs/EditPetDetails/EditPetDetails';
+import BlogsByUser from '../../containers/Blogs/BlogsByUser/BlogsByUser';
 
 
 class Blogs extends Component {
@@ -18,6 +19,14 @@ class Blogs extends Component {
                             exact
                             render={ props => (
                                 <Pets {...props} accessToken={this.props.accessToken}/>
+                            )}
+                    />
+
+                    <Route
+                            path={"/blogs/user"}
+                            exact
+                            render={ props => (
+                                <BlogsByUser {...props} accessToken={this.props.accessToken}/>
                             )}
                     />
 

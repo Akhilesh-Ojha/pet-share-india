@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classes from './Pets.module.scss';
+import classes from './BlogsByUser.module.scss';
 import PetCard from '../../../components/PetCard/PetCard';
 import Aux from '../../../hoc/Auxx';
 import { NavLink } from 'react-router-dom';
@@ -8,7 +8,7 @@ import Loader from '../../../components/UI/Spinner/Spinner';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-class Pets extends Component {
+class BlogsByUser extends Component {
     state = {
             petDetails:[],
             loading: false
@@ -22,25 +22,26 @@ class Pets extends Component {
         });
         console.log('this.props.location.pathname', this.props.location.pathname);
 
-        
-        axios.get( '/api/v1/blogs')
-        .then( response => {
-            if(response.data.data.length === 0)  {
-                toast.info('There is are no blogs to show');
-            }
-            const posts = response.data;
-            const updatedPosts = posts.data.map(post => {
-                return {
-                    ...post
+        if(this.props.location.pathname === '/blogs/user') {
+            axios.get( '/api/v1/user/blogs' ,  { headers: {"Authorization" : this.props.accessToken}})
+            .then( response => {
+                console.log('RESPPPPPPPP', response);
+                if(response.data.data.length === 0)  {
+                    toast.info('There are no blogs posted by you');
                 }
+                const posts = response.data;
+                console.log('POSTSS', posts);
+                const updatedPosts = posts.data.map(post => {
+                    return {
+                        ...post
+                    }
+                });
+                this.setState({petDetails: updatedPosts , loading: false});
+            })
+            .catch(error => {
+                    toast.error('There is some error retrieving your blogs ' + error );
             });
-            this.setState({petDetails: updatedPosts , loading: false});
-        })
-        .catch(error => {
-                toast.error('There is some error retrieving blogs ' + error );
-        });
-
-        
+        } 
     }
 
     render() {
@@ -62,29 +63,11 @@ class Pets extends Component {
                 });
             }
 
-            let redirectAddLink = null;
-
-            if(this.props.accessToken) {
-                redirectAddLink = (
-                    <NavLink className={classes.Anchor} to={{pathname: '/blogs/new-blog'}}>
-                        <button className={classes.Button}><i style={{width: '100%', height:'100%', fontSize: '16px' ,  marginTop: '4px', color: 'black'}} className="fa fa-plus"></i></button>
-                    </NavLink>
-                )
-            } else {
-                redirectAddLink = (
-                    <NavLink className={classes.Anchor} to={{pathname: '/auth'}}>
-                        <button className={classes.Button}><i style={{width: '100%', height:'100%', fontSize: '16px' ,  marginTop: '4px', color: 'black'}} className="fa fa-plus"></i></button>
-                    </NavLink>
-                )
-            }
-        
-
         return(
             <Aux>
                 <div className={classes.container}>
                     {petBlogs}
                 </div>
-                {redirectAddLink}
                 <ToastContainer position="bottom-right"
                     autoClose={5000}
                     hideProgressBar={false}
@@ -100,4 +83,4 @@ class Pets extends Component {
     }
 }
 
-export default Pets;
+export default BlogsByUser;

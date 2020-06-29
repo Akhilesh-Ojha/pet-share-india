@@ -14,7 +14,7 @@ class FullPetDetails extends Component {
 
     state = {
         loadedPost: null,
-        treats: 2,
+        treats: 0,
         readTime: 1,
     }
     
@@ -69,8 +69,13 @@ class FullPetDetails extends Component {
 
     treatIncrement = () => {
         ++this.counter;
-        if(this.counter <= 20) {
-
+        axios.post('/api/v1/blogs/' + this.props.match.params.id  + '/cookie', {}  ,{ headers: {"Authorization" : this.props.accessToken} } )
+                .then(response => {
+                    console.log(response);
+            }).catch(error => {
+                toast.error('An error occured' + error);
+        });
+        if(this.counter <= 10) {
             this.setState({
                 treats: this.state.treats + 1
             })
