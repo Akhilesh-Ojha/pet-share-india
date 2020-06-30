@@ -127,7 +127,20 @@ class RichText extends Component {
 
                             <li className={classes.tool}> <button className={classes.RichTextButton} onClick={() => this.execCommand('justifyRight')}><i className="fa fa-align-right"></i></button></li>
 
+                            <li className={classes.tool}> <button className={classes.RichTextButton} onClick={() => this.execCommand('justifyFull')}><i className="fa fa-align-justify"></i></button></li>
+
                             <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.execCommand('indent')}><i className="fa fa-indent"></i></button></li>
+
+                            <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.execCommand('outdent')}><i className="fa fa-dedent"></i></button></li>
+
+                            <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.execCommand('undo')}><i className="fa fa-undo"></i></button></li>
+
+                            <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.execCommand('redo')}><i className="fa fa-repeat"></i></button></li>
+
+                            {/* <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.execCommand('redo')}><i className="fa fa-repeat"></i></button></li> */}
+
+                            {/* <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.execCommand('insertParagraph')}><i className="fa fa-paragraph"></i></button></li> */}
+
 
                             {/* <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.execCommandWithArgs('insertImage', prompt('Enter the Image URL', ''))}><i className="fa fa-picture-o"></i></button></li> */}
 
@@ -143,10 +156,11 @@ class RichText extends Component {
                            
                             <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.execCommandWithArgs('createLink' , prompt('Enter a URL', 'http://'))}><i className="fa fa-link"></i></button></li>
 
-                            <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.toggleSource()}><i className="fa fa-code"></i></button></li>
+                            {/* <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.toggleSource()}><i className="fa fa-code"></i></button></li> */}
 
-                            <li className={classes.tool}><input style={{display:'none'}} className={classes.Input} type="color" ref = {(input)=> this.foreColor = input} onChange={() => this.execCommandWithArgs('foreColor', this.foreColor.value)}></input></li>
-                            <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.foreColor.click()}><i className="fa fa-eyedropper"></i></button></li>
+                            {/* <li className={classes.tool}><button className={classes.RichTextButton} ><i className="fa fa-undo"></i></button></li> */}
+
+                            {/* <li className={classes.tool}><button className={classes.RichTextButton} onClick={() => this.foreColor.click()}><i className="fa fa-eyedropper"></i></button></li> */}
 
                             <li className={classes.tool}><select className={classes.DropDown} ref = {(input)=> this.menu = input} onChange={() => this.execCommandWithArgs('formatBlock', this.menu.value)}>
                                 <option value="H1">H1</option>
@@ -183,15 +197,17 @@ class RichText extends Component {
                                 <option value="6">6</option>
                                 <option value="7">7</option>
                             </select></li>
+                            
+                            <input  className={classes.Input} type="color" style={{backgroundColor: '#E7D9B7', outline: 'none',border: 'none', height: '29px'}} ref = {(input)=> this.foreColor = input} onChange={() => this.execCommandWithArgs('foreColor', this.foreColor.value)}></input>
                         </ul> 
 
                         
                     </Aux>
                     
-                :  null
-                // <button className={classes.RichTextButtonPlus}  onClick={() => this.toggleToolBar()}><i className="fa fa-plus"></i></button>
-
-            }
+                    :  null
+                    // <button className={classes.RichTextButtonPlus}  onClick={() => this.toggleToolBar()}><i className="fa fa-plus"></i></button>
+                    
+                }
             <iframe className={classes.TextArea}  title="Enter Description"
                         ref={richTextContainer => this.richTextContainer = richTextContainer} 
                         id="richTextContainer" style={{color: 'white'}} name="richTextContainer" frameBorder="0" ></iframe>

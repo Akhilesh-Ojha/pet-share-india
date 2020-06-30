@@ -26,7 +26,7 @@ class Pets extends Component {
         axios.get( '/api/v1/blogs')
         .then( response => {
             if(response.data.data.length === 0)  {
-                toast.info('There is are no blogs to show');
+                toast.info('There are no blogs to show');
             }
             const posts = response.data;
             const updatedPosts = posts.data.map(post => {

@@ -113,7 +113,7 @@ class EditPetDetails extends Component {
                                     <input className={classes.Change} type="text" maxLength="250" onChange={this.inputDescHandler} value={this.state.shortDesc}  placeholder="Enter a Short Description"/>
 
                                     <input style={{display: 'none'}} type="file" onChange={this.fileSelectedHandler} ref={fileInput => this.fileInput = fileInput}></input>
-                                    <button className={classes.InputButton} onClick={() => this.fileInput.click()}>Upload Image</button>
+                                    <button className={classes.InputButton} onClick={() => this.fileInput.click()}>Change Image</button>
                                     {uploadFileText}
                                 </div>
                                 <div className={classes.Msg}>
@@ -128,13 +128,13 @@ class EditPetDetails extends Component {
             
             <div>
                 {form}
-                <ToastContainer position="bottom-right"
+                <ToastContainer 
+                    position="bottom-right"
+                    autoClose={false}
                     hideProgressBar={false}
                     newestOnTop={false}
                     rtl={false}
-                    pauseOnFocusLoss
                     draggable
-                    pauseOnHover
                 />
             </div>
             

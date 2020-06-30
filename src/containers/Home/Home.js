@@ -121,10 +121,10 @@ class Home extends Component {
                    
                 </section>
 
-                {/* <section className={classes.Clients}>
+                <section className={classes.Clients}>
                     
                    
-                </section> */}
+                </section>
 
                 {/* <section className={classes.Works}>
                     <div className={classes.Col1}>
