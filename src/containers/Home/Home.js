@@ -121,10 +121,10 @@ class Home extends Component {
                    
                 </section>
 
-                <section className={classes.Clients}>
+                {/* <section className={classes.Clients}>
                     
                    
-                </section>
+                </section> */}
 
                 {/* <section className={classes.Works}>
                     <div className={classes.Col1}>
@@ -215,8 +215,8 @@ class Home extends Component {
                 <section className={classes.Footer}>
                     <h2>Connect with us</h2>
                     <ul className={classes.Social}>
-                        <li ><button><i className="fa fa-instagram" aria-hidden="true"></i></button></li>
-                        <li><button><i className="fa fa-facebook" aria-hidden="true"></i></button></li>
+                        <li ><a href="https://www.instagram.com/petshare.india/" rel="noopener noreferrer" target="_blank"><i className="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="https://www.facebook.com/PetShare-102464238147788/?ref=br_rs" rel="noopener noreferrer" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
                     </ul>
                 </section>
             </Aux>

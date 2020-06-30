@@ -1,128 +1,4 @@
-// .Container {
-//     width: 100%;
-//     height: 850px;
-//     display: flex;
-//     justify-content: center;
-//     font-size: 50px;
-//     padding-top: 20px;
-// }
-
-// .FormContainer {
-//     background-color: white;
-//     width: 80%;
-//     height: 92%;
-//     padding: 20px 10px;
-//     color: #828282;
-//     text-align: center;
-//     position: relative;
-// }
-
-// .Form {
-//     margin-bottom: 10px;
-// }
-
-
-// .Title {
-//     position: relative;
-//     display: inline-block;
-//     font-size: 20px;
-//     background-color: #F0F0F0;
-//     width: 65%;
-//     height: 50px;
-//     border: none;
-//     outline: none;
-//     padding: 0 20px;
-//     border-radius: 25px 0 0 25px;
-//     margin-right: 5px;
-// }
-
-// .ShortDesc {
-//     position: relative;
-//     display: inline-block;
-//     font-size: 20px;
-//     background-color: #F0F0F0;
-//     width: 80%;
-//     height: 50px;
-//     border: none;
-//     outline: none;
-//     padding: 0 20px;
-//     border-radius: 25px;
-//     margin-right: 5px;
-//     margin-top: 10px;
-// }
-
-
-
-// .UploadButton {
-//     position: relative;
-//     display: inline-block;
-//     font-size: 20px;
-//     border-radius: 0 25px 25px 0;
-//     height: 50px;
-//     cursor: pointer;
-//     color: #5a5757;
-//     font-weight: 500;
-//     border: none;
-//     padding: 10px;
-//     outline: none;
-
-//     &:hover {
-//         transform: translateY(-2px);
-//         box-shadow: 0 10px 2px rgba(0,0,0,.2);
-//     }
-//     &:active {
-//         transform: translateY(-1px);
-//         box-shadow: 0 5px 10px rgba(0,0,0,.2);
-//     }
-    
-// }
-
-
-
-// @media (max-width: 600px) {
-//     .UploadButton {
-//         position: relative;
-//         display: inline-block;
-//         font-size: 20px;
-//         background-color: #F0F0F0;
-//         width: 80%;
-//         height: 50px;
-//         border: none;
-//         outline: none;
-//         padding: 0 20px;
-//         border-radius: 25px;
-//         margin-right: 5px;
-//         margin-top: 10px;
-//     }
-
-//     .Title {
-//         position: relative;
-//         display: inline-block;
-//         font-size: 20px;
-//         background-color: #F0F0F0;
-//         width: 80%;
-//         height: 50px;
-//         border: none;
-//         outline: none;
-//         padding: 0 20px;
-//         border-radius: 25px;
-//         margin-right: 5px;
-//         margin-top: 10px;
-//     }
-
-//     .Container {
-//         height: 1000px;
-//     }
-    
-
-// }
-
-/////////////////////////////////
-
-
 .Bg {
-    
-    // background-image: url(../../../assets/pet11.jpg);
     background-position: top center;
     min-height: 100vh;
     background: rgba(0,0,0,0.8);
@@ -136,7 +12,6 @@
     position: absolute;
     top: 50%;
     width: 100%;
-    // background: rgba(0,0,0,0.8);
     transform: translateY(-50%);
     padding: 0 20px;
 }
@@ -144,7 +19,6 @@
 .ContactForm {
     max-width: 1000px;
     margin: 0 auto;
-    // background: rgba(0,0,0,0.8);
     background:#F8F8FF;
     padding: 30px;
     border-radius: 5px;
@@ -154,8 +28,6 @@
 
 .InputFields {
     display: flex;
-    
-    // background: rgba(0,0,0,0.7);
     flex-direction: column;
     margin-right: 4%;
     outline: none;
@@ -178,13 +50,11 @@
     border-bottom: 2px solid rgba(223,204,153, 1)  ;
     padding: 10px;
     color: black;
-    // color: rgba(223,204,153, 1) ;
     width: 100%;
 
 }
 
 .Change::-webkit-input-placeholder {
-    /* WebKit, Blink, Edge */
     color: rgba(223,204,153, 1) ;
 }
 
@@ -193,11 +63,8 @@
     background: transparent;
     text-transform: uppercase;
     font-size: 20px;
-    // border: 0;
     border: 2px solid rgba(223,204,153, 1);
     padding: 10px;
-    // color: #c5ecfd;
-    // color: black;
     color: rgba(223,204,153, 1) ;
     width: 100%;
     cursor: pointer;
@@ -211,48 +78,7 @@
     }
 }
 
-// .ArrowButton {
-//     margin: 20px 0;
-//     background: transparent;
-//     text-transform: uppercase;
 
-//     // border: 0;
-//     // border: 2px solid #c5ecfd ;
-//     padding: 10px;
-//     color: #c5ecfd;
-//     // width: 100%;
-//     cursor: pointer;
-//     &:hover {
-//         transform: translateY(-3px);
-//         box-shadow: 0 10px 2px rgba(0,0,0,.2);
-//     }
-//     &:active {
-//         transform: translateY(-1px);
-//         box-shadow: 0 5px 10px rgba(0,0,0,.2);
-//     }
-
-//     // i {
-//     //     font-size: 20px;
-//     // }
-// }
-
-
-
-
-
-//     .InputFields .Input {
-//         color: rgba(	223,204,153, 0.7) ;
-//         text-transform: uppercase;
-    
-//     }
-
-// }
-
-// ::-moz-placeholder {
-//     color: #c5ecfd;
-//     text-transform: uppercase;
-
-// }
 
 @media screen and (max-width: 600px) {
     .ContactForm {
@@ -283,9 +109,8 @@
         font-size: 14px;
     }
 
-    .Wrapper{
-        
-        top: 40%;
-        
+    .Loader {
+        left:'20%';
     }
+    
 }

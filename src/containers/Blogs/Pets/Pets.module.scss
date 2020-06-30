@@ -32,18 +32,20 @@
     .container{
         columns: 3;
         width: calc(100%-40px);
-        padding: 100px 20px 20px 0;
+        padding: 120px 20px 20px 0;
     }
 }
 
 @media (max-width: 760px) {
     .container{
         columns: 2;
+        
     }
 }
 
 @media (max-width: 480px) {
     .container{
         columns: 1;
+        padding: 160px 20px 20px 0;
     }
 }
