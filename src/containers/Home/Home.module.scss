@@ -1,7 +1,7 @@
 .Banner {
     position: relative;
     width: 100%;
-    height: 87.5vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,21 +52,65 @@
     
 }
 
+.Box1 {
+    color: #5a5757;
+    cursor: pointer;
+    font-size: 20px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-weight: 700;
+    height: 180px;
+    width: 300px;
+    border-radius:20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(	223,204,153, 0.7);
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 2px rgba(0,0,0,.2);
+    }
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    }
+}
+
 
 @media(max-width: 950px) {
     .Banner .Content{
         flex-direction: column;
     }
 
-    .Banner .Box {
+    .Banner .Box , .Banner .Box1 {
         height: 120px;
         margin: 20px auto;
+    }
+
+    .Banner .Box1 {
+        margin-top: 100px
+    }
+}
+
+@media(max-width: 500px) {
+    .Banner .Content{
+        flex-direction: column;
+    }
+
+    .Banner .Box , .Banner .Box1 {
+        height: 120px;
+        margin: 20px auto;
+    }
+
+    .Banner .Box1 {
+        margin-top: 140px
     }
 }
 
 .Services {
     min-height: 100vh;
-    background: linear-gradient(#f5f5f5, #f5f5f5 50%, #E6D7B3 50%, #E6D7B3 100%);
+    background: linear-gradient(#E6D7B3, #E6D7B3 50%, #f5f5f5 50%, #f5f5f5 100%);
 }
 
 .Services h1 {
@@ -343,6 +387,11 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
     // }
 }
 
+
+.Clients {
+    min-height: 100vh;
+    background-color: #fff;
+}
 
 
 

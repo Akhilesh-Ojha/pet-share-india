@@ -87,7 +87,7 @@ class FullPetDetails extends Component {
         let buttons = null
         if ( this.props.match.params.id ) {
             blog = (
-                <div style={{height: '75vh'}}>
+                <div style={{height: '100vh' ,paddingTop: '100px'}}>
                     <Loader />
                 </div>
             )

@@ -98,7 +98,7 @@ class EditPetDetails extends Component {
         let form;
         if(this.state.loading) {
             form = (
-                <div style={{ height:'100vh'}}>
+                <div style={{ height:'100vh', position: 'absolute', top:'-70px', left:'40%', paddingTop: '100px'}}>
                     <Loader />
                     <p style={{fontSize: '30px' , textAlign: 'center'}}>Hang On! Publishing Blog!</p>
                 </div>

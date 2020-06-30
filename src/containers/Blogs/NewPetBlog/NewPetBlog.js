@@ -92,7 +92,7 @@ class NewPetBlog extends Component {
                     selectedFile: null,
                     loadingText: ''
                 })
-                    this.props.history.push('/');
+                    this.props.history.push('/blogs');
             }).catch(error => {
                 toast.error('There is some error posting Blog ' + error);
                 // this.props.history.push('/auth');
@@ -111,7 +111,7 @@ class NewPetBlog extends Component {
         if(this.state.loading) {
             form = (
                         
-                <div style={{height: '100vh'}}>
+                <div style={{ height:'100vh', position: 'absolute', top:'-70px', left:'40%', paddingTop: '100px'}}>
                     <Loader />
                     <p style={{fontSize: '30px' , textAlign: 'center'}}>{this.state.loadingText}</p>
                 </div>            

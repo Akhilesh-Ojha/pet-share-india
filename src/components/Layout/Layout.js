@@ -63,13 +63,16 @@ class Layout extends Component {
 
     componentDidMount() {
         this.checkLoginStatus();
+        // console.log('PROPSSS', this.props);
     }
 
     render() {
+        let pathName = this.props.location.pathname;
+            
         let toolBar = (
             <Toolbar isLoggedIn={this.state.loggedInStatus} handleLogout={this.handleLogout} userData={this.state.user} />
         )
-        if(this.props.location.pathname === '/blogs/new-blog') {
+        if(pathName === '/blogs/new-blog' || pathName.indexOf('/edit') > -1) {
             toolBar = null
         }
         return(

@@ -10,7 +10,8 @@ header {
     align-items: center;
     width: 100%;
     z-index: 100;
-    position: relative;
+    position: fixed;
+    // position: relative;
     @media only screen and (max-width: 500px) {
         flex-wrap: wrap;
         height: 110px;
@@ -93,6 +94,22 @@ header.sticky {
         width: 20px;
     }
 }
+
+// .Links {
+//     font-size: '25px';
+//     text-decoration: 'underline';
+//     font-weight:'500';
+//     display:'flex';
+//     align-self:'center';
+//     margin-right: '20px'; 
+//     margin-top: '4px';
+//     letter-spacing: '1px' ;
+//     color: rgba(223,204,153, 1);
+
+//     @media only screen and (max-width: 500px) {
+//         display: none
+//     }
+// }
 
 .Image__Button {
         cursor: pointer;

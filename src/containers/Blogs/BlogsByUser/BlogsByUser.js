@@ -20,28 +20,25 @@ class BlogsByUser extends Component {
         this.setState({
             loading: true
         });
-        console.log('this.props.location.pathname', this.props.location.pathname);
 
-        if(this.props.location.pathname === '/blogs/user') {
-            axios.get( '/api/v1/user/blogs' ,  { headers: {"Authorization" : this.props.accessToken}})
-            .then( response => {
-                console.log('RESPPPPPPPP', response);
-                if(response.data.data.length === 0)  {
-                    toast.info('There are no blogs posted by you');
+        axios.get( '/api/v1/user/blogs' ,  { headers: {"Authorization" : this.props.accessToken}})
+        .then( response => {
+            console.log('RESPPPPPPPP blog user', response);
+            if(response.data.data.length === 0)  {
+                toast.info('There are no blogs posted by you');
+            }
+            const posts = response.data;
+            const updatedPosts = posts.data.map(post => {
+                return {
+                    ...post
                 }
-                const posts = response.data;
-                console.log('POSTSS', posts);
-                const updatedPosts = posts.data.map(post => {
-                    return {
-                        ...post
-                    }
-                });
-                this.setState({petDetails: updatedPosts , loading: false});
-            })
-            .catch(error => {
-                    toast.error('There is some error retrieving your blogs ' + error );
             });
-        } 
+            this.setState({petDetails: updatedPosts , loading: false});
+        })
+        .catch(error => {
+                toast.error('There is some error retrieving your blogs ' + error );
+        });
+        
     }
 
     render() {
@@ -65,6 +62,7 @@ class BlogsByUser extends Component {
 
         return(
             <Aux>
+                <h1 className={classes.Heading}>Your Blogs</h1>
                 <div className={classes.container}>
                     {petBlogs}
                 </div>

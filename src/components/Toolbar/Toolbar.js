@@ -114,15 +114,20 @@ class Toolbar extends Component {
 
         if(userToken !== null) {
             authOption = (
+                <Aux>
+                <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs/user'}}>
+                                <li className={classes.List} onClick={this.closeModal}><button>Your Post</button></li>
+                </NavLink>
                 <NavLink to={{pathname: '/auth'}}>
                     <li className={classes.List}><button onClick={this.closeModalWithLogOff}>Sign Out</button></li>
                 </NavLink>
+                </Aux>
             )
             userNav=(
                 <Aux>
-                    <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs/user'}}>
-                    <p style={{fontSize: '20px', textDecoration: 'underline', fontWeight:'500' ,marginRight: '20px' , color: 'rgba(223,204,153, 1)' }}>𝓨𝓸𝓾𝓻 𝓫𝓵𝓸𝓰𝓼</p>
-                    </NavLink>
+                    {/* <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs/user'}}>
+                        <p className={classes.Links}>Your Blogs</p>
+                    </NavLink> */}
                     <p style={{fontSize: '20px', fontWeight:'500' ,marginRight: '5px', display:'flex', alignSelf:'center' , color: 'rgba(223,204,153, 1)' }}>Hey, {name} </p>
                     <div style={{display: 'flex' , flexDirection: "column"}}>
                         {imageButton}
@@ -148,7 +153,9 @@ class Toolbar extends Component {
                             <NavLink to={{pathname: '/'}}>
                                 <li className={classes.List} onClick={this.closeModal}><button>Home</button></li>
                             </NavLink>
-                            <li className={classes.List}><button>Your Post</button></li>
+
+                            
+                            
                             <li className={classes.List}><button>Adopt a Pet</button></li>
                             {authOption}
                             <li className={classes.List}><button>Contact Us</button></li>
