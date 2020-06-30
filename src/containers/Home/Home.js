@@ -17,6 +17,8 @@ class Home extends Component {
         return(
             <Aux>
                 <section className={classes.Banner}>
+
+
                     <img src={BackgroundImage} alt="bg" className={classes.FitBg}></img>
                     <div className={classes.Content} >
                         <div className={classes.Box} data-0-top="opacity:0;left:100px;" data-200-top="opacity:1;left:0px;">
@@ -33,8 +35,38 @@ class Home extends Component {
                     </div>
                 </section>
 
+
+                <section className={classes.Services}>
+                    <h1>Services That we provide</h1>
+                    <div className={classes.OurServices}>
+                        <div className={classes.Container}>
+                            <div className={classes.ServiceBox}>
+                                <i className="fa fa-home" aria-hidden="true"></i>
+                                <h3>Service One</h3>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+
+                            </div>
+
+                            <div className={classes.ServiceBox}>
+                                <i className="fa fa-paw" aria-hidden="true"></i>
+                                <h3>Service Two</h3>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+
+                            </div>
+
+                            <div className={classes.ServiceBox}>
+                                <i className="fa fa-heart-o" aria-hidden="true"></i>
+                                <h3>Service Three</h3>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+
+                            </div>
+                        </div>
+                    </div>
+                   
+                </section>
+
                 <section className={classes.Card}>
-                    <h1>𝒪𝓊𝓇 𝒻𝓇𝒾𝑒𝓃𝒹𝓈 𝓁𝑜𝑜𝓀𝒾𝓃𝑔 𝒻𝑜𝓇 𝒶 𝒽𝑜𝓂𝑒</h1>
+                    <h1>Our friends looking for a home</h1>
                     <div className={classes.PetList}>
                         <div className={classes.PetBox}>
                             <div className={classes.ImgBox}>
@@ -86,7 +118,7 @@ class Home extends Component {
 
                 </section>
 
-                <section className={classes.Works}>
+                {/* <section className={classes.Works}>
                     <div className={classes.Col1}>
                         <h4>Adopters</h4>
                         <p>(Looking for pets)</p>
@@ -170,7 +202,7 @@ class Home extends Component {
 
 
                     
-                </section>
+                </section> */}
 
                 <section className={classes.Footer}>
                     <h2>Connect with us</h2>
