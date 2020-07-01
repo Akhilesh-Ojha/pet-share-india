@@ -3,6 +3,7 @@ import classes from './Toolbar.module.scss';
 import searchIcon from '../../assets/search.png';
 import { NavLink , withRouter }  from 'react-router-dom';
 import Aux from '../../hoc/Auxx';
+import Logo from '../../assets/Logo.png';
 
 class Toolbar extends Component {
 
@@ -169,8 +170,8 @@ class Toolbar extends Component {
                 // <header className={(this.state.isSticky && window.location.pathname !== '/') ? classes.sticky : ''} ref={header => this.header = header}> 
                 <header ref={header => this.header = header}> 
                     <NavLink style={{textDecoration: 'none'}}  to={{pathname: '/'}}>
-                        {/* <img src={Logo} alt={"Logo"} className={classes.Logo}></img> */}
-                        <div style={{fontSize: '20px' , marginLeft:'10px', textDecoration: 'underline', color: 'rgb(223,204,153)'  , fontWeight: 'bold'}}>𝓟𝓮𝓽 𝓢𝓱𝓪𝓻𝓮</div>
+                        <img src={Logo} alt={"Logo"} className={classes.Logo}></img>
+                        {/* <div style={{fontSize: '20px' , marginLeft:'10px', textDecoration: 'underline', color: 'rgb(223,204,153)'  , fontWeight: 'bold'}}>𝓟𝓮𝓽 𝓢𝓱𝓪𝓻𝓮</div> */}
                     </NavLink>
                 
                     <div className={classes.Search}>
