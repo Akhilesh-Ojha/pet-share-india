@@ -23,7 +23,8 @@ class RichText extends Component {
         this.editor = this.richTextContainer.contentWindow.document;
         this.editor.designMode = 'On';
         // let body = this.editor.querySelector('body')
-        // body.style.color = "white"
+        // body.style.height = "1px";
+        // body.style.height = (25 + body.scrollHeight) + "px";
         // this.editor.getElementsByTagName('body')[0].innerHTML = this.props.description
     }
    

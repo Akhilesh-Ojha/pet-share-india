@@ -116,14 +116,16 @@
 // }
 
 .TextArea{
-    height: 320px;
+    min-height: 320px;
     margin: 10px 0;
     background-color: transparent;
     border: 0;
     border-bottom: 2px solid rgba(223,204,153, 1)  ;
     // padding: 10px;
     width: 100%;
-    // overflow-y: auto;
+    height: auto;
+    // overflow: hidden;
+    overflow-y: hidden;
     // max-width: 500px;
     // margin-top: 0;
     // margin-bottom: 0;
@@ -136,7 +138,7 @@
 
 @media screen and (max-width: 600px) {
     .TextArea {
-        height: 120px;
+        min-height: 120px;
     }  
 }
 

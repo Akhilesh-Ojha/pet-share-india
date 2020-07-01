@@ -180,18 +180,18 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
 .Container .ServiceBox i {
     position: absolute;
     left: 40px;
-    top: 60px;
+    top: 50px;
     font-size: 50px;
     font-weight: 800;
     z-index: 1;
-    opacity: 0;
+    opacity: 0.4;
     transition: 0.5s;
 }
 
 .Container .ServiceBox:hover i {
     opacity: 1;
     color: #fff;
-    transform: translateY(-55px);
+    transform: translateY(-50px);
 }
 
 .Container .ServiceBox h3{

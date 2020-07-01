@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import classes from './EditPetDetails.module.scss';
-import RichTextEditor from '../../../components/RichTextEditor/RichTextEditor';
+// import RichTextEditor from '../../../components/RichTextEditor/RichTextEditor';
 import axios from '../../../axios';
+import QuillEditor from '../../../components/RichTextEditor/QuillEditor';
 import { NavLink } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import imageCompression from 'browser-image-compression';
@@ -24,6 +25,7 @@ class EditPetDetails extends Component {
     getPetDetailsData() {
         axios.get( '/api/v1/blogs/' +  this.props.match.params.id  ,  { headers: {"Authorization" : this.props.accessToken}} )
         .then(response => {
+            console.log('Description', response.data.data.Blog);
             let petDetails = response.data.data.Blog;
             this.setState({
                 title: petDetails.title,
@@ -63,13 +65,19 @@ class EditPetDetails extends Component {
         })
     }
 
+    onEditorChange = event => {
+        console.log('EVE',event);
+        this.setState({
+            description: event
+        })
+    }
     
 
-    handleSubmit = ((event) => {
+    handleSubmit = (event) => {
         let formData = new FormData();
         let data = {
             'title': this.state.title,
-            'description': event,
+            'description': this.state.description,
             'shortDesc': this.state.shortDesc,
             'id': this.props.match.params.id
         }
@@ -92,7 +100,7 @@ class EditPetDetails extends Component {
         }).catch(error => {
             toast.error('There is some error in editing Blog ' + error);
         });
-    });
+    };
 
     render() {
         let uploadFileText = null;
@@ -104,7 +112,7 @@ class EditPetDetails extends Component {
                 <div className={classes.Bg}>
                     <div className={classes.Wrapper}>
                             <NavLink style={{textDecoration: 'none' , color: 'rgba(223,204,153, 1)'} } to={{pathname: '/blogs'}}>
-                                <i style={{fontSize: '30px'}} className="fa fa-arrow-left" aria-hidden="true"></i>
+                                <i style={{fontSize: '30px' , marginTop: '100px'}} className="fa fa-arrow-left" aria-hidden="true"></i>
                             </NavLink>
                         <div className={classes.ContactForm}>
                                 <div className={classes.InputFields}>
@@ -117,7 +125,15 @@ class EditPetDetails extends Component {
                                     {uploadFileText}
                                 </div>
                                 <div className={classes.Msg}>
-                                    <RichTextEditor sendDataToParent={this.handleSubmit} description={this.state.description} title={this.state.title} shortDesc={this.state.shortDesc}/>
+
+                                    <QuillEditor placeholder={"Post you Blog"}
+                                        onEditorChange={this.onEditorChange}
+                                        description={this.state.description}
+                                        title={this.state.title} shortDesc={this.state.shortDesc}
+                                        // onFilesChange={this.onFilesChange}   
+                                    />
+
+                                    <button className={classes.SubmitButton} onClick={(e) => this.handleSubmit(e)}>Edit Blog</button>
                                 </div>
                         </div>
                     </div>

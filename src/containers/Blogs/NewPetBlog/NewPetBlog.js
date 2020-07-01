@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './NewPetBlog.module.scss';
-import RichTextEditor from '../../../components/RichTextEditor/RichTextEditor';
+// import RichTextEditor from '../../../components/RichTextEditor/RichTextEditor';
+import QuillEditor from '../../../components/RichTextEditor/QuillEditor';
 import axios from '../../../axios';
 import { NavLink } from 'react-router-dom';
 import imageCompression from 'browser-image-compression';
@@ -53,18 +54,29 @@ class NewPetBlog extends Component {
         })
     }
 
-    handleSubmit = ((event) => {
+    onEditorChange = event => {
+        this.setState({
+            description: event
+        })
+    }
+
+    // onFilesChange = event => {
+    //     console.log('FILE EVENT', event);
+    // }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
         let formData = new FormData();
         let data = {
             'title': this.state.title,
-            'description': event,
+            'description': this.state.description,
             'shortDesc': this.state.shortDesc,
             'cookie': 0
         }
         formData.append('image', this.state.selectedFile);
         formData.append('data', JSON.stringify(data));
 
-        if(this.state.title === '' || this.state.shortDesc === '' || event === '' || this.state.selectedFile === null ) {
+        if(this.state.title === '' || this.state.shortDesc === '' || this.state.description === '' || this.state.selectedFile === null ) {
             toast.error('Please fill all the details');
         } else {
             toast.info('Hang On! Uploading Blog...');
@@ -82,7 +94,7 @@ class NewPetBlog extends Component {
                 toast.error('There is some error posting Blog ' + error);
             });
         }
-    })
+    };
 
     render() {
         let uploadFileText = null;
@@ -94,7 +106,7 @@ class NewPetBlog extends Component {
                 <div className={classes.Bg}>
                     <div className={classes.Wrapper}>
                         <NavLink style={{textDecoration: 'none' , color: 'rgba(223,204,153, 1)'} } to={{pathname: '/blogs'}}>
-                            <i style={{fontSize: '30px'}} className="fa fa-arrow-left" aria-hidden="true"></i>
+                            <i style={{fontSize: '30px', marginTop: '100px'}} className="fa fa-arrow-left" aria-hidden="true"></i>
                         </NavLink>
                         <div className={classes.ContactForm}>
                             
@@ -108,7 +120,13 @@ class NewPetBlog extends Component {
                                 {uploadFileText}
                             </div>
                             <div className={classes.Msg}>
-                                <RichTextEditor sendDataToParent={this.handleSubmit}/>
+                                <QuillEditor placeholder={"Post you Blog"}
+                                onEditorChange={this.onEditorChange}
+                                // onFilesChange={this.onFilesChange}
+                                />
+
+                                <button className={classes.SubmitButton} onClick={(e) => this.handleSubmit(e)}>Publish</button>
+                                {/* <RichTextEditor sendDataToParent={this.handleSubmit}/> */}
                             </div>
                         </div>
                     </div>

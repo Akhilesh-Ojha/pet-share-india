@@ -1,29 +1,29 @@
 .Bg {
-    
-    // background-image: url(../../../assets/pet11.jpg);
     background-position: top center;
     min-height: 100vh;
     background: rgba(0,0,0,0.8);
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    padding-top: 100px
 }
 
 
 .Wrapper{
-    position: absolute;
-    top: 50%;
+    // position: absolute;
+    // top: 100px;
+    // display: flex;
+    // flex-direction: column
+    
     width: 100%;
-    // background: rgba(0,0,0,0.8);
-    transform: translateY(-50%);
+    // transform: translateY(100px);
+    // display: flex;
+    // align-self: center;
     padding: 0 20px;
 }
 
 .ContactForm {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
-    // background: rgba(0,0,0,0.8);
     background:#F8F8FF;
     padding: 30px;
     border-radius: 5px;
@@ -33,8 +33,6 @@
 
 .InputFields {
     display: flex;
-    
-    // background: rgba(0,0,0,0.7);
     flex-direction: column;
     margin-right: 4%;
     outline: none;
@@ -43,6 +41,38 @@
 }
 .Msg {
     flex: 1.5;
+}
+
+.Msg .SubmitButton {
+    background: rgba(223,204,153, 0.7);
+    text-align: center;
+    width: 50%;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 20px; 
+    // border: none;
+    // padding: 5px 25px;
+    // color: #5a5757;
+    margin: 5px auto;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    // font-size: 25px;
+    // outline: none;
+    cursor: pointer;
+    // border-radius: 100px;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 2px rgba(0,0,0,.2);
+    }
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    }
 }
 
 .InputFields , .Msg {
@@ -56,13 +86,12 @@
     border: 0;
     border-bottom: 2px solid rgba(223,204,153, 1)  ;
     padding: 10px;
-    // color: rgba(223,204,153, 1) ;
-    width: 100%;
     color: black;
+    width: 100%;
+
 }
 
 .Change::-webkit-input-placeholder {
-    /* WebKit, Blink, Edge */
     color: rgba(223,204,153, 1) ;
 }
 
@@ -71,10 +100,8 @@
     background: transparent;
     text-transform: uppercase;
     font-size: 20px;
-    // border: 0;
     border: 2px solid rgba(223,204,153, 1);
     padding: 10px;
-    // color: #c5ecfd;
     color: rgba(223,204,153, 1) ;
     width: 100%;
     cursor: pointer;
@@ -87,6 +114,7 @@
         box-shadow: 0 5px 10px rgba(0,0,0,.2);
     }
 }
+
 
 
 @media screen and (max-width: 600px) {
@@ -117,4 +145,9 @@
     .InputFields .InputButton {
         font-size: 14px;
     }
+
+    .Loader {
+        left:'20%';
+    }
+    
 }

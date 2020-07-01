@@ -9,10 +9,15 @@
 
 
 .Wrapper{
-    position: absolute;
-    top: 50%;
+    // position: absolute;
+    // top: 100px;
+    // display: flex;
+    // flex-direction: column
+    
     width: 100%;
-    transform: translateY(-50%);
+    // transform: translateY(100px);
+    // display: flex;
+    // align-self: center;
     padding: 0 20px;
 }
 
@@ -36,6 +41,38 @@
 }
 .Msg {
     flex: 1.5;
+}
+
+.Msg .SubmitButton {
+    background: rgba(223,204,153, 0.7);
+    text-align: center;
+    width: 50%;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 20px; 
+    // border: none;
+    // padding: 5px 25px;
+    // color: #5a5757;
+    margin: 5px auto;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    // font-size: 25px;
+    // outline: none;
+    cursor: pointer;
+    // border-radius: 100px;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 2px rgba(0,0,0,.2);
+    }
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    }
 }
 
 .InputFields , .Msg {
