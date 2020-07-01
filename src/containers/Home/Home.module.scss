@@ -226,6 +226,10 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
         margin: 20px auto;
     }
 
+    .Container .ServiceBox:last-child {
+        margin-bottom: 0px;
+    }
+
     
     .Services h1 {
         font-size: 25px;
@@ -390,7 +394,13 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
 
 .Clients {
     min-height: 100vh;
-    background-color: rgba(	223,204,153, 0.7) ;
+    
+    // background-image: url(../../assets/client.jpg);
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(to right  bottom, rgba(	223,204,153, 0.5) ,  rgba(	223,204,153, 0.3))
+            , url(../../assets/client.jpg);
+    // background-color: rgba(	223,204,153, 0.7) ;
     overflow: hidden;
     // display: flex;
 }
@@ -410,6 +420,7 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
 
 .Testimonial {
     background: #f5f5f5;
+    opacity: 0.8;
     text-align: center;
     padding: 30px 30px 50px;
     margin: 0 15px 100px;
@@ -474,6 +485,8 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
     overflow: hidden;
     z-index: 1;
     position: relative;
+    width: 100px;
+    height: 100px;
 }
 .Testimonial .Pic img{
     width: 100%;
@@ -487,13 +500,17 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
     margin: 0 0 5px 0;
 }
 
-.Pic img {
-    width: 100px!important;
-    height: 100px!important;
-}
+// .Pic img {
+//     width: 100px!important;
+//     height: 100px!important;
+// }
 
 
 @media(max-width: 500px) {
+
+    .Clients {
+        min-height: 90vh;
+    }
 
     .Clients h1 {
         font-size: 20px;
@@ -501,6 +518,11 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
 
     .Testimonial {
         margin: 60px 0;
+    }
+
+    .Testimonial .Pic{
+        width: 90px;
+    height: 90px;
     }
 
     .Testimonial .Desc{
