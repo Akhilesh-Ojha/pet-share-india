@@ -184,7 +184,7 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
     font-size: 50px;
     font-weight: 800;
     z-index: 1;
-    opacity: 0.4;
+    opacity: 0;
     transition: 0.5s;
 }
 
@@ -390,8 +390,131 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
 
 .Clients {
     min-height: 100vh;
-    background-color: #fff;
+    background-color: rgba(	223,204,153, 0.7) ;
+    overflow: hidden;
+    // display: flex;
 }
+
+.Clients h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    // margin-left: 12%;
+}
+
+.Testimonial {
+    background: #f5f5f5;
+    text-align: center;
+    padding: 30px 30px 50px;
+    margin: 0 15px 100px;
+    
+    position: relative;
+    margin-top: 80px;
+
+    
+
+}
+
+
+
+
+.Testimonial:before,
+.Testimonial:after{
+    content: "";
+    // border-top: 40px solid #f5f5f5;
+    // border-right: 125px solid transparent;
+    position: absolute;
+    bottom: -40px;
+    left: 0px;
+}
+.Testimonial:after{
+    border-right: none;
+    border-left: 125px solid transparent;
+    left: auto;
+    right: 0;
+}
+.Testimonial span{
+    display: inline-block;
+    font-size: 80px;
+    color: #bd986b;
+    margin-bottom: 20px;
+    opacity: 0.6;
+}
+
+.Testimonial .Desc{
+    font-size: 16px;
+    color: #777;
+    text-align: justify;
+    // margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    word-wrap: break-word;
+    // padding-right: 30px;
+    padding:0 40px;
+    // margin-bottom: 30px;
+    opacity: 0.9;
+    letter-spacing: -1px;
+}
+.Testimonial .TestimonialContent{
+    width: 100%;
+    position: absolute;
+    left: 0;
+}
+.Testimonial .Pic{
+    display: inline-block;
+    border: 6px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 2px #daad86;
+    overflow: hidden;
+    z-index: 1;
+    position: relative;
+}
+.Testimonial .Pic img{
+    width: 100%;
+    height: auto;
+}
+.Testimonial .Title{
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: capitalize;
+    margin: 0 0 5px 0;
+}
+
+.Pic img {
+    width: 100px!important;
+    height: 100px!important;
+}
+
+
+@media(max-width: 500px) {
+
+    .Clients h1 {
+        font-size: 20px;
+    }
+
+    .Testimonial {
+        margin: 60px 0;
+    }
+
+    .Testimonial .Desc{
+        font-size: 12px;
+        
+    }
+
+}
+
+// .Testimonial .post{
+//     display: block;
+//     font-size: 14px;
+//     color: #ffd9b8;
+// }
 
 
 

@@ -3,6 +3,11 @@ import classes from './Home.module.scss';
 import BackgroundImage from '../../assets/background.jpg';
 import { NavLink }  from 'react-router-dom';
 import Aux from '../../hoc/Auxx';
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import Pet1 from '../../assets/pic1.jpg';
 import Pet2 from '../../assets/pic2.jpg';
 import Pet3 from '../../assets/pic3.jpg';
@@ -14,6 +19,13 @@ class Home extends Component {
         window.scrollTo(0,0);
     }
     render() {
+        var settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        };
         return(
             <Aux>
                 <section className={classes.Banner}>
@@ -106,7 +118,7 @@ class Home extends Component {
                             <div className={classes.ServiceBox}>
                                 <i className="fa fa-paw" aria-hidden="true"></i>
                                 <h3>Service Two</h3>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting </p>
 
                             </div>
 
@@ -121,9 +133,84 @@ class Home extends Component {
                    
                 </section>
 
+            
                 <section className={classes.Clients}>
-                    
-                   
+                    <h1>We make people genuinely happy</h1>
+                <Slider {...settings}>
+                                    <div className={classes.Testimonial}>
+                                        <span className="icon fa fa-quote-left"> </span>
+
+                                        <p className={classes.Desc}>
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever 
+                                        </p>
+
+                                        <div className={classes.TestimonialContent}>
+                                            <div className={classes.Pic}>
+                                                <img alt="" src={Pet3}></img>
+                                            </div>
+                                            <h3 className={classes.Title}>Akhilesh Ojha</h3>
+                                        </div>
+
+                                        
+                                    </div>
+
+                                    <div className={classes.Testimonial}>
+                                        <span className="icon fa fa-quote-left"> </span>
+
+                                        <p className={classes.Desc}>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                        </p>
+
+                                        <div className={classes.TestimonialContent}>
+                                            <div className={classes.Pic}>
+                                                <img alt="" src={Pet4}></img>
+                                            </div>
+                                            <h3 className={classes.Title}>Shubham Singh</h3>
+                                        </div>
+
+                                        
+                                    </div>
+
+                                    <div className={classes.Testimonial}>
+                                        <span className="icon fa fa-quote-left"> </span>
+
+                                        <p className={classes.Desc}>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                        </p>
+
+                                        <div className={classes.TestimonialContent}>
+                                            <div className={classes.Pic}>
+                                                <img alt="" src={Pet2}></img>
+                                            </div>
+                                            <h3 className={classes.Title}>Yatin</h3>
+                                        </div>
+
+                                        
+                                    </div>
+
+                                    <div className={classes.Testimonial}>
+                                        <span className="icon fa fa-quote-left"> </span>
+
+                                        <p className={classes.Desc}>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                        </p>
+
+                                        <div className={classes.TestimonialContent}>
+                                            <div className={classes.Pic}>
+                                                <img alt="" src={Pet1}></img>
+                                            </div>
+                                            <h3 className={classes.Title}>Agam Gupta</h3>
+                                        </div>
+
+                                        
+                                    </div>
+                    </Slider>
+                                    
+
+                                    
+
+                                    
+        
                 </section>
 
                 {/* <section className={classes.Works}>
@@ -224,4 +311,5 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default Home;
+
