@@ -129,7 +129,7 @@ class Toolbar extends Component {
                     {/* <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs/user'}}>
                         <p className={classes.Links}>Your Blogs</p>
                     </NavLink> */}
-                    <p style={{fontSize: '20px', fontWeight:'500' ,marginRight: '5px', display:'flex', alignSelf:'center' , color: 'rgba(223,204,153, 1)' }}>Hey, {name} </p>
+                    <p style={{fontSize: '20px', fontWeight:'500' ,marginRight: '5px', display:'flex', alignSelf:'center' , color: '#2D3F47' }}>Hey, {name} </p>
                     <div style={{display: 'flex' , flexDirection: "column"}}>
                         {imageButton}
                     </div>

@@ -19,6 +19,16 @@ code {
 
 }
 
+.slick-next {
+  right: 16px!important;
+}
+.slick-prev {
+  left: 16px!important;
+}
+.slick-dots {
+
+  bottom: -33px!important;
+}
 
 *,
 *::after,

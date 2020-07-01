@@ -158,7 +158,7 @@ class Home extends Component {
                                         <span className="icon fa fa-quote-left"> </span>
 
                                         <p className={classes.Desc}>
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever 
                                         </p>
 
                                         <div className={classes.TestimonialContent}>
