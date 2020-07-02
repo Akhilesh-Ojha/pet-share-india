@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import classes from './Home.module.scss';
 import BackgroundImage from '../../assets/background.jpg';
 import { NavLink }  from 'react-router-dom';
-import Aux from '../../hoc/Auxx';
+// import Aux from '../../hoc/Auxx';
+
+import Aos from 'aos';
+import "aos/dist/aos.css";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -17,6 +20,7 @@ import Pet4 from '../../assets/pic4.jpg';
 class Home extends Component {
     componentDidMount() {
         window.scrollTo(0,0);
+        Aos.init({duration: 1000});
     }
     render() {
         var settings = {
@@ -55,7 +59,7 @@ class Home extends Component {
               ]
         };
         return(
-            <Aux>
+            <div className={classes.Main}>
                 <section className={classes.Banner}>
 
 
@@ -78,9 +82,9 @@ class Home extends Component {
 
 
                 <section className={classes.Card}>
-                    <h1>Our friends looking for a home</h1>
+                    <h1 data-aos="zoom-in">Our friends looking for a home</h1>
                     <div className={classes.PetList}>
-                        <div className={classes.PetBox}>
+                        <div data-aos="fade-right" className={classes.PetBox}>
                             <div className={classes.ImgBox}>
                                 <img src={Pet4} alt="" className={classes.FitBg}></img>
                             </div>
@@ -91,7 +95,7 @@ class Home extends Component {
                             </div>
                         </div>
 
-                        <div className={classes.PetBox}>
+                        <div data-aos="fade-up" className={classes.PetBox}>
                             <div className={classes.ImgBox}>
                             <img alt="" src={Pet2} className={classes.FitBg}></img>
                             </div>
@@ -102,7 +106,7 @@ class Home extends Component {
                             </div>
                         </div>
 
-                        <div className={classes.PetBox}>
+                        <div  data-aos="fade-up" className={classes.PetBox}>
                             <div className={classes.ImgBox}>
                             <img alt="" src={Pet1} className={classes.FitBg}></img>
                             </div>
@@ -113,19 +117,19 @@ class Home extends Component {
                             </div>
                         </div>
 
-                        <div className={classes.PetBox}>
+                        <div data-aos="fade-left" className={classes.PetBox}>
                             <div className={classes.ImgBox}>
                             <img alt="" src={Pet3} className={classes.FitBg}></img>
                             </div>
 
-                            <div className={classes.ContentBox}>
+                            <div  className={classes.ContentBox}>
                                 <h2> Leo </h2>
                                 <p>G Shephard | <span>2 year | </span> <span>Male</span></p>
                             </div>
                         </div>
                     </div> 
                     <div>
-                        <button className={classes.Button}>Browse All</button>
+                        <button data-aos="flip-right"  className={classes.Button}>Browse All</button>
                     </div>
 
                 </section>
@@ -133,24 +137,24 @@ class Home extends Component {
 
                 
                 <section className={classes.Services}>
-                    <h1>Services That we provide</h1>
+                    <h1 data-aos="zoom-in">Services That we provide</h1>
                     <div className={classes.OurServices}>
                         <div className={classes.Container}>
-                            <div className={classes.ServiceBox}>
+                            <div data-aos="fade-right"  className={classes.ServiceBox}>
                                 <i className="fa fa-home" aria-hidden="true"></i>
                                 <h3>Service One</h3>
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
 
                             </div>
 
-                            <div className={classes.ServiceBox}>
+                            <div data-aos="fade-up"  className={classes.ServiceBox}>
                                 <i className="fa fa-paw" aria-hidden="true"></i>
                                 <h3>Service Two</h3>
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting </p>
 
                             </div>
 
-                            <div className={classes.ServiceBox}>
+                            <div data-aos="fade-left"  className={classes.ServiceBox}>
                                 <i className="fa fa-heart-o" aria-hidden="true"></i>
                                 <h3>Service Three</h3>
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
@@ -163,9 +167,9 @@ class Home extends Component {
 
             
                 <section className={classes.Clients}>
-                    <h1>We make people genuinely happy</h1>
+                    <h1 data-aos="zoom-in">We make people genuinely happy</h1>
                 <Slider ref={slider => this.slider = slider} {...settings}>
-                                    <div className={classes.Testimonial}>
+                                    <div data-aos="fade-right"   className={classes.Testimonial}>
                                         <span className="icon fa fa-quote-left"> </span>
 
                                         <p className={classes.Desc}>
@@ -182,7 +186,7 @@ class Home extends Component {
                                         
                                     </div>
 
-                                    <div className={classes.Testimonial}>
+                                    <div data-aos="fade-up"   className={classes.Testimonial}>
                                         <span className="icon fa fa-quote-left"> </span>
 
                                         <p className={classes.Desc}>
@@ -199,7 +203,7 @@ class Home extends Component {
                                         
                                     </div>
 
-                                    <div className={classes.Testimonial}>
+                                    <div data-aos="fade-left"   className={classes.Testimonial}>
                                         <span className="icon fa fa-quote-left"> </span>
 
                                         <p className={classes.Desc}>
@@ -216,7 +220,7 @@ class Home extends Component {
                                         
                                     </div>
 
-                                    <div className={classes.Testimonial}>
+                                    <div  data-aos="fade-left" className={classes.Testimonial}>
                                         <span className="icon fa fa-quote-left"> </span>
 
                                         <p className={classes.Desc}>
@@ -327,14 +331,17 @@ class Home extends Component {
                     
                 </section> */}
 
-                <section className={classes.Footer}>
-                    <h2>Connect with us</h2>
+                <section   className={classes.Footer}>
+                    <h2 data-aos="zoom-in">Connect with us</h2>
                     <ul className={classes.Social}>
-                        <li ><a style={{color: '#313030'}}  href="https://www.instagram.com/petshare.india/" rel="noopener noreferrer" target="_blank"><i className="fa fa-instagram" aria-hidden="true"></i>.</a></li>
-                        <li><a style={{color: '#313030'}} href="https://www.facebook.com/PetShare-102464238147788/?ref=br_rs" rel="noopener noreferrer" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i>.</a></li>
+                        {/* <div style={{display: 'inline-block'}}> */}
+                            <li ><a style={{color: '#313030'}} href="https://www.instagram.com/petshare.india/" rel="noopener noreferrer" target="_blank"><i className="fa fa-instagram" aria-hidden="true"></i>.</a></li>
+                            <li  ><a style={{color: '#313030'}} href="https://www.facebook.com/PetShare-102464238147788/?ref=br_rs" rel="noopener noreferrer" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i>.</a></li>
+
+                        {/* </div> */}
                     </ul>
                 </section>
-            </Aux>
+            </div>
         )
     }
 }
