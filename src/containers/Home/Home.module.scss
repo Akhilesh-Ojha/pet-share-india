@@ -400,16 +400,13 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
 
 
 .Clients {
-    min-height: 100vh;
-    
-    // background-image: url(../../assets/client.jpg);
+    min-height: 100vh;    
     background-position: center;
     background-size: cover;
     background-image: linear-gradient(to right  bottom, rgba(	223,204,153, 0.5) ,  rgba(	223,204,153, 0.3))
             , url(../../assets/client.jpg);
-    // background-color: rgba(	223,204,153, 0.7) ;
     overflow: hidden;
-    // display: flex;
+    padding: 50px;
 }
 
 .Clients h1 {
@@ -430,11 +427,12 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
     opacity: 0.8;
     text-align: center;
     padding: 30px 30px 50px;
-    margin: 0 15px 100px;
-    
+    border: 10px solid  rgba(	223,204,153, 0.4);
     position: relative;
     margin-top: 80px;
-    max-height: 400px;
+    margin-bottom: 100px;
+    // box-shadow: 0 10px 20px rgba(0,0,0,.2);
+    // max-height: 400px;
     
 
 }
@@ -442,21 +440,22 @@ background-image: linear-gradient(315deg, #e2ac6b 0%, #cba36d 74%);
 
 
 
-.Testimonial:before,
-.Testimonial:after{
-    content: "";
-    // border-top: 40px solid #f5f5f5;
-    // border-right: 125px solid transparent;
-    position: absolute;
-    bottom: -40px;
-    left: 0px;
-}
-.Testimonial:after{
-    border-right: none;
-    border-left: 125px solid transparent;
-    left: auto;
-    right: 0;
-}
+// .Testimonial:before,
+// .Testimonial:after{
+//     content: "";
+//     // border-top: 40px solid #f5f5f5;
+//     // border-right: 125px solid transparent;
+//     position: absolute;
+//     bottom: -40px;
+//     left: 0px;
+// }
+// .Testimonial:after{
+//     border-right: none;
+//     border-left: 125px solid transparent;
+//     left: auto;
+//     right: 0;
+// }
+
 .Testimonial span{
     display: inline-block;
     font-size: 60px;

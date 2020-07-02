@@ -23,8 +23,36 @@ class Home extends Component {
             dots: true,
             infinite: true,
             speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            adaptiveHeight: true,
+            initialSlide: 0,
+            responsive: [
+                {
+                  breakpoint: 1024,
+                  settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                  }
+                },
+                {
+                  breakpoint: 900,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                  }
+                },
+                {
+                  breakpoint: 650,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                  }
+                }
+              ]
         };
         return(
             <Aux>
@@ -136,7 +164,7 @@ class Home extends Component {
             
                 <section className={classes.Clients}>
                     <h1>We make people genuinely happy</h1>
-                <Slider {...settings}>
+                <Slider ref={slider => this.slider = slider} {...settings}>
                                     <div className={classes.Testimonial}>
                                         <span className="icon fa fa-quote-left"> </span>
 
@@ -302,8 +330,8 @@ class Home extends Component {
                 <section className={classes.Footer}>
                     <h2>Connect with us</h2>
                     <ul className={classes.Social}>
-                        <li ><a href="https://www.instagram.com/petshare.india/" rel="noopener noreferrer" target="_blank"><i className="fa fa-instagram" aria-hidden="true"></i></a></li>
-                        <li><a href="https://www.facebook.com/PetShare-102464238147788/?ref=br_rs" rel="noopener noreferrer" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li ><a style={{color: '#313030'}}  href="https://www.instagram.com/petshare.india/" rel="noopener noreferrer" target="_blank"><i className="fa fa-instagram" aria-hidden="true"></i>.</a></li>
+                        <li><a style={{color: '#313030'}} href="https://www.facebook.com/PetShare-102464238147788/?ref=br_rs" rel="noopener noreferrer" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i>.</a></li>
                     </ul>
                 </section>
             </Aux>
