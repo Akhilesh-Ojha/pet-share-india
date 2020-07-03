@@ -68,9 +68,11 @@ class Home extends Component {
                         <div className={classes.Box1}>
                             Adoption
                         </div>
-                        <div className={classes.Box}>
-                            Put up for adoption
-                        </div>
+                        <NavLink style={{textDecoration: 'none'}} to={{pathname: '/put-for-adoption'}}>
+                            <div className={classes.Box}>
+                                Put up for adoption
+                            </div>
+                        </NavLink>
                         <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs'}}>
                             <div className={classes.Box}>
                                 Blogs
@@ -129,7 +131,7 @@ class Home extends Component {
                         </div>
                     </div> 
                     <div>
-                        <button data-aos="flip-right"  className={classes.Button}>Browse All</button>
+                        <button  className={classes.Button}>Browse All</button>
                     </div>
 
                 </section>

@@ -17,12 +17,24 @@ class NewPetBlog extends Component {
         description: '',
         shortDesc: '',
         selectedFile: null,
+        selectedFile2: null,
         postedData: null,
+        date: ''
         
     }
 
+    
     componentDidMount() {
         window.scrollTo(0,0);
+
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+        ];
+        let today = new Date(),
+            date = (monthNames[today.getMonth()] + ' '  + today.getDate()) 
+            this.setState({
+                date: date
+            })
     }
     
     fileSelectedHandler = event => {
@@ -60,9 +72,7 @@ class NewPetBlog extends Component {
         })
     }
 
-    // onFilesChange = event => {
-    //     console.log('FILE EVENT', event);
-    // }
+    
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -71,16 +81,18 @@ class NewPetBlog extends Component {
             'title': this.state.title,
             'description': this.state.description,
             'shortDesc': this.state.shortDesc,
-            'cookie': 0
+            'cookie': 0,
+            'date': this.state.date
         }
-        formData.append('image', this.state.selectedFile);
+        formData.append('images', this.state.selectedFile);
         formData.append('data', JSON.stringify(data));
 
         if(this.state.title === '' || this.state.shortDesc === '' || this.state.description === '' || this.state.selectedFile === null ) {
             toast.error('Please fill all the details');
         } else {
             toast.info('Hang On! Uploading Blog...');
-            axios.post('/api/v1/blogs' , formData ,  { headers: {"Authorization" : this.props.accessToken}}).then(res => {
+            
+            axios.post('/api/v1/blogs' , formData ,  { headers: {"Authorization" : this.props.accessToken , "Content-type": "multipart/form-data"} }).then(res => {
                 toast.dismiss();
                 this.setState({
                     postedData: res.data.data,
@@ -91,6 +103,7 @@ class NewPetBlog extends Component {
                 })
                 this.props.history.push('/blogs');
             }).catch(error => {
+                toast.dismiss();
                 toast.error('There is some error posting Blog ' + error);
             });
         }
@@ -100,7 +113,7 @@ class NewPetBlog extends Component {
         let uploadFileText = null;
 
         if(this.state.selectedFile) {
-            uploadFileText = (<span style={{display: 'block', color: 'black', fontSize: '16px', marginTop:'10px'}}>UPLOADED IMAGE: {this.state.selectedFile.name} </span>)
+            // uploadFileText = (<span style={{display: 'block', color: 'black', fontSize: '16px', marginTop:'10px'}}>UPLOADED IMAGE: {this.state.selectedFile[0].name} </span>)
         }
         let form = (
                 <div className={classes.Bg}>
@@ -116,7 +129,7 @@ class NewPetBlog extends Component {
                                 <input className={classes.Change} type="text" maxLength="250" onChange={this.inputDescHandler} value={this.state.shortDesc}  placeholder="Enter a Short Description"/>
 
                                 <input style={{display: 'none'}} type="file" onChange={this.fileSelectedHandler} ref={fileInput => this.fileInput = fileInput}></input>
-                                <button className={classes.InputButton} onClick={() => this.fileInput.click()}>Upload Image</button>
+                                <button className={classes.InputButton}  onClick={() => this.fileInput.click()}>Upload Image</button>
                                 {uploadFileText}
                             </div>
                             <div className={classes.Msg}>

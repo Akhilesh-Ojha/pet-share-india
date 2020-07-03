@@ -98,6 +98,7 @@ class EditPetDetails extends Component {
             })
             this.props.history.push('/blogs');
         }).catch(error => {
+            toast.dismiss();
             toast.error('There is some error in editing Blog ' + error);
         });
     };

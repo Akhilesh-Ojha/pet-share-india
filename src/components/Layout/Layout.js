@@ -7,6 +7,7 @@ import Toolbar from '../../components/Toolbar/Toolbar';
 import Home from '../../containers/Home/Home';
 import axios from '../../axios';
 import { withRouter }  from 'react-router-dom';
+import PutForAdoption from '../../containers/PutForAdoption/PutForAdoption';
 
 class Layout extends Component {
 
@@ -15,7 +16,7 @@ class Layout extends Component {
         this.state = {
             loggedInStatus: "Not_Logged_In",
             user: {},
-            accessToken: ''
+            accessToken: sessionStorage.getItem('accessToken') ? sessionStorage.getItem('accessToken') : ''
         }
     }
 
@@ -28,13 +29,13 @@ class Layout extends Component {
             accessToken: response.data.access_token
         })
     }
-
+    
     handleLogout = () => {
         this.setState({
             loggedInStatus: "Not_Logged_In",
             user: {},
             accessToken: ''
-        })
+        });
     }
 
     checkLoginStatus = () => {
@@ -98,6 +99,14 @@ class Layout extends Component {
                             exact
                             render={ props => (
                             <Auth {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.loggedInStatus} />
+                            )}
+                        />
+
+                        <Route 
+                            path={"/put-for-adoption"} 
+                            exact
+                            render={ props => (
+                                <PutForAdoption {...props} accessToken={this.state.accessToken}/>
                             )}
                         />
                     </Switch>

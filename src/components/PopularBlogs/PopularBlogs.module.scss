@@ -1,0 +1,158 @@
+// .Post {
+//     // margin-bottom: 20px;
+//     border-top: 1px solid #e0e0e0;
+//     display: flex;
+//     margin-top: 10px;
+//     padding-top: 10px;
+// }
+
+// .PopularPostImg {
+//     position: relative;
+//     // width: 500px;
+//     min-width: 60px;
+//     min-height: 60px;
+//     margin-right: 10px;
+// }
+
+// .PopularPostImg img {
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+// }
+
+// h3 {
+//     font-size: 16px;
+//     text-transform: capitalize;
+//     color: #757575;
+// }
+
+
+.Post {
+    position: relative;
+    margin: 10px 10px;
+    
+}
+
+.Post .Face1 {
+    width: 350px;
+    height: 220px;
+    transition: 0.5s;
+
+    @media screen and (max-width: 820px) {
+        width: 100%;
+    }
+
+}
+.Post .Face2 {
+    width: 350px;
+    height: 150px;
+    margin-top: 55px;
+    transition: 0.5s;
+    @media screen and (max-width: 820px) {
+        width: 100%;
+    }
+
+}
+.Post .Face.Face1{
+    position: relative;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.Post:hover .Face.Face2{
+    transform: translateY(0px);
+    margin-top: 0px;
+}
+
+.Post .Face.Face2{
+    position: relative;
+    background: #eee;
+    // border-top: 1px solid #8C8A8C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    padding-top: 5px;
+    transform: translateY(-170px);
+
+    @media screen and (max-width: 950px) {
+        transform: translateY(0px);
+        margin-top: 0px;
+    }
+    
+    
+}
+
+
+.Post .Face.Face2 .Content p {
+    margin:0;
+    padding:0;
+}
+
+.Post .Face.Face2 .Content .Author{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-weight: 500;
+    // margin-top: 25px;
+    // float: right;
+}
+
+
+
+.Post .Face.Face1 .Content {
+    transition: 0.5s;
+    
+    
+}
+
+
+.Post .Face.Face1 .Content .PopularPostImg {
+    position: relative;
+    // width: 500px;
+    width: 350px;
+    height: 150px;
+    margin: 0 auto;
+
+    // @media screen and (max-width: 820px) {
+    //     width: 100%;
+    // }
+
+}
+
+.Post .Face.Face1 .Content .PopularPostImg img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+// .Post:hover .Face.Face1 .Content .PopularPostImg {
+//     max-width: 100px;
+//     max-height: 100px;
+// }
+
+.Post .Face.Face1 .Content h3{
+    margin: 10px 0 0;
+    padding: 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-transform: capitalize ;
+}
+
+// .Post .Face.Face1 .Content img {
+//     width: 200px;
+//     height: 200px;
+// }
+

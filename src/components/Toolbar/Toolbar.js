@@ -5,10 +5,13 @@ import { NavLink , withRouter }  from 'react-router-dom';
 import Aux from '../../hoc/Auxx';
 import Logo from '../../assets/Logo.png';
 
+
+
 class Toolbar extends Component {
 
     constructor(props) {
         super(props);
+        
         this.dropDownStyle = null;
         this.state = {
             value: '',
@@ -21,6 +24,7 @@ class Toolbar extends Component {
     }
 
     componentDidMount() {
+        // Aos.init({duration: 1000});
         // var headerDetail = this.header;
         // window.addEventListener('scroll', () => {
         //     headerDetail.classList.toggle("sticky", window.scrollY > 0);
@@ -77,7 +81,7 @@ class Toolbar extends Component {
                 let shortName = this.props.userData.data.data.name.lastIndexOf(' ');
                 name = this.props.userData.data.data.name.substring(0,shortName);
         
-                profilePic = this.props.userData.data.data.picture.data.url;
+                profilePic = this.props.userData.data.data.picture;
             }
     
         }
