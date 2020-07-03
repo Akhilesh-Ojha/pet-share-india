@@ -133,7 +133,7 @@ class FullPetDetails extends Component {
                 popularBlogs = this.state.popularBlogs.map(popularBlog => {
                 return(
                         <NavLink style={{ textDecoration: 'none', color: 'black' }} to={'/blogs/' + popularBlog.id}  key={popularBlog.id} >
-                            <PopularBlogs key={popularBlog.title} author={popularBlog.author} title={popularBlog.title} image={popularBlog.image_url[0]}/>
+                            <PopularBlogs key={popularBlog.title} author={popularBlog.author} title={popularBlog.title} description={popularBlog.shortDesc} image={popularBlog.image_url[0]}/>
                         </NavLink>
                 )
             })

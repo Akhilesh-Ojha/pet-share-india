@@ -19,7 +19,7 @@ const popularBlogCard = (props) => {
                 
                 <div className={`${classes.Face} ${classes.Face2}`}>
                     <div className={classes.Content}>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever</p>
+                    <p>{props.description}</p>
                     <p className={classes.Author}>By - {props.author}</p>
                     {/* <div className={classes.PopularPostImg}>
                         </div> */}
