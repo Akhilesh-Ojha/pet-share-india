@@ -68,8 +68,6 @@ class QuillEditor extends React.Component {
         this.reactQuillRef = null;
 
         this.inputOpenImageRef = React.createRef();
-        this.inputOpenVideoRef = React.createRef();
-        this.inputOpenFileRef = React.createRef();
     }
 
     componentDidMount() {
@@ -172,9 +170,7 @@ class QuillEditor extends React.Component {
                     <select className="ql-size">
                         <option value="extra-small">Size 1</option>
                         <option value="small">Size 2</option>
-                        <option value="medium" selected>
-                            Size 3
-                        </option>
+                        <option value="medium" selected> Size 3 </option>
                         <option value="large">Size 4</option>
                     </select>
                     <button className="ql-code-block" />
@@ -224,7 +220,7 @@ class QuillEditor extends React.Component {
     formats = [
         
         'header', 'header', 'bold', 'italic', 'underline', 'strike', 
-         'align' ,'list' , 'list' ,'indent', 'indent',  'link', "code-block", 'image', "video" , "blockquote", "font", "color", "background", "clean"
+         'align' ,'list' , 'list' ,'indent', 'indent',  'link', "code-block", 'image', "video" , "blockquote", "font", "size" ,"color", "background", "clean"
     ];
 }
 

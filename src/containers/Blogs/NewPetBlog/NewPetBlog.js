@@ -90,7 +90,7 @@ class NewPetBlog extends Component {
         if(this.state.title === '' || this.state.shortDesc === '' || this.state.description === '' || this.state.selectedFile === null ) {
             toast.error('Please fill all the details');
         } else {
-            toast.info('Hang On! Uploading Blog...');
+            toast.info('Hang On! Publishing Blog...');
             
             axios.post('/api/v1/blogs' , formData ,  { headers: {"Authorization" : this.props.accessToken , "Content-type": "multipart/form-data"} }).then(res => {
                 toast.dismiss();
@@ -113,12 +113,12 @@ class NewPetBlog extends Component {
         let uploadFileText = null;
 
         if(this.state.selectedFile) {
-            // uploadFileText = (<span style={{display: 'block', color: 'black', fontSize: '16px', marginTop:'10px'}}>UPLOADED IMAGE: {this.state.selectedFile[0].name} </span>)
+            uploadFileText = (<span style={{display: 'block', color: '#2D3F47', fontSize: '16px', marginTop:'10px'}}>UPLOADED IMAGE: {this.state.selectedFile.name} </span>)
         }
         let form = (
                 <div className={classes.Bg}>
                     <div className={classes.Wrapper}>
-                        <NavLink style={{textDecoration: 'none' , color: 'rgba(223,204,153, 1)'} } to={{pathname: '/blogs'}}>
+                        <NavLink style={{textDecoration: 'none' , color: '#f5f5f5'} } to={{pathname: '/blogs'}}>
                             <i style={{fontSize: '30px', marginTop: '100px'}} className="fa fa-arrow-left" aria-hidden="true"></i>
                         </NavLink>
                         <div className={classes.ContactForm}>
@@ -126,7 +126,7 @@ class NewPetBlog extends Component {
                             <div className={classes.InputFields}>
                                 <input className={classes.Change} type="text" maxLength="60" onChange={this.inputTitleHandler} value={this.state.title}  placeholder="Title"/>
 
-                                <input className={classes.Change} type="text" maxLength="250" onChange={this.inputDescHandler} value={this.state.shortDesc}  placeholder="Enter a Short Description"/>
+                                <input className={classes.Change} type="text" maxLength="165" onChange={this.inputDescHandler} value={this.state.shortDesc}  placeholder="Enter a Short Description"/>
 
                                 <input style={{display: 'none'}} type="file" onChange={this.fileSelectedHandler} ref={fileInput => this.fileInput = fileInput}></input>
                                 <button className={classes.InputButton}  onClick={() => this.fileInput.click()}>Upload Image</button>

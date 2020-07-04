@@ -6,7 +6,6 @@ import Aux from '../../hoc/Auxx';
 import Logo from '../../assets/Logo.png';
 
 
-
 class Toolbar extends Component {
 
     constructor(props) {
@@ -24,20 +23,21 @@ class Toolbar extends Component {
     }
 
     componentDidMount() {
+        
         // Aos.init({duration: 1000});
-        // var headerDetail = this.header;
-        // window.addEventListener('scroll', () => {
-        //     headerDetail.classList.toggle("sticky", window.scrollY > 0);
-        //     if(window.scrollY > 0) {
-        //         this.setState({
-        //             isSticky: true
-        //         });
-        //     } else if (window.scrollY === 0) {
-        //         this.setState({
-        //             isSticky: false
-        //         });
-        //     }
-        // });
+        var headerDetail = this.header;
+        window.addEventListener('scroll', () => {
+            headerDetail.classList.toggle("sticky", window.scrollY > 0);
+            if(window.scrollY > 0) {
+                this.setState({
+                    isSticky: true
+                });
+            } else if (window.scrollY === 0) {
+                this.setState({
+                    isSticky: false
+                });
+            }
+        });
     }
 
     onInptChangeHandler = (event) => {
@@ -67,32 +67,64 @@ class Toolbar extends Component {
     }
 
     render () {
-        console.log('Props in toolbar', this.props);
-        console.log('window', window.location.pathname);
+        let allHomRef =  this.props.lookForHomeRef;
+        let homeRefServiceId;
+        let homeRefClientId;
         let userToken = null;
         let name = '';
         let profilePic = '';
-        if(this.props.userData.data) {
-
-            userToken = this.props.userData.data.access_token;
-
-            if(this.props.userData.data.data.name && this.props.userData.data.data.picture) {
-                
-                let shortName = this.props.userData.data.data.name.lastIndexOf(' ');
-                name = this.props.userData.data.data.name.substring(0,shortName);
-        
-                profilePic = this.props.userData.data.data.picture;
-            }
-    
-        }
-
         let userNav = null;
         let fullContainer = null;
         let authOption = null;
         let seacrhBar = null;
         let imageButton = null;
+        let navListHome = null;
 
-        if(false) {
+        if(allHomRef.homeRefService.current) {
+            homeRefServiceId = allHomRef.homeRefService.current.id;
+        }
+        if(allHomRef.homeRefClient.current) {
+            homeRefClientId = allHomRef.homeRefClient.current.id;
+        }
+
+        if(this.props.userData.data) {
+            userToken = this.props.userData.data.access_token;
+            if(this.props.userData.data.data.name && this.props.userData.data.data.picture) {
+                let shortName = this.props.userData.data.data.name.lastIndexOf(' ');
+                name = this.props.userData.data.data.name.substring(0,shortName);
+                profilePic = this.props.userData.data.data.picture;
+            }
+        }
+
+            if(userToken === null && this.props.location.pathname === '/') {
+                navListHome = (
+                    <Aux>
+                        {/* <a href={'#' + homeRefServiceId} >Our Services</a> */}
+                        {/* <a href={'#' + homeRefServiceId} >Contact Us</a> */}
+                        <NavLink style={{textDecoration: 'none'}} to={{pathname: '/auth'}}>
+                        <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', padding: '8px 16px' ,outline: 'none' }} className={classes.YourBlogs}>Get Started</button>
+                    </NavLink>
+                    </Aux>
+                )
+            } else if (userToken !== null && this.props.location.pathname.indexOf('blogs') > -1 && this.props.location.pathname.indexOf('user') === -1)  {
+                navListHome = (
+                    <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs/user'}}>
+                        <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', padding: '8px 16px' ,outline: 'none' }} className={classes.YourBlogs}>Your Blogs</button>
+                    </NavLink>
+                )
+            } else if(userToken !== null && this.props.location.pathname.indexOf('user') > -1) {
+                navListHome = (
+                    <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs'}}>
+                        <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', padding: '8px 16px' ,outline: 'none' }} className={classes.YourBlogs}>Blogs</button>
+                    </NavLink>
+                )   
+            } else if(this.props.location.pathname.indexOf('auth') > -1 || this.props.location.pathname.indexOf('blogs') > -1) {
+                navListHome = null
+            } else {
+                navListHome = (<p style={{fontSize: '18px', fontWeight:'500' ,marginRight: '20px', display:'flex', alignSelf:'center' , color: '#2D3F47' }}>Hey, {name} </p>)
+            }
+
+        if(this.props.location.pathname === '/blogs') {
             seacrhBar = (
                 <Aux>
                     <input placeholder="Search" type="text" className={classes.Search__Input} value={this.state.value} onChange={this.onInptChangeHandler} ></input>
@@ -120,20 +152,20 @@ class Toolbar extends Component {
         if(userToken !== null) {
             authOption = (
                 <Aux>
-                <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs/user'}}>
-                                <li className={classes.List} onClick={this.closeModal}><button>Your Post</button></li>
-                </NavLink>
-                <NavLink to={{pathname: '/auth'}}>
-                    <li className={classes.List}><button onClick={this.closeModalWithLogOff}>Sign Out</button></li>
-                </NavLink>
+                    <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs/user'}}>
+                        <li className={classes.List} onClick={this.closeModal}><button>Your Blogs</button></li>
+                    </NavLink>
+                    <NavLink to={{pathname: '/auth'}}>
+                        <li className={classes.List}><button onClick={this.closeModalWithLogOff}>Sign Out</button></li>
+                    </NavLink>
                 </Aux>
             )
-            userNav=(
+            userNav = (
                 <Aux>
-                    {/* <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs/user'}}>
-                        <p className={classes.Links}>Your Blogs</p>
-                    </NavLink> */}
-                    <p style={{fontSize: '20px', fontWeight:'500' ,marginRight: '5px', display:'flex', alignSelf:'center' , color: '#2D3F47' }}>Hey, {name} </p>
+                    {navListHome}
+                    
+                    {/* <Button class="ui grey basic button" style={{marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' }}>Grey</Button> */}
+                    {/* <p style={{fontSize: '18px', fontWeight:'500' ,marginRight: '5px', display:'flex', alignSelf:'center' , color: '#2D3F47' }}>Hey, {name} </p> */}
                     <div style={{display: 'flex' , flexDirection: "column"}}>
                         {imageButton}
                     </div>
@@ -146,7 +178,10 @@ class Toolbar extends Component {
                 </NavLink>
             )
             userNav = (
-                <div className={classes.Hamburger} onClick={this.openFullMenu}><div></div></div>
+                <Aux>
+                    {navListHome}
+                    <div className={classes.Hamburger} onClick={this.openFullMenu}><div></div></div>
+                </Aux>
             )
         } 
 
@@ -158,12 +193,12 @@ class Toolbar extends Component {
                             <NavLink to={{pathname: '/'}}>
                                 <li className={classes.List} onClick={this.closeModal}><button>Home</button></li>
                             </NavLink>
-
-                            
-                            
                             <li className={classes.List}><button>Adopt a Pet</button></li>
+                            <NavLink to={{pathname: '/blogs'}}>
+                                <li className={classes.List} onClick={this.closeModal}><button>Blogs</button></li>
+                            </NavLink>
                             {authOption}
-                            <li className={classes.List}><button>Contact Us</button></li>
+                            <a href={'#' + homeRefServiceId}> <li className={classes.List} onClick={this.closeModal} ><button>Services</button></li> </a>
                         </ul>
                     </div>
                     <button onClick={this.closeModal} className={classes.ModalClose}>X</button>
@@ -171,23 +206,17 @@ class Toolbar extends Component {
             )
         } else {
             fullContainer = (
-                // <header className={(this.state.isSticky && window.location.pathname !== '/') ? classes.sticky : ''} ref={header => this.header = header}> 
-                <header ref={header => this.header = header}> 
+                <header className={this.state.isSticky ? classes.sticky : ''} ref={header => this.header = header}> 
                     <NavLink style={{textDecoration: 'none'}}  to={{pathname: '/'}}>
                         <img src={Logo} alt={"Logo"} className={classes.Logo}></img>
-                        {/* <div style={{fontSize: '20px' , marginLeft:'10px', textDecoration: 'underline', color: 'rgb(223,204,153)'  , fontWeight: 'bold'}}>𝓟𝓮𝓽 𝓢𝓱𝓪𝓻𝓮</div> */}
                     </NavLink>
-                
                     <div className={classes.Search}>
                         {seacrhBar}
                     </div>
-
                     <div className={classes.UserNav}>
-                        {userNav}
-                        
+                        {userNav}                        
                     </div>
                 </header>
-
             )
         }
 

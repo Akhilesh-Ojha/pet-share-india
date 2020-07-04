@@ -111,7 +111,7 @@ class FullPetDetails extends Component {
                     })
                     // console.log(response);
             }).catch(error => {
-                toast.error('An error occured' + error);
+                toast.info('Enough treats for the pet :)')
         });
         // if(this.counter <= 5) {
             

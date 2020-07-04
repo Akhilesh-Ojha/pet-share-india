@@ -21,6 +21,16 @@
     }
 }
 
+.Invalid{
+    border: 1px solid #ffcccb;
+}
+
+.ValidationError {
+    // margin: 1px 0;
+    font-size: 12px;
+    color: #ff4c4c;
+}
+
 // .InputElement:focus {
 //     background-color: green;
 // }

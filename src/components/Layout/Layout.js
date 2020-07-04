@@ -13,6 +13,8 @@ class Layout extends Component {
 
     constructor(props) {
         super(props);
+        this.homeRefService = React.createRef();
+        this.homeRefClient = React.createRef();
         this.state = {
             loggedInStatus: "Not_Logged_In",
             user: {},
@@ -68,10 +70,13 @@ class Layout extends Component {
     }
 
     render() {
+
+        console.log('THIS>HOMEEF', {homeRefService: this.homeRefService, homeRefClient: this.homeRefClient } );
+
         let pathName = this.props.location.pathname;
             
         let toolBar = (
-            <Toolbar isLoggedIn={this.state.loggedInStatus} handleLogout={this.handleLogout} userData={this.state.user} />
+            <Toolbar isLoggedIn={this.state.loggedInStatus} lookForHomeRef={{homeRefService: this.homeRefService, homeRefClient: this.homeRefClient }}  handleLogout={this.handleLogout} userData={this.state.user} />
         )
         if(pathName === '/blogs/new-blog' || pathName.indexOf('/edit') > -1) {
             toolBar = null
@@ -85,7 +90,7 @@ class Layout extends Component {
                             path={"/"}
                             exact
                             render={ props => (
-                                <Home {...props} loggedInStatus={this.state.loggedInStatus} />
+                                <Home ref={{homeRefService: this.homeRefService, homeRefClient: this.homeRefClient }} {...props} loggedInStatus={this.state.loggedInStatus} />
                             )}
                         />
                         <Route

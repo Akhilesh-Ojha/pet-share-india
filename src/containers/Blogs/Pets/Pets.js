@@ -67,13 +67,13 @@ class Pets extends Component {
             if(this.props.accessToken) {
                 redirectAddLink = (
                     <NavLink className={classes.Anchor} to={{pathname: '/blogs/new-blog'}}>
-                        <button className={classes.Button}><i style={{width: '100%', height:'100%', fontSize: '16px' ,  marginTop: '4px', color: 'black'}} className="fa fa-plus"></i></button>
+                        <button className={classes.Button}><i style={{width: '100%', height:'100%', fontSize: '16px' ,  marginTop: '4px', color: '#f5f5f5'}} className="fa fa-plus"></i></button>
                     </NavLink>
                 )
             } else {
                 redirectAddLink = (
                     <NavLink className={classes.Anchor} to={{pathname: '/auth'}}>
-                        <button className={classes.Button}><i style={{width: '100%', height:'100%', fontSize: '16px' ,  marginTop: '4px', color: 'black'}} className="fa fa-plus"></i></button>
+                        <button className={classes.Button}><i style={{width: '100%', height:'100%', fontSize: '16px' ,  marginTop: '4px', color: '#f5f5f5'}} className="fa fa-plus"></i></button>
                     </NavLink>
                 )
             }

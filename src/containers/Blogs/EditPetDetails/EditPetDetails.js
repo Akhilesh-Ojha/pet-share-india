@@ -82,7 +82,7 @@ class EditPetDetails extends Component {
             'id': this.props.match.params.id
         }
         if(this.state.selectedFile) {
-            formData.append('image', this.state.selectedFile);
+            formData.append('images', this.state.selectedFile);
         }
         formData.append('data', JSON.stringify(data));
         
@@ -106,13 +106,13 @@ class EditPetDetails extends Component {
     render() {
         let uploadFileText = null;
         if(this.state.selectedFile) {
-            uploadFileText = (<span style={{display: 'block', color: 'rgba(223,204,153, 1)'}}>Uploaded Image: {this.state.selectedFile.name} </span>)
+            uploadFileText = (<span style={{display: 'block', color: '#2D3F47'}}>Uploaded Image: {this.state.selectedFile.name} </span>)
         }
 
         let form = (
                 <div className={classes.Bg}>
                     <div className={classes.Wrapper}>
-                            <NavLink style={{textDecoration: 'none' , color: 'rgba(223,204,153, 1)'} } to={{pathname: '/blogs'}}>
+                            <NavLink style={{textDecoration: 'none' , color: 'f5f5f5'} } to={{pathname: '/blogs'}}>
                                 <i style={{fontSize: '30px' , marginTop: '100px'}} className="fa fa-arrow-left" aria-hidden="true"></i>
                             </NavLink>
                         <div className={classes.ContactForm}>

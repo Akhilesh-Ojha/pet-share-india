@@ -44,13 +44,13 @@
 }
 
 .Msg .SubmitButton {
-    background: rgba(223,204,153, 0.7);
+    background: #2D3F47;
     text-align: center;
     width: 50%;
     padding: 15px;
     border-radius: 5px;
     border: none;
-    color: #fff;
+    color: #f5f5f5;
     text-transform: uppercase;
     font-size: 20px; 
     // border: none;
@@ -84,7 +84,7 @@
     background: transparent;
     font-size: 20px;
     border: 0;
-    border-bottom: 2px solid rgba(223,204,153, 1)  ;
+    border-bottom: 2px solid #2D3F47  ;
     padding: 10px;
     color: black;
     width: 100%;
@@ -92,7 +92,7 @@
 }
 
 .Change::-webkit-input-placeholder {
-    color: rgba(223,204,153, 1) ;
+    color: #2D3F47 ;
 }
 
 .InputFields .InputButton {
@@ -100,9 +100,9 @@
     background: transparent;
     text-transform: uppercase;
     font-size: 20px;
-    border: 2px solid rgba(223,204,153, 1);
+    border: 2px solid #2D3F47;
     padding: 10px;
-    color: rgba(223,204,153, 1) ;
+    color: #2D3F47 ;
     width: 100%;
     cursor: pointer;
     &:hover {

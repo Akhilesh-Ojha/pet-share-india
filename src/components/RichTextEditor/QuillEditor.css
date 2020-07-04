@@ -31,7 +31,7 @@
 }
 .ql-size-small,
 .ql-size span[data-value="small"]::before {
-  font-size: 14px !important;
+  font-size: 15px !important;
 }
 .ql-size-medium,
 .ql-size span[data-value="medium"]::before {
