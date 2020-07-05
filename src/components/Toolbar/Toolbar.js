@@ -88,10 +88,14 @@ class Toolbar extends Component {
         }
 
         if(this.props.userData.data) {
+            console.log('Hereeee', this.props.userData.data.data.name);
             userToken = this.props.userData.data.access_token;
-            if(this.props.userData.data.data.name && this.props.userData.data.data.picture) {
+            if(this.props.userData.data.data.name) {
                 let shortName = this.props.userData.data.data.name.lastIndexOf(' ');
                 name = this.props.userData.data.data.name.substring(0,shortName);
+                
+            }
+            if(this.props.userData.data.data.picture) {
                 profilePic = this.props.userData.data.data.picture;
             }
         }
@@ -102,7 +106,9 @@ class Toolbar extends Component {
                         {/* <a href={'#' + homeRefServiceId} >Our Services</a> */}
                         {/* <a href={'#' + homeRefServiceId} >Contact Us</a> */}
                         <NavLink style={{textDecoration: 'none'}} to={{pathname: '/auth'}}>
-                        <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', padding: '8px 16px' ,outline: 'none' }} className={classes.YourBlogs}>Get Started</button>
+                        <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', backgroundColor:'transparent' ,padding: '8px 16px' ,outline: 'none' }} className={classes.YourBlogs}>Get Started</button>
+
+                        {/* <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' ,backgroundImage: 'linear-gradient( to right bottom, #FF6975 , #F8B5BB)' , color: '##888888' , border: 'none', padding: '8px 16px' ,outline: 'none' }} className={classes.YourBlogs}>Get Started</button> */}
                     </NavLink>
                     </Aux>
                 )

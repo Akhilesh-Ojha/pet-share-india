@@ -11,22 +11,6 @@ const emailRegex = RegExp(
     /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
 
-const formValid = ({ formErrors, ...rest }) => {
-    let valid = true;
-  
-    // validate form errors being empty
-    Object.values(formErrors).forEach(val => {
-      val.length > 0 && (valid = false);
-    });
-  
-    // validate the form was filled out
-    Object.values(rest).forEach(val => {
-      val === null && (valid = false);
-    });
-  
-    return valid;
-};
-
 class Auth extends Component {
     state = {
         toggleForm: false,
@@ -73,7 +57,8 @@ class Auth extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    emailRegex: true
                 },
                 valid: false,
                 validationMessage: '',
@@ -96,8 +81,6 @@ class Auth extends Component {
             },
 
         },
-        loginEmail: '',
-        loginPass: ''
     }
 
     
@@ -136,6 +119,12 @@ class Auth extends Component {
             isValid = value.length <= rules.maxLength && isValid;
         }
 
+        if(rules.emailRegex) {
+            isValid = emailRegex.test(value) && isValid;
+            if(isValid === false) {
+                errorMessage = 'Please enter a valid email address'
+            }
+        }
         return {
             isValid: isValid,
             errorMessage: errorMessage,
@@ -203,6 +192,7 @@ class Auth extends Component {
             'password': this.state.loginPass,     
         }
         axios.post('/api/v1/petshare/login' , body).then(res => {
+            console.log('RESPONSE', res);
             this.handleSuccessfulAuth(res);
         }).catch(error => {
             toast.error('There is some error logging you in ' + error );
@@ -229,8 +219,8 @@ class Auth extends Component {
                         <div className={classes.FormBox}>
                             <form>
                                 <h2> Sign In </h2>
-                                <Input type="text" onChange={this.onUserNameLoginHandler} name="" placeholder="Username"></Input>
-                                <Input type="text" onChange={this.onPasswordLoginHandler} name="" placeholder="Pawwsword"></Input>
+                                <input type="text" className={classes.Input} onChange={this.onUserNameLoginHandler} name="" placeholder="Username"></input>
+                                <input type="text" className={classes.Input} onChange={this.onPasswordLoginHandler} name="" placeholder="Pawwsword"></input>
                                 <button className={classes.Button} onClick={(e) => this.handleLogin(e)} type="submit" value="Login">Ready to Adopt? <i className="fa fa-paw" style={{fontSize: '25px'}} aria-hidden="true"></i></button>
                                 <p className={classes.SignUp}>Don't have an account?</p> 
                                 <button className={classes.AnchorButton} onClick={this.toggleForm}>Sign Up</button> 

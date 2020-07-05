@@ -1,6 +1,7 @@
-import React, { Component, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import classes from './Home.module.scss';
 import BackgroundImage from '../../assets/background.jpg';
+import Bg1 from '../../assets/bg.jpg'
 import { NavLink }  from 'react-router-dom';
 // import Aux from '../../hoc/Auxx';
 
@@ -52,12 +53,6 @@ var settings = {
       ]
 };
 
-
-
-// useEffect() {
-    
-// }
-// render() {
 const Home = React.forwardRef((props , ref) =>  {
     const { homeRefService, homeRefClient } = ref;
 
@@ -69,24 +64,22 @@ const Home = React.forwardRef((props , ref) =>  {
         return(
             <div className={classes.Main}>
                 <section className={classes.Banner}>
-
-
-                    <img src={BackgroundImage} alt="bg" className={classes.FitBg}></img>
-                    <div className={classes.Content} >
-                        <div className={classes.Box1}>
-                            Adoption
-                        </div>
-                        <NavLink style={{textDecoration: 'none'}} to={{pathname: '/put-for-adoption'}}>
-                            <div className={classes.Box}>
-                                Put up for adoption
-                            </div>
-                        </NavLink>
-                        <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs'}}>
-                            <div className={classes.Box}>
-                                Blogs
-                            </div>
-                        </NavLink>
+                    <div className={classes.ImageMain}>
+                        <img src={Bg1} alt="bg" className={classes.FitBgMain}></img> 
                     </div>
+                    <div className={classes.BannerContent}>
+                        <h1>Adopt. Don't Shop <i className="fa fa-paw" aria-hidden="true"></i></h1>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                        <div className={classes.ButtonArea}>
+                            <button>Adopt Now</button>
+
+                            <NavLink to={{pathname: '/blogs'}}>
+
+                                <button>Blogs</button>
+                            </NavLink>
+
+                        </div>
+                     </div>   
                 </section>
 
 
@@ -94,7 +87,7 @@ const Home = React.forwardRef((props , ref) =>  {
                 <section className={classes.Card}>
                     <h1 data-aos="zoom-in">Our friends looking for a home</h1>
                     <div className={classes.PetList}>
-                        <div data-aos="fade-right" className={classes.PetBox}>
+                        <div className={classes.PetBox}>
                             <div className={classes.ImgBox}>
                                 <img src={Pet4} alt="" className={classes.FitBg}></img>
                             </div>
@@ -105,7 +98,7 @@ const Home = React.forwardRef((props , ref) =>  {
                             </div>
                         </div>
 
-                        <div data-aos="fade-up" className={classes.PetBox}>
+                        <div className={classes.PetBox}>
                             <div className={classes.ImgBox}>
                             <img alt="" src={Pet2} className={classes.FitBg}></img>
                             </div>
@@ -116,7 +109,7 @@ const Home = React.forwardRef((props , ref) =>  {
                             </div>
                         </div>
 
-                        <div  data-aos="fade-up" className={classes.PetBox}>
+                        <div  className={classes.PetBox}>
                             <div className={classes.ImgBox}>
                             <img alt="" src={Pet1} className={classes.FitBg}></img>
                             </div>
@@ -127,7 +120,7 @@ const Home = React.forwardRef((props , ref) =>  {
                             </div>
                         </div>
 
-                        <div data-aos="fade-left" className={classes.PetBox}>
+                        <div className={classes.PetBox}>
                             <div className={classes.ImgBox}>
                             <img alt="" src={Pet3} className={classes.FitBg}></img>
                             </div>
