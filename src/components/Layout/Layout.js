@@ -3,11 +3,11 @@ import classes from './Layout.module.scss';
 import { Switch , Route } from 'react-router';
 import Blogs from '../../containers/Blogs/Blogs';
 import Auth from '../../containers/Auth/Auth';
-import Toolbar from '../../components/Toolbar/Toolbar';
+import Navbar from '../Navbar/Navbar';
 import Home from '../../containers/Home/Home';
+import Adopt from '../../containers/Adopt/Adopt';
 import axios from '../../axios';
 import { withRouter }  from 'react-router-dom';
-import PutForAdoption from '../../containers/PutForAdoption/PutForAdoption';
 
 class Layout extends Component {
 
@@ -76,7 +76,7 @@ class Layout extends Component {
         let pathName = this.props.location.pathname;
             
         let toolBar = (
-            <Toolbar isLoggedIn={this.state.loggedInStatus} lookForHomeRef={{homeRefService: this.homeRefService, homeRefClient: this.homeRefClient }}  handleLogout={this.handleLogout} userData={this.state.user} />
+            <Navbar isLoggedIn={this.state.loggedInStatus} lookForHomeRef={{homeRefService: this.homeRefService, homeRefClient: this.homeRefClient }}  handleLogout={this.handleLogout} userData={this.state.user} />
         )
         if(pathName === '/blogs/new-blog' || pathName.indexOf('/edit') > -1) {
             toolBar = null
@@ -108,10 +108,10 @@ class Layout extends Component {
                         />
 
                         <Route 
-                            path={"/put-for-adoption"} 
+                            path={"/adopt"} 
                             exact
                             render={ props => (
-                                <PutForAdoption {...props} accessToken={this.state.accessToken}/>
+                                <Adopt {...props} accessToken={this.state.accessToken}/>
                             )}
                         />
                     </Switch>

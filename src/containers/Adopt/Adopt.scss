@@ -1,0 +1,135 @@
+// .navbar {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     //   padding: 1rem;
+//     //   padding-right: 3.5rem;
+//     border-bottom: 1px solid gray;
+//     background: white;
+
+//     padding-left: 1rem;
+//     padding-right: 1rem;
+
+//     .pethshare-logo {
+//       width: 150px;
+//       // margin-right: 2rem;
+//     }
+
+//     .navbar-links {
+//       width: auto;
+//       display: flex;
+//       align-items: center;
+//       justify-content: space-between;
+//       padding: 1rem 1rem 1rem;
+//       font-size: 1.4rem;
+
+//       font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+//       font-weight: 700;
+//       //   line-height: 1.28571429em;
+//       //   text-transform: none;
+//       color: rgba(0, 0, 0, 0.87);
+
+//       a {
+//         color: #5a5757;
+//         margin: 0 1rem;
+
+//         // &:last-of-type {
+//         //   margin-right: 0;
+//         // }
+
+//         .user-avatar {
+//           // margin-right: ;
+//         }
+//       }
+//     }
+//   }
+
+.main-container {
+  padding: 110px 2rem 2rem 2rem;
+
+  @media only screen and (max-width: 768px) {
+    // padding-left: 4rem;
+    // padding-right: 4rem;
+  }
+
+  //   .pets-listing {
+  // height: 500px;
+
+  .filter-container {
+    // color: blue;
+    font-size: 1rem !important;
+    .field > label {
+      font-size: 1rem !important;
+    }
+
+    .gender-radios {
+      flex-wrap: wrap;
+    }
+
+    .filter-form-buttons {
+      margin-top: 2rem;
+    }
+  }
+
+  .pet-cards-container {
+    //   padding-right: 0 !important;
+    //   padding-left: 0 !important;
+    .pet-card {
+      height: 394px;
+      max-height: 394px;
+      //     .pet-image {
+      //         height: 100px;
+      //     img {
+      //       width: 100%;
+      //       height: auto;
+      //     }
+      //   }
+
+      @media only screen and (max-width: 768px) {
+        // margin-left: 10px;
+        // max-width: 300px;
+        // margin-left: auto !important;
+        // margin-right: auto !important;
+        // border: 5px solid red;
+      }
+      cursor: pointer;
+      .dimmer-content {
+        color: black !important;
+        font-size: 1.5rem;
+        font-weight: 700;
+        i {
+          margin-left: 1rem;
+        }
+      }
+
+      .pet-image {
+        // height: 100px;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        img {
+          width: 100%;
+          height: 200px;
+          display: inline–block;
+          float: left;
+          // height: auto;
+        }
+      }
+
+      .pet-description {
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+      }
+    }
+  }
+  //   }
+}
+
+.logout-popups {
+  // width: 400px;
+  .content {
+    font-size: 1.28rem;
+  }
+}

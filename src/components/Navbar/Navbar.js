@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import classes from './Toolbar.module.scss';
+import './Navbar.scss';
 import searchIcon from '../../assets/search.png';
 import { NavLink , withRouter }  from 'react-router-dom';
 import Aux from '../../hoc/Auxx';
-import Logo from '../../assets/Logo.png';
+import Logo from '../../assets/logo.png';
 
 
-class Toolbar extends Component {
+class Navbar extends Component {
 
     constructor(props) {
         super(props);
@@ -106,22 +106,22 @@ class Toolbar extends Component {
                         {/* <a href={'#' + homeRefServiceId} >Our Services</a> */}
                         {/* <a href={'#' + homeRefServiceId} >Contact Us</a> */}
                         <NavLink style={{textDecoration: 'none'}} to={{pathname: '/auth'}}>
-                        <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', backgroundColor:'transparent' ,padding: '8px 16px' ,outline: 'none' }} className={classes.YourBlogs}>Get Started</button>
+                        <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', backgroundColor:'transparent' ,padding: '8px 16px' ,outline: 'none' }} className="YourBlogs">Get Started</button>
 
-                        {/* <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' ,backgroundImage: 'linear-gradient( to right bottom, #FF6975 , #F8B5BB)' , color: '##888888' , border: 'none', padding: '8px 16px' ,outline: 'none' }} className={classes.YourBlogs}>Get Started</button> */}
+                        {/* <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' ,backgroundImage: 'linear-gradient( to right bottom, #FF6975 , #F8B5BB)' , color: '##888888' , border: 'none', padding: '8px 16px' ,outline: 'none' }} className="YourBlogs}>Get Started</button> */}
                     </NavLink>
                     </Aux>
                 )
             } else if (userToken !== null && this.props.location.pathname.indexOf('blogs') > -1 && this.props.location.pathname.indexOf('user') === -1)  {
                 navListHome = (
                     <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs/user'}}>
-                        <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', padding: '8px 16px' ,outline: 'none' }} className={classes.YourBlogs}>Your Blogs</button>
+                        <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', padding: '8px 16px' ,outline: 'none' }} className="YourBlogs">Your Blogs</button>
                     </NavLink>
                 )
             } else if(userToken !== null && this.props.location.pathname.indexOf('user') > -1) {
                 navListHome = (
                     <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs'}}>
-                        <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', padding: '8px 16px' ,outline: 'none' }} className={classes.YourBlogs}>Blogs</button>
+                        <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', padding: '8px 16px' ,outline: 'none' }} className="YourBlogs">Blogs</button>
                     </NavLink>
                 )   
             } else if(this.props.location.pathname.indexOf('auth') > -1 || this.props.location.pathname.indexOf('blogs') > -1) {
@@ -133,9 +133,9 @@ class Toolbar extends Component {
         if(this.props.location.pathname === '/blogs') {
             seacrhBar = (
                 <Aux>
-                    <input placeholder="Search" type="text" className={classes.Search__Input} value={this.state.value} onChange={this.onInptChangeHandler} ></input>
-                    <button className={classes.Search__Button}>
-                    <img src={searchIcon} alt={""} className={classes.Search__Icon}></img>
+                    <input placeholder="Search" type="text" className="Search__Input" value={this.state.value} onChange={this.onInptChangeHandler} ></input>
+                    <button className="Search__Button">
+                    <img src={searchIcon} alt={""} className="Search__Icon"></img>
                     </button>
                 </Aux>
             )
@@ -145,12 +145,12 @@ class Toolbar extends Component {
 
         if(profilePic === '') {
             imageButton = (
-                <button onClick={this.openFullMenu}  className={classes.ButtonWithoutPic}><i className="fa fa-user-circle" style={{color: '#5a5757'}} aria-hidden="true"></i></button>
+                <button onClick={this.openFullMenu}  className="ButtonWithoutPic"><i className="fa fa-user-circle" style={{color: '#5a5757'}} aria-hidden="true"></i></button>
             )
         } else {
             imageButton = (
-                <button className={classes.Image__Button} onClick={this.openFullMenu} >
-                            <img src={profilePic} alt={""} className={classes.Image}></img>
+                <button className="Image__Button" onClick={this.openFullMenu} >
+                            <img src={profilePic} alt={""} className="Image"></img>
                 </button>
             )
         }
@@ -159,10 +159,10 @@ class Toolbar extends Component {
             authOption = (
                 <Aux>
                     <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs/user'}}>
-                        <li className={classes.List} onClick={this.closeModal}><button>Your Blogs</button></li>
+                        <li className="List" onClick={this.closeModal}><button>Your Blogs</button></li>
                     </NavLink>
                     <NavLink to={{pathname: '/auth'}}>
-                        <li className={classes.List}><button onClick={this.closeModalWithLogOff}>Sign Out</button></li>
+                        <li className="List"><button onClick={this.closeModalWithLogOff}>Sign Out</button></li>
                     </NavLink>
                 </Aux>
             )
@@ -180,46 +180,46 @@ class Toolbar extends Component {
         } else  {
             authOption = (
                 <NavLink to={{pathname: '/auth'}}>
-                    <li className={classes.List}><button onClick={this.closeModal}>Sign In</button></li>
+                    <li className="List"><button onClick={this.closeModal}>Sign In</button></li>
                 </NavLink>
             )
             userNav = (
                 <Aux>
                     {navListHome}
-                    <div className={classes.Hamburger} onClick={this.openFullMenu}><div></div></div>
+                    <div className="Hamburger" onClick={this.openFullMenu}><div></div></div>
                 </Aux>
             )
         } 
 
         if(this.state.showFullMenu) {
             fullContainer = (
-                <div className={classes.FullMenu}> 
-                    <div className={classes.Content}>
-                        <ul className={classes.PageMenu}>
+                <div className="FullMenu"> 
+                    <div className="Content">
+                        <ul className="PageMenu">
                             <NavLink to={{pathname: '/'}}>
-                                <li className={classes.List} onClick={this.closeModal}><button>Home</button></li>
+                                <li className="List" onClick={this.closeModal}><button>Home</button></li>
                             </NavLink>
-                            <li className={classes.List}><button>Adopt a Pet</button></li>
+                            <li className="List"><button>Adopt a Pet</button></li>
                             <NavLink to={{pathname: '/blogs'}}>
-                                <li className={classes.List} onClick={this.closeModal}><button>Blogs</button></li>
+                                <li className="List" onClick={this.closeModal}><button>Blogs</button></li>
                             </NavLink>
                             {authOption}
-                            <a href={'#' + homeRefServiceId}> <li className={classes.List} onClick={this.closeModal} ><button>Services</button></li> </a>
+                            <a href={'#' + homeRefServiceId}> <li className="List" onClick={this.closeModal} ><button>Services</button></li> </a>
                         </ul>
                     </div>
-                    <button onClick={this.closeModal} className={classes.ModalClose}>X</button>
+                    <button onClick={this.closeModal} className="ModalClose">X</button>
                 </div>
             )
         } else {
             fullContainer = (
-                <header className={this.state.isSticky ? classes.sticky : ''} ref={header => this.header = header}> 
+                <header className="this.state.isSticky ? sticky : ''" ref={header => this.header = header}> 
                     <NavLink style={{textDecoration: 'none'}}  to={{pathname: '/'}}>
-                        <img src={Logo} alt={"Logo"} className={classes.Logo}></img>
+                        <img src={Logo} alt={"Logo"} className="Logo"></img>
                     </NavLink>
-                    <div className={classes.Search}>
+                    <div className="Search">
                         {seacrhBar}
                     </div>
-                    <div className={classes.UserNav}>
+                    <div className="UserNav">
                         {userNav}                        
                     </div>
                 </header>
@@ -235,7 +235,7 @@ class Toolbar extends Component {
     
 }
 
-export default withRouter(Toolbar);
+export default withRouter(Navbar);
 
 
 
@@ -258,22 +258,22 @@ export default withRouter(Toolbar);
 
 
 
-// {/* <div className={classes.Menu}></div>
+// {/* <div className="Menu}></div>
 // {/* <div> */}
-//     <div className={classes.Content}>
-//         <ul className={classes.PageMenu}>
-//             <li className={classes.List}><button>Blog Post</button></li>
-//             <li className={classes.List}><button>Adopt a Pet</button></li>
-//             <li className={classes.List}><button>Sign In</button></li>
-//             <li className={classes.List}><button>Contact Us</button></li>
+//     <div className="Content}>
+//         <ul className="PageMenu}>
+//             <li className="List}><button>Blog Post</button></li>
+//             <li className="List}><button>Adopt a Pet</button></li>
+//             <li className="List}><button>Sign In</button></li>
+//             <li className="List}><button>Contact Us</button></li>
 
-//             {/* <li className={classes.Social}>
+//             {/* <li className="Social}>
 //                 <button><i class="fa fa-facebook" aria-hidden="true"></i></button>
 //                 <button><i class="fa fa-instagram" aria-hidden="true"></i></button>
 //             </li> */}
-//             {/* <li className={classes.Social}></li> */}
+//             {/* <li className="Social}></li> */}
 //         </ul>
 //     </div>
 // {/* </div> */}
 
-// <button onClick={this.closeModal} className={classes.ModalClose}>X</button> */}
+// <button onClick={this.closeModal} className="ModalClose}>X</button> */}
