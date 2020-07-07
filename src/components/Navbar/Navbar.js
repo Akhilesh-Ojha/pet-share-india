@@ -3,7 +3,7 @@ import './Navbar.scss';
 import searchIcon from '../../assets/search.png';
 import { NavLink , withRouter }  from 'react-router-dom';
 import Aux from '../../hoc/Auxx';
-import Logo from '../../assets/logo.png';
+import Logo from '../../assets/Logo.png';
 
 
 class Navbar extends Component {
@@ -88,7 +88,7 @@ class Navbar extends Component {
         }
 
         if(this.props.userData.data) {
-            console.log('Hereeee', this.props.userData.data.data.name);
+            // console.log('Hereeee', this.props.userData.data.data.name);
             userToken = this.props.userData.data.access_token;
             if(this.props.userData.data.data.name) {
                 let shortName = this.props.userData.data.data.name.lastIndexOf(' ');
