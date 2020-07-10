@@ -126,6 +126,12 @@ class Navbar extends Component {
                 )   
             } else if(this.props.location.pathname.indexOf('auth') > -1 || this.props.location.pathname.indexOf('blogs') > -1) {
                 navListHome = null
+            } else if(this.props.location.pathname.indexOf('adopt') > -1) {
+                navListHome = (
+                    <NavLink style={{textDecoration: 'none'}} to={{pathname: '/blogs'}}>
+                        <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', padding: '8px 16px' ,outline: 'none' }} className="YourBlogs">Blogs</button>
+                    </NavLink>
+                ) 
             } else {
                 navListHome = (<p style={{fontSize: '18px', fontWeight:'500' ,marginRight: '20px', display:'flex', alignSelf:'center' , color: '#2D3F47' }}>Hey, {name} </p>)
             }

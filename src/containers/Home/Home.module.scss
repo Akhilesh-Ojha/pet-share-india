@@ -2,6 +2,8 @@
     overflow-x: hidden;
 }
 
+
+
 .Banner {
     position: relative;
     width: 100%;
@@ -10,13 +12,79 @@
     justify-content: center;
     align-items: center;
     background-color: #F5FAFD;
-    // top: -70px;
+
+    @media(max-width: 950px) {
+        display: flex;
+        flex-direction: column;
+    }
+
 }
+
+// .Banner2 {
+//     position: relative;
+//     width: 100%;
+//     height: 100vh;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     background-color: #F5FAFD;
+//     animation: moveInFromRight 0.5s;
+//     // top: -70px;
+// }
+
+
+
+@keyframes moveInFromRight{
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+
+    }
+
+    
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveInFromLeft{
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+
+    }
+
+    
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// .FooterButtons {
+//     margin-top: 50px;
+//     a {
+//         margin-right: 20px;
+//         text-decoration: none;
+//         border: 2px solid #D5DBDE;
+//         padding: 10px 20px;
+//         font-size: 14px;
+//         letter-spacing: 0.5px;
+//         border-radius: 100px;
+//         cursor: pointer;
+//     }
+// }
+
+
+
 
 .ImageMain {
     flex: 1.5;
     position: relative;
-    width: 70%;
+    width: 100%;
     height: 100%;
     // height: 100vh;
     // width: 100%;
@@ -30,14 +98,28 @@
     width: 100%;
     height: calc(100% - 70px);
     clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%);
+
+    @media(max-width: 950px) {
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
 }
 
 
 .BannerContent {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     display: flex;
     flex: 1;
     flex-direction: column;
+    
     padding: 0px 20px;
+
+    @media(max-width: 950px) {
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 .BannerContent h1 {
@@ -47,18 +129,35 @@
     font-size: 30px;
     color: #2d3f47;
     margin-bottom: 30px;
+    @media(max-width: 550px) {
+        margin-bottom: 20px;
+    }
 }
 
 .BannerContent p {
     color: #2D3F47;
     margin-bottom: 30px;
+    @media(max-width: 550px) {
+        margin-bottom: 20px;
+    }
 }
 
 .ButtonArea {
     display: flex;
     // justify-content: center;
 }
-.BannerContent .ButtonArea button {
+
+// .ButtonArea1 {
+//     display: flex;
+//     // z-index: 100;
+//     margin-top: 20px;
+
+//     @media(max-width: 950px) {
+//         display: none;
+//         margin-top: 0px;
+//     }
+// }
+.BannerContent button {
     text-transform: uppercase;
     text-decoration: none;
     padding: 15px 20px;
@@ -69,10 +168,14 @@
     display: inline-block;
     border-radius: 5px;
     transition: all .2s;
-    font-size: 16px;
+    font-size: 14px;
     color: white;
     font-weight: 700;
     background-image: linear-gradient( to right bottom, #FF6975 , #F8B5BB);
+
+    @media(max-width: 550px) {
+        font-size: 12px;
+    }
 }
 
 .FitBg {
@@ -208,7 +311,8 @@
     width: 320px;
     position: relative;
     background: #fff;
-    padding: 50px 40px 30px;
+    padding: 60px 40px 40px;
+    font-size: 16px;
     box-shadow: 0px 15px 45px rgba(0,0,0,.1);
 }
 
@@ -247,7 +351,7 @@
 .Container .ServiceBox i {
     position: absolute;
     left: 40px;
-    top: 50px;
+    top: 60px;
     font-size: 50px;
     font-weight: 800;
     z-index: 1;

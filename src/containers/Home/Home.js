@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useState } from 'react';
 import classes from './Home.module.scss';
 import BackgroundImage from '../../assets/background.jpg';
-import Bg1 from '../../assets/bg.jpg'
+import Bg1 from '../../assets/bg.jpg';
+import BgBlogs from '../../assets/bgBlogs.jpg'
 import { NavLink } from 'react-router-dom';
 // import Aux from '../../hoc/Auxx';
 
@@ -61,9 +62,18 @@ const Home = React.forwardRef((props, ref) => {
         Aos.init({ duration: 1000 });
     });
 
-    return (
-        <div className={classes.Main}>
-            <section className={classes.Banner}>
+    const [showSection2 , setShowSection2] = useState(false);
+
+    let openAdoption = () => {
+        setShowSection2(false)
+    }
+    
+    let openBlogs = () => {
+        setShowSection2(true)
+    }
+
+    let section = (
+        <section className={classes.Banner}>
                 <div className={classes.ImageMain}>
                     <img src={Bg1} alt="bg" className={classes.FitBgMain}></img>
                 </div>
@@ -74,15 +84,59 @@ const Home = React.forwardRef((props, ref) => {
                         <NavLink to={{ pathname: '/adopt' }}>
                             <button>Adopt Now</button>
                         </NavLink>
+                        <NavLink className={classes.BtnHide} to={{ pathname: '/adopt' }}>
+                            <button>Put Up For Adoption</button>
+                        </NavLink> 
                         <NavLink to={{ pathname: '/blogs' }}>
-
                             <button>Blogs</button>
                         </NavLink>
-
                     </div>
+
+                   
+
                 </div>
             </section>
+    );
 
+
+
+
+    // if(showSection2) {
+    //     section = (
+    //         <section className={classes.Banner2}>
+    //             <div className={classes.ImageMain}>
+    //                 <img src={BgBlogs} alt="bg" className={classes.FitBgMain}></img>
+    //             </div>
+    //             <div className={classes.BannerContent}>
+    //                 <h1>Adopt. Don't Shop <i className="fa fa-paw" aria-hidden="true"></i></h1>
+    //                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+    //                 <div className={classes.ButtonArea}>
+    //                     <NavLink to={{ pathname: '/blogs' }}>
+    //                         <button>Blogs</button>
+    //                     </NavLink>
+                        
+    //                 </div>
+    //                 <div className={classes.FooterButtons}>
+
+    //                     <a onClick={() => openAdoption()}>
+    //                             Adoption
+    //                     </a>
+
+    //                     <a style={{ border: '2px solid #2D3F47' , fontWeight: 'bold'}} onClick={() => openBlogs()}>
+    //                             Pet Care 
+    //                     </a>
+
+    //                 </div>
+    //             </div>
+    //         </section>
+
+    //     )
+    // }
+
+    return (
+        <div className={classes.Main}>
+            
+            {section}
 
 
             <section className={classes.Card}>
