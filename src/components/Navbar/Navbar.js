@@ -87,6 +87,7 @@ class Navbar extends Component {
             homeRefClientId = allHomRef.homeRefClient.current.id;
         }
 
+        // console.log('PROP', this.props.location.pathname.indexOf('put-up-for-adoption'));
         if(this.props.userData.data) {
             // console.log('Hereeee', this.props.userData.data.data.name);
             userToken = this.props.userData.data.access_token;
@@ -132,6 +133,8 @@ class Navbar extends Component {
                         <button style={{fontSize: '16px', borderRadius: '5px' ,fontWeight:'500' ,marginRight: '25px', cursor: 'pointer' ,display:'flex', alignSelf:'center' , color: '##888888' , border: '1px solid #838383', padding: '8px 16px' ,outline: 'none' }} className="YourBlogs">Blogs</button>
                     </NavLink>
                 ) 
+            } else if(this.props.location.pathname.indexOf('put-up-for-adoption') > -1) {
+                navListHome = null
             } else {
                 navListHome = (<p style={{fontSize: '18px', fontWeight:'500' ,marginRight: '20px', display:'flex', alignSelf:'center' , color: '#2D3F47' }}>Hey, {name} </p>)
             }

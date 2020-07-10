@@ -84,7 +84,7 @@ const Home = React.forwardRef((props, ref) => {
                         <NavLink to={{ pathname: '/adopt' }}>
                             <button>Adopt Now</button>
                         </NavLink>
-                        <NavLink className={classes.BtnHide} to={{ pathname: '/adopt' }}>
+                        <NavLink className={classes.BtnHide} to={{ pathname: '/put-up-for-adoption' }}>
                             <button>Put Up For Adoption</button>
                         </NavLink> 
                         <NavLink to={{ pathname: '/blogs' }}>

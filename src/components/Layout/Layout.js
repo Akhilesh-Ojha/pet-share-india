@@ -8,6 +8,7 @@ import Home from '../../containers/Home/Home';
 import Adopt from '../../containers/Adopt/Adopt';
 import axios from '../../axios';
 import { withRouter }  from 'react-router-dom';
+import PutUpForAdoption from '../../containers/PutUpForAdoption/PutUpForAdoption';
 
 class Layout extends Component {
 
@@ -78,7 +79,7 @@ class Layout extends Component {
         let toolBar = (
             <Navbar isLoggedIn={this.state.loggedInStatus} lookForHomeRef={{homeRefService: this.homeRefService, homeRefClient: this.homeRefClient }}  handleLogout={this.handleLogout} userData={this.state.user} />
         )
-        if(pathName === '/blogs/new-blog' || pathName.indexOf('/edit') > -1) {
+        if(pathName === '/blogs/new-blog' || pathName.indexOf('/edit') > -1 || pathName.indexOf('put-up-for-adoption') > -1) {
             toolBar = null
         }
         return(
@@ -112,6 +113,13 @@ class Layout extends Component {
                             exact
                             render={ props => (
                                 <Adopt {...props} accessToken={this.state.accessToken}/>
+                            )}
+                        />
+                        <Route 
+                            path={"/put-up-for-adoption"} 
+                            exact
+                            render={ props => (
+                                <PutUpForAdoption {...props} accessToken={this.state.accessToken}/>
                             )}
                         />
                     </Switch>
