@@ -614,7 +614,7 @@
     padding: 30px 30px 50px;
     border: 10px solid  rgba(45, 63, 71, 1);
     position: relative;
-    margin-top: 80px;
+    margin-top: 20px;
     margin-bottom: 100px;
     // box-shadow: 0 10px 20px rgba(0,0,0,.2);
     // max-height: 400px;
@@ -701,12 +701,13 @@
 @media(max-width: 550px) {
 
     .Clients {
-        height: 450px;
+        height: 500px;
         padding: 0 50px;
     }
 
     .Clients h1 {
         font-size: 18px;
+        padding-top: 5px;
     }
 
     .Testimonial {

@@ -1,20 +1,49 @@
 import React , { Component } from "react";
 import classes from './PutUpForAdoption.module.scss';
 import { NavLink } from 'react-router-dom';
-import { Form , Message, Input , Button , Segment , Header , Image} from 'semantic-ui-react';
+import axios from '../../axios';
+import { Form , Button , Segment , Header } from 'semantic-ui-react';
 
 const options = [
   { key: 'm', text: 'Male', value: 'male' },
-  { key: 'f', text: 'Female', value: 'female' },
-  { key: 'o', text: 'Other', value: 'other' },
+  { key: 'f', text: 'Female', value: 'female' }
 ]
 
+const pet_type = [];
+const pet_Breed = [];
+
+const element = {}
+const breedElements = {}
+
 class PutUpForAdoption extends Component {
+
+    componentDidMount() {
+        axios.get('/api/v1/pets/type' , { headers: {"Authorization" : this.props.accessToken }}).then(res => {
+            let petTypeObject = res.data.data;
+            
+            Object.keys(petTypeObject).forEach(singlePet => {
+                let updatedEl = {...element}
+                updatedEl.text = singlePet;
+                updatedEl.key = singlePet;
+                updatedEl.value = singlePet
+                pet_type.push(updatedEl);
+            });
+
+            Object.keys(petTypeObject).map(petTypeKey => {
+
+                let updatedEl = {...breedElements}
+                updatedEl.text = petTypeObject[petTypeKey];
+                updatedEl.key = petTypeObject[petTypeKey];
+                updatedEl.value = petTypeKey[petTypeObject]
+                pet_Breed.push(updatedEl)
+            })
+            console.log('PET Breed', pet_Breed);
+        })
+    }
+
     render() {
         return(
-            
             <div className={classes.MainContainer}>
-
                 <div className={classes.Form}> 
                 <NavLink style={{textDecoration: 'none' , color: 'black'} } to={{pathname: '/'}}>
                     <i style={{fontSize: '30px'}} className="fa fa-arrow-left" aria-hidden="true"></i>
@@ -27,7 +56,7 @@ class PutUpForAdoption extends Component {
                                 <Form.Select
                                     fluid
                                     label='Pet Type'
-                                    options={options}
+                                    options={pet_type}
                                     placeholder='Pet Type'
                                 />
 
@@ -45,7 +74,6 @@ class PutUpForAdoption extends Component {
                                 />
                                 <Form.Input label='Age' fluid placeholder='Age' />
                             </Form.Group>
-
                             <Form.Group inline>
                                 <label>Dewormed</label>
                                 <Form.Radio
@@ -56,7 +84,6 @@ class PutUpForAdoption extends Component {
                                     label='No'
                                     value='no'
                                 />
-
                                 <label>Vaccine Status</label>
                                 <Form.Radio
                                     label='Yes'
@@ -67,19 +94,7 @@ class PutUpForAdoption extends Component {
                                     value='no'
                                 />
 
-
-                                
                             </Form.Group>
-
-                            
-                            
-                            {/* <Input type="file">
-                            <Button
-                                content="Choose File"
-                                labelPosition="left"
-                                icon="file"
-                            />
-                            </Input> */}
                             <Button
                                 content="Upload Image"
                                 labelPosition="left"
@@ -91,12 +106,7 @@ class PutUpForAdoption extends Component {
 
 
                             <Form.TextArea label='Enter a short description' placeholder='Tell us more about your pet...' />
-
-                            {/* <Message
-                                success
-                                header='Form Completed'
-                                content="You're all signed up for the newsletter"
-                            /> */}
+                            
                             <Form.Button>Submit</Form.Button>
                     </Form>
                 </Segment>
