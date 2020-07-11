@@ -585,7 +585,7 @@
 
 
 .Clients {
-    min-height: 100vh;
+    height: 100vh;
     background-position: center;
     background-size: cover;
     background-image: linear-gradient(to right  bottom, #F5FAFD , rgba(45, 63, 71, 0.6))
@@ -698,10 +698,10 @@
 // }
 
 
-@media(max-width: 500px) {
+@media(max-width: 550px) {
 
     .Clients {
-        height: 70vh;
+        height: 450px;
         padding: 0 50px;
     }
 
