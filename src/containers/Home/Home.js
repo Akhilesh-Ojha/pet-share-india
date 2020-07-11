@@ -1,10 +1,23 @@
 import React, { useEffect , useState } from 'react';
 import classes from './Home.module.scss';
-import BackgroundImage from '../../assets/background.jpg';
 import Bg1 from '../../assets/bg.jpg';
-import BgBlogs from '../../assets/bgBlogs.jpg'
 import { NavLink } from 'react-router-dom';
 // import Aux from '../../hoc/Auxx';
+import image1 from '../../assets/ImageGallary/image1.jpg';
+import image2 from '../../assets/ImageGallary/image2.jpg';
+import image3 from '../../assets/ImageGallary/image3.jpg';
+import image4 from '../../assets/ImageGallary/image4.jpg';
+import image5 from '../../assets/ImageGallary/image5.jpg';
+import image6 from '../../assets/ImageGallary/image6.jpg';
+import image7 from '../../assets/ImageGallary/image7.jpg';
+import image8 from '../../assets/ImageGallary/image8.jpg';
+import image9 from '../../assets/ImageGallary/image9.jpg';
+import image10 from '../../assets/ImageGallary/image10.jpg';
+import image11 from '../../assets/ImageGallary/image11.jpg';
+import image12 from '../../assets/ImageGallary/image12.jpg';
+import image13 from '../../assets/ImageGallary/image13.jpg';
+import image14 from '../../assets/ImageGallary/image14.jpg';
+
 
 import Aos from 'aos';
 import "aos/dist/aos.css";
@@ -303,6 +316,62 @@ const Home = React.forwardRef((props, ref) => {
 
             </section>
 
+            <section className={classes.Gallary}>
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__1}`}>
+                    <img src={image1} alt="" className={classes.Gallary__Img} ></img>
+                </figure>
+
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__2}`}>
+                    <img src={image9} alt="" className={classes.Gallary__Img} ></img>
+                </figure>
+
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__3}`}>
+                    <img src={image3} alt="" className={classes.Gallary__Img} ></img>
+                </figure>
+
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__4}`}>
+                    <img src={image4} alt="" className={classes.Gallary__Img} ></img>
+                </figure>
+
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__5}`}>
+                    <img src={image5} alt="" className={classes.Gallary__Img} ></img>
+                </figure> 
+
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__6}`}>
+                    <img src={image8} alt="" className={classes.Gallary__Img} ></img>
+                </figure> 
+
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__7}`}>
+                    <img src={image14} alt="" className={classes.Gallary__Img} ></img>
+                </figure> 
+
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__8}`}>
+                    <img src={image7} alt="" className={classes.Gallary__Img} ></img>
+                </figure> 
+
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__9}`}>
+                    <img src={image2} alt="" className={classes.Gallary__Img} ></img>
+                </figure> 
+
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__10}`}>
+                    <img src={image6} alt="" className={classes.Gallary__Img} ></img>
+                </figure> 
+
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__11}`}>
+                    <img src={image11} alt="" className={classes.Gallary__Img} ></img>
+                </figure> 
+
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__12}`}>
+                    <img src={image12} alt="" className={classes.Gallary__Img} ></img>
+                </figure> 
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__13}`}>
+                    <img src={image13} alt="" className={classes.Gallary__Img} ></img>
+                </figure> 
+                <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__14}`}>
+                    <img src={image10} alt="" className={classes.Gallary__Img} ></img>
+                </figure> 
+                
+            </section>
 
             <section className={classes.Footer}>
                 <h2 data-aos="zoom-in">Connect with us</h2>
