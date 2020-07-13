@@ -87,9 +87,9 @@ class Navbar extends Component {
             homeRefClientId = allHomRef.homeRefClient.current.id;
         }
 
-        // console.log('PROP', this.props.location.pathname.indexOf('put-up-for-adoption'));
+        console.log('PROP', this.props);
         if(this.props.userData.data) {
-            // console.log('Hereeee', this.props.userData.data.data.name);
+            console.log('Hereeee', this.props.userData.data.data.name);
             userToken = this.props.userData.data.access_token;
             if(this.props.userData.data.data.name) {
                 let shortName = this.props.userData.data.data.name.lastIndexOf(' ');
@@ -136,7 +136,7 @@ class Navbar extends Component {
             } else if(this.props.location.pathname.indexOf('put-up-for-adoption') > -1) {
                 navListHome = null
             } else {
-                navListHome = (<p style={{fontSize: '18px', fontWeight:'500' ,marginRight: '20px', display:'flex', alignSelf:'center' , color: '#2D3F47' }}>Hey, {name} </p>)
+                navListHome = (<p style={{fontSize: '18px', fontWeight:'500' ,marginRight: '20px', display:'flex', marginTop: '18px' ,alignSelf:'center' , color: '#2D3F47' }}>Hey, {name} </p>)
             }
 
         if(this.props.location.pathname === '/blogs') {

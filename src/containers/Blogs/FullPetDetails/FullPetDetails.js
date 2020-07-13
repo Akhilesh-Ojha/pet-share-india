@@ -61,11 +61,8 @@ class FullPetDetails extends Component {
            toast.info('Hang On! Retrieving Blog...');
             axios.get( '/api/v1/blogs/' +  this.props.match.params.id, { headers: headerToken})
                     .then( response => {
-                        
                         window.scrollTo(0 , 0)
-                        
                         toast.dismiss();
-                        console.log('response of full desc pop' , response.data.user_details);
                         var wordCount = ReactHtmlParser(response.data.data.Blog.description.split(' ').length);
                         var time = Math.round(wordCount[0] / 200);
                         var finalTime
@@ -74,7 +71,7 @@ class FullPetDetails extends Component {
                         } else {
                             finalTime = time
                         }
-                        this.setState( { loadedPost: response.data.data.Blog , readTime: finalTime, treats: response.data.data.Blog.cookie , popularBlogs: response.data.popularBlogs.slice(0,3), userDetails: response.data.user_details } );
+                        this.setState( { loadedPost: response.data.data.Blog , readTime: finalTime, treats: response.data.data.Blog.cookie , popularBlogs: response.data.popularBlogs.slice(0,3), userDetails: response.data.userDetails } );
                         // var sectionDetails = this.section;
                         // window.addEventListener('scroll', () => {
                         //     var value = window.scrollY;

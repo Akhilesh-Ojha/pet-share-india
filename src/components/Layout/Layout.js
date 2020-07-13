@@ -25,11 +25,11 @@ class Layout extends Component {
 
     handleLogin = (response) => {
         console.log('response in handle Login', response);
-        sessionStorage.setItem('accessToken', response.data.access_token);
+        sessionStorage.setItem('accessToken', response.data.accessToken);
         this.setState({
             loggedInStatus: 'Logged In',
             user: response,
-            accessToken: response.data.access_token
+            accessToken: response.data.accessToken
         })
     }
     
@@ -44,13 +44,13 @@ class Layout extends Component {
     checkLoginStatus = () => {
         let accessToken = sessionStorage.getItem('accessToken');
         if(accessToken) {
-            axios.get('/api/v1/token?access_token=' + accessToken).then(response => {
+            axios.get('/api/v1/token?accessToken=' + accessToken ).then(response => {
                 console.log("RESP", response);
-                if(response.data.is_valid === true) {
+                if(response.data.isValid === true) {
                     this.setState({
                         loggedInStatus: 'Logged In',
                         user: response,
-                        accessToken: response.data.access_token
+                        accessToken: response.data.accessToken
                     });
                 } else {
                     this.setState({
@@ -71,9 +71,7 @@ class Layout extends Component {
     }
 
     render() {
-
-        console.log('THIS>HOMEEF', {homeRefService: this.homeRefService, homeRefClient: this.homeRefClient } );
-
+        console.log('THIS>STATE', this.state);
         let pathName = this.props.location.pathname;
             
         let toolBar = (

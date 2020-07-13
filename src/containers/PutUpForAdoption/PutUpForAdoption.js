@@ -1,11 +1,11 @@
 import React , { Component } from "react";
 import classes from './PutUpForAdoption.module.scss';
 import { NavLink } from 'react-router-dom';
-import axios from '../../axios';
+// import axios from '../../axios';
 import SemanticInput from '../../components/UI/SemanticInput/SemanticInput';
-import { Image } from 'semantic-ui-react'
+// import { Image } from 'semantic-ui-react'
 // import Input from '../../components/UI/Input/Input';
-import { Form , Button , Segment , Header, Input } from 'semantic-ui-react';
+import { Form , Button , Segment , Header } from 'semantic-ui-react';
 
 // const options = [
 //   { key: 'm', text: 'Male', value: 'male' },
@@ -276,7 +276,6 @@ class PutUpForAdoption extends Component {
                             labelPosition="left"
                             icon="file"
                             onClick={() => this.inputFile.click()}
-                            style={{ marginBottom: '10px'}}
                         />
                         <input style={{display:'none' }} className={classes.Input} type="file" ref = {(inputFile)=> this.inputFile = inputFile} onChange={this.fileSelectedHandler} ></input>
                         <Button
@@ -294,66 +293,3 @@ class PutUpForAdoption extends Component {
 export default PutUpForAdoption;
 
 
-{/* <Header size='huge'>Create Your Pet Profile</Header>
-<Segment inverted>
-    <Form inverted success size={'large'}>
-            <Form.Group widths='equal'>
-                <Form.Input fluid label='Name' placeholder='Name' />
-                <Form.Select
-                    fluid
-                    label='Pet Type'
-                    options={pet_type}
-                    placeholder='Pet Type'
-                    onChange={this.onPetTypeChange}
-                />
-
-                <Form.Select
-                    fluid
-                    label='Breed'
-                    options={pet_Breed}
-                    placeholder='Breed'
-                />
-                <Form.Select
-                    fluid
-                    label='Gender'
-                    options={options}
-                    placeholder='Gender'
-                />
-                <Form.Input label='Age' fluid placeholder='Age' />
-            </Form.Group>
-            <Form.Group inline>
-                <label>Dewormed</label>
-                <Form.Radio
-                    label='Yes'
-                    value='yes'
-                />
-                <Form.Radio
-                    label='No'
-                    value='no'
-                />
-                <label>Vaccine Status</label>
-                <Form.Radio
-                    label='Yes'
-                    value='yes'
-                />
-                <Form.Radio
-                    label='No'
-                    value='no'
-                />
-
-            </Form.Group>
-            <Button
-                content="Upload Image"
-                labelPosition="left"
-                icon="file"
-                onClick={() => this.inputFile.click()}
-                style={{ marginBottom: '10px'}}
-            />
-            <input style={{display:'none' }} className={classes.Input} type="file" ref = {(inputFile)=> this.inputFile = inputFile} onChange={this.fileSelectedHandler} ></input>
-
-
-            <Form.TextArea label='Enter a short description' placeholder='Tell us more about your pet...' />
-            
-            <Form.Button>Submit</Form.Button>
-    </Form>
-</Segment> */}

@@ -11,7 +11,7 @@ class FacebookLogin extends Component {
     
     responseFacebook = (response) => {
         if(response.status !== 'unknown') {
-            axios.get('/api/v1/fb/login?access_token=' + response.accessToken).then(response => {
+            axios.get('/api/v1/fb/login?accessToken=' + response.accessToken).then(response => {
                 this.props.handleSuccessfulAuth(response);
             }).catch( error => {
                 toast.error('There is some error loggin you in ' + error);

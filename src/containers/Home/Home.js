@@ -75,15 +75,15 @@ const Home = React.forwardRef((props, ref) => {
         Aos.init({ duration: 1000 });
     });
 
-    const [showSection2 , setShowSection2] = useState(false);
+    // const [showSection2 , setShowSection2] = useState(false);
 
-    let openAdoption = () => {
-        setShowSection2(false)
-    }
+    // let openAdoption = () => {
+    //     setShowSection2(false)
+    // }
     
-    let openBlogs = () => {
-        setShowSection2(true)
-    }
+    // let openBlogs = () => {
+    //     setShowSection2(true)
+    // }
 
     let section = (
         <section className={classes.Banner}>

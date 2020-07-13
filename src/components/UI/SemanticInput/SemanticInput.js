@@ -48,7 +48,7 @@ const semanticInput = (props) => {
                     id={props.elementConfig.placeholder}
                         value={props.value} onChange={props.changed} >
                             {props.elementConfig.options.map(option => (
-                                <option value={option.value}>{option.text}</option>
+                                <option key={option.value} value={option.value}>{option.text}</option>
                             ))}
                     </select>
     </span>
