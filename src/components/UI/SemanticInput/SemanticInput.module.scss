@@ -1,0 +1,65 @@
+.Container {
+    margin: 20px 0 ;
+}
+
+input {
+    color: #7B7979!important;
+    // letter-spacing: 1px!important;
+    // background-color: blue;  
+}
+
+input::-webkit-input-placeholder {
+    color: #7B7979!important;
+}
+
+Textarea {
+    color: #7B7979!important;
+}
+
+Textarea::-webkit-input-placeholder {
+    color: #7B7979!important;
+}
+
+
+
+select  {
+    cursor: pointer;
+    color: #7B7979!important;
+    // letter-spacing: 1px!important;
+    // background-color: blue;
+    text-transform: uppercase;
+    padding: 0 10px;
+}
+
+option {
+    color: gray;
+    text-transform: uppercase;
+}
+
+select option:first-child { display: none; }
+
+.Invalid{
+    border: 1px solid #ffcccb;
+}
+
+.ValidationError {
+    margin-top: 2px;
+    font-size: 14px;
+    color: #ff4c4c;
+}
+
+.Label {
+    float:'left'!important;
+     font-size: '16px'!important;
+      text-align: 'center'!important;
+       margin: '0px auto'!important;
+        padding: '12px 0' !important;
+        height: '42px' !important;
+         width: '100px'!important;
+}
+
+@media screen and (max-width: 800px) {
+    .Label {
+        display: none!important;
+    }
+}

@@ -374,7 +374,7 @@ const Home = React.forwardRef((props, ref) => {
             </section>
 
             <section className={classes.Footer}>
-                <h2 data-aos="zoom-in">Connect with us</h2>
+                <h2>Connect with us</h2>
                 <ul className={classes.Social}>
                     {/* <div style={{display: 'inline-block'}}> */}
                     <li ><a style={{ color: '#313030' }} href="https://www.instagram.com/petshare.india/" rel="noopener noreferrer" target="_blank"><i className="fa fa-instagram" aria-hidden="true"></i>.</a></li>

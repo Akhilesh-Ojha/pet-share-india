@@ -33,7 +33,7 @@ class FullPetDetails extends Component {
                 axios.get( '/api/v1/blogs/' +  this.props.match.params.id, { headers: headerToken})
                     .then( response => {
                         window.scrollTo(0,0);
-                        console.log('response of full desc pop' , response.data.popular_blogs);
+                        console.log('response of full desc pop' , response.data.popularBlogs);
                         var wordCount = ReactHtmlParser(response.data.data.Blog.description.split(' ').length);
                         var time = Math.round(wordCount[0] / 200);
                         var finalTime
@@ -42,7 +42,7 @@ class FullPetDetails extends Component {
                         } else {
                             finalTime = time
                         }
-                        this.setState( { loadedPost: response.data.data.Blog , readTime: finalTime, treats: response.data.data.Blog.cookie , popularBlogs: response.data.popular_blogs.slice(0,3) , userDetails: response.data.user_details } );
+                        this.setState( { loadedPost: response.data.data.Blog , readTime: finalTime, treats: response.data.data.Blog.cookie , popularBlogs: response.data.popularBlogs.slice(0,3) , userDetails: response.data.userDetails } );
                     }).catch(error => {
                         toast.error('There is some error retrieving this Blog ' + error);
                     });
@@ -74,7 +74,7 @@ class FullPetDetails extends Component {
                         } else {
                             finalTime = time
                         }
-                        this.setState( { loadedPost: response.data.data.Blog , readTime: finalTime, treats: response.data.data.Blog.cookie , popularBlogs: response.data.popular_blogs.slice(0,3), userDetails: response.data.user_details } );
+                        this.setState( { loadedPost: response.data.data.Blog , readTime: finalTime, treats: response.data.data.Blog.cookie , popularBlogs: response.data.popularBlogs.slice(0,3), userDetails: response.data.user_details } );
                         // var sectionDetails = this.section;
                         // window.addEventListener('scroll', () => {
                         //     var value = window.scrollY;
