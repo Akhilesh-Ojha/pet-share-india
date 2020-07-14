@@ -1,5 +1,5 @@
-import React, { useEffect , useState } from 'react';
-import classes from './Home.module.scss';
+import React, { useEffect , useState ,useRef } from 'react';
+import classes from './Home1.module.scss';
 import Bg1 from '../../assets/bg.jpg';
 import { NavLink } from 'react-router-dom';
 // import Aux from '../../hoc/Auxx';
@@ -68,15 +68,63 @@ var settings = {
 };
 
 const Home = React.forwardRef((props, ref) => {
-    const { homeRefService, homeRefClient } = ref;
 
+    const { homeRefService, homeRefClient , homeRefMainSection  } = ref;
+    let homeRef = [];
+    let slideIndex = 1;
+    // let interval = '';
+
+    
     useEffect(() => {
         window.scrollTo(0, 0);
         Aos.init({ duration: 1000 });
+
+        console.log('homeRefMainSection', homeRefMainSection.current.children);
+
+        homeRef.push(homeRefMainSection.current.children[0]);
+        homeRef.push(homeRefMainSection.current.children[1]);
+        homeRef.push(homeRefMainSection.current.children[2]);
+
+        showSlides(slideIndex);
+        
+        // interval = setInterval(() => {
+        //     plusSlides(+1)
+        //   }, 5000);
+        // return () => clearInterval(interval);
     });
 
+    function showSlides (n) {
+        let i;
+        
+        let slides = homeRef;
 
-    let section = (
+        if(n > slides.length) {
+            slideIndex = 1
+        }
+
+        if(n < 1) {
+            slideIndex = slides.length;
+        }
+
+        for(i=0 ; i < slides.length ; i++) {
+            slides[i].style.display = "none";
+        }
+
+        slides[slideIndex-1].style.display = "flex";
+        
+    }
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+        // return () => clearInterval(interval);
+    }
+
+
+
+    return (
+        <div className={classes.Main}>
+            
+            <div ref={homeRefMainSection}  className={classes.SlideShowContainer}>
             <section className={classes.Banner}>
                 <div className={classes.ImageMain}>
                     <img src={Bg1} alt="bg" className={classes.FitBgMain}></img>
@@ -88,22 +136,45 @@ const Home = React.forwardRef((props, ref) => {
                         <NavLink to={{ pathname: '/adopt' }}>
                             <button>Adopt Now</button>
                         </NavLink>
-                        <NavLink className={classes.BtnHide} to={{ pathname: '/put-up-for-adoption' }}>
+                        
+                        
+                    </div>
+                </div>
+            </section>
+
+            <section ref={homeRefMainSection} className={classes.Banner}>
+                <div className={classes.ImageMain}>
+                    <img src={image2} alt="bg" className={classes.FitBgMain}></img>
+                </div>
+                <div className={classes.BannerContent}>
+                    <h1>Adopt. Don't Shop <i className="fa fa-paw" aria-hidden="true"></i></h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                    <div className={classes.ButtonArea}>
+                    <NavLink className={classes.BtnHide} to={{ pathname: '/put-up-for-adoption' }}>
                             <button>Put Up For Adoption</button>
                         </NavLink> 
+                    </div>
+                </div>
+            </section>
+
+            <section ref={homeRefMainSection} className={classes.Banner}>
+                <div className={classes.ImageMain}>
+                    <img src={image3} alt="bg" className={classes.FitBgMain}></img>
+                </div>
+                <div className={classes.BannerContent}>
+                    <h1>Adopt. Don't Shop <i className="fa fa-paw" aria-hidden="true"></i></h1>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                    <div className={classes.ButtonArea}>
                         <NavLink to={{ pathname: '/blogs' }}>
                             <button>Blogs</button>
                         </NavLink>
                     </div>
                 </div>
             </section>
-    );
 
-
-    return (
-        <div className={classes.Main}>
-            
-            {section}
+            <a className={classes.Prev} onClick={() => plusSlides(-1)}>&#10094;</a>
+            <a className={classes.Next} onClick={() => plusSlides(+1)}>&#10095;</a>
+        </div>
 
 
             <section className={classes.Card}>

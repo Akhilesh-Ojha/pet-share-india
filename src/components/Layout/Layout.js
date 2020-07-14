@@ -16,6 +16,7 @@ class Layout extends Component {
         super(props);
         this.homeRefService = React.createRef();
         this.homeRefClient = React.createRef();
+        this.homeRefMainSection = React.createRef();
         this.state = {
             loggedInStatus: "Not_Logged_In",
             user: {},
@@ -88,7 +89,7 @@ class Layout extends Component {
                             path={"/"}
                             exact
                             render={ props => (
-                                <Home ref={{homeRefService: this.homeRefService, homeRefClient: this.homeRefClient }} {...props} loggedInStatus={this.state.loggedInStatus} />
+                                <Home ref={{homeRefService: this.homeRefService, homeRefClient: this.homeRefClient, homeRefMainSection: this.homeRefMainSection }} {...props} loggedInStatus={this.state.loggedInStatus} />
                             )}
                         />
                         <Route
