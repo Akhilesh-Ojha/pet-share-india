@@ -75,18 +75,9 @@ const Home = React.forwardRef((props, ref) => {
         Aos.init({ duration: 1000 });
     });
 
-    // const [showSection2 , setShowSection2] = useState(false);
-
-    // let openAdoption = () => {
-    //     setShowSection2(false)
-    // }
-    
-    // let openBlogs = () => {
-    //     setShowSection2(true)
-    // }
 
     let section = (
-        <section className={classes.Banner}>
+            <section className={classes.Banner}>
                 <div className={classes.ImageMain}>
                     <img src={Bg1} alt="bg" className={classes.FitBgMain}></img>
                 </div>
@@ -104,47 +95,10 @@ const Home = React.forwardRef((props, ref) => {
                             <button>Blogs</button>
                         </NavLink>
                     </div>
-
-                   
-
                 </div>
             </section>
     );
 
-
-
-
-    // if(showSection2) {
-    //     section = (
-    //         <section className={classes.Banner2}>
-    //             <div className={classes.ImageMain}>
-    //                 <img src={BgBlogs} alt="bg" className={classes.FitBgMain}></img>
-    //             </div>
-    //             <div className={classes.BannerContent}>
-    //                 <h1>Adopt. Don't Shop <i className="fa fa-paw" aria-hidden="true"></i></h1>
-    //                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-    //                 <div className={classes.ButtonArea}>
-    //                     <NavLink to={{ pathname: '/blogs' }}>
-    //                         <button>Blogs</button>
-    //                     </NavLink>
-                        
-    //                 </div>
-    //                 <div className={classes.FooterButtons}>
-
-    //                     <a onClick={() => openAdoption()}>
-    //                             Adoption
-    //                     </a>
-
-    //                     <a style={{ border: '2px solid #2D3F47' , fontWeight: 'bold'}} onClick={() => openBlogs()}>
-    //                             Pet Care 
-    //                     </a>
-
-    //                 </div>
-    //             </div>
-    //         </section>
-
-    //     )
-    // }
 
     return (
         <div className={classes.Main}>

@@ -45,7 +45,6 @@ class Layout extends Component {
         let accessToken = sessionStorage.getItem('accessToken');
         if(accessToken) {
             axios.get('/api/v1/token?accessToken=' + accessToken ).then(response => {
-                console.log("RESP", response);
                 if(response.data.isValid === true) {
                     this.setState({
                         loggedInStatus: 'Logged In',

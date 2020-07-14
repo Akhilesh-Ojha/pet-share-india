@@ -23,12 +23,11 @@ class Navbar extends Component {
     }
 
     componentDidMount() {
-        
         // Aos.init({duration: 1000});
         var headerDetail = this.header;
         window.addEventListener('scroll', () => {
-            headerDetail.classList.toggle("sticky", window.scrollY > 0);
-            if(window.scrollY > 0) {
+            headerDetail.classList.toggle("sticky", window.scrollY > 100);
+            if(window.scrollY > 100) {
                 this.setState({
                     isSticky: true
                 });

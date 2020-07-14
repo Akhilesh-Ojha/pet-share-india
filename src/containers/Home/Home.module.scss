@@ -20,74 +20,12 @@
 
 }
 
-// .Banner2 {
-//     position: relative;
-//     width: 100%;
-//     height: 100vh;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     background-color: #F5FAFD;
-//     animation: moveInFromRight 0.5s;
-//     // top: -70px;
-// }
-
-
-
-@keyframes moveInFromRight{
-    0% {
-        opacity: 0;
-        transform: translateX(10rem);
-
-    }
-
-    
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes moveInFromLeft{
-    0% {
-        opacity: 0;
-        transform: translateX(-10rem);
-
-    }
-
-    
-
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-// .FooterButtons {
-//     margin-top: 50px;
-//     a {
-//         margin-right: 20px;
-//         text-decoration: none;
-//         border: 2px solid #D5DBDE;
-//         padding: 10px 20px;
-//         font-size: 14px;
-//         letter-spacing: 0.5px;
-//         border-radius: 100px;
-//         cursor: pointer;
-//     }
-// }
-
-
-
 
 .ImageMain {
     flex: 1.5;
     position: relative;
     width: 100%;
     height: 100%;
-    // height: 100vh;
-    // width: 100%;
 }
 
 .FitBgMain {
@@ -125,7 +63,6 @@
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
         justify-content: center;
         align-items: center;
-        // margin-top: 8px;
         margin-top: 0px;
     }
 }
@@ -152,25 +89,14 @@
 
 .ButtonArea {
     display: flex;
-    // justify-content: center;
 }
 
-// .ButtonArea1 {
-//     display: flex;
-//     // z-index: 100;
-//     margin-top: 20px;
 
-//     @media(max-width: 950px) {
-//         display: none;
-//         margin-top: 0px;
-//     }
-// }
 .BannerContent button {
     text-transform: uppercase;
     text-decoration: none;
     padding: 15px 20px;
     margin-right: 20px;
-    // width: 30%;
     border: none;
     cursor: pointer;
     display: inline-block;
@@ -188,7 +114,6 @@
 
 .FitBg {
     position: absolute;
-    // top: -70px;
     left: 0;
     object-fit: cover;
     width: 100%;
