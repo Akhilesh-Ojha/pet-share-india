@@ -232,7 +232,7 @@ const Home = React.forwardRef((props, ref) => {
 
 
 
-            <section ref={homeRefService} id="Services" className={classes.Services} >
+            {/* <section ref={homeRefService} id="Services" className={classes.Services} >
                 <h1 data-aos="zoom-in">Services That we provide</h1>
                 <div className={classes.OurServices}>
                     <div className={classes.Container}>
@@ -259,7 +259,7 @@ const Home = React.forwardRef((props, ref) => {
                     </div>
                 </div>
 
-            </section>
+            </section> */}
 
 
             <section ref={homeRefClient} id="Clients" className={classes.Clients}>
