@@ -11,7 +11,7 @@ const postAuthorLink = author => (
 
 
 const initialUpper = word => {
-  return word.charAt(0).toUpperCase() + word.slice(1, word.length)
+  return word ? word.charAt(0).toUpperCase() + word.slice(1, word.length) : ''
 }
 
 
@@ -43,7 +43,7 @@ function PetCard(props) {
       <Card.Content>
         <Card.Header>{initialUpper(petObj.name)}</Card.Header>
         <Card.Meta>
-          <span className=''>{petObj.breed}</span>
+          <span className=''>{initialUpper(petObj.petBreed)}</span>
         </Card.Meta>
         <Card.Description className="pet-description">
           {
