@@ -3,7 +3,11 @@ import classes from './PutUpForAdoption.module.scss';
 import { NavLink } from 'react-router-dom';
 // import axios from '../../axios';
 import SemanticInput from '../../components/UI/SemanticInput/SemanticInput';
-// import { Image } from 'semantic-ui-react'
+import imageCompression from 'browser-image-compression';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { Image } from 'semantic-ui-react';
+import axios from '../../axios';
 // import Input from '../../components/UI/Input/Input';
 import { Form , Button , Segment , Header } from 'semantic-ui-react';
 
@@ -11,6 +15,8 @@ import { Form , Button , Segment , Header } from 'semantic-ui-react';
 //   { key: 'm', text: 'Male', value: 'male' },
 //   { key: 'f', text: 'Female', value: 'female' }
 // ]
+
+let imageNumber = 1;
 
 
 class PutUpForAdoption extends Component {
@@ -54,7 +60,7 @@ class PutUpForAdoption extends Component {
                 touched: false
             },
 
-            breed: {
+            petBreed: {
                 elementType: 'select',
                 elementConfig: {
                     label: 'Breed',
@@ -131,7 +137,11 @@ class PutUpForAdoption extends Component {
 
             },
         },
-        formIsValid: false
+        formIsValid: false,
+        imageOneUrl: '',
+        imageTwoUrl: '',
+        selectedFile1: null,
+        selectedFile2: null
     }
 
     
@@ -174,7 +184,7 @@ class PutUpForAdoption extends Component {
         }
         if(inputIdentifier === 'petType') {
             if(event.target.value === 'cat') {
-                updatedForm.breed.elementConfig.options = [
+                updatedForm.petBreed.elementConfig.options = [
                     {value: '', text: 'Breed'},
                     {value: 'abyssinian', text: 'Abyssinian'},
                     {value: 'americanShorthair', text: 'American Shorthair'},
@@ -190,7 +200,7 @@ class PutUpForAdoption extends Component {
                     {value: 'others', text: 'Others'},
                 ]
             } else if (event.target.value === 'dog') {
-                updatedForm.breed.elementConfig.options = [
+                updatedForm.petBreed.elementConfig.options = [
                     {value: '', text: 'Breed'},
                     {value: 'beagle', text: 'Beagle'},
                     {value: 'boxer', text: 'Boxer'},
@@ -223,7 +233,6 @@ class PutUpForAdoption extends Component {
         let validationValues = this.checkValidity(updatedFormElement.value, updatedFormElement.validation)
         updatedFormElement.valid = validationValues.isValid;
         updatedFormElement.validationMessage = validationValues.errorMessage
-        console.log(updatedFormElement);
         updatedFormElement.touched = true
         updatedForm[inputIdentifier] = updatedFormElement;
         
@@ -238,6 +247,66 @@ class PutUpForAdoption extends Component {
         })
     };
 
+    fileSelectedHandler = event => {
+        if(event.target.files.length === 1 && imageNumber === 1) {
+            var options = {
+                maxSizeMB: 1,
+            }
+            toast.info('Uploading Image...');
+            imageCompression(event.target.files[0] , options)
+            .then(response => {
+                imageNumber = 2;
+                toast.dismiss();
+                this.setState({
+                    imageOneUrl: URL.createObjectURL(response),
+                    selectedFile1: response
+                });
+            });
+        } 
+        if(event.target.files.length === 1 && imageNumber === 2) {
+            var options = {
+                maxSizeMB: 1,
+            }
+            toast.info('Uploading Image...');
+            imageCompression(event.target.files[0] , options)
+            .then(response => {
+                imageNumber = 3;
+                toast.dismiss();
+                this.setState({
+                    imageTwoUrl: URL.createObjectURL(response),
+                    selectedFile2: response
+                });
+            });
+        } if(event.target.files.length > 1) {
+           [event.target.files].map(file => (
+                <Image src={file} size='small' style={{display: 'inline-block' , marginRight: '5px'}} />
+            ))
+        }
+    }
+
+    addPetForAdoption = (event) => {
+        event.preventDefault();
+        toast.info('Hang On! Publishing Blog...');
+        let formData = new FormData();
+        const petForm = {};
+
+        for(let adoptionFormKey in this.state.form) {
+            petForm[adoptionFormKey] = this.state.form[adoptionFormKey].value;
+        }
+
+        formData.append('data', JSON.stringify(petForm));
+        formData.append('images', this.state.selectedFile1);
+
+        axios.post('/api/v1/pets' , formData ,  { headers: {"Authorization" : this.props.accessToken , "Content-type": "multipart/form-data"} }).then(res => {
+            console.log('res', res);
+            toast.dismiss();
+            this.props.history.push('/adopt');
+        }).catch(error => {
+            toast.dismiss();
+            toast.error('There is some error adding your pet' + error);
+        });
+    }
+
 
     render() {
         const formElementArray = [];
@@ -248,17 +317,43 @@ class PutUpForAdoption extends Component {
             })
         }
 
+        
+        let image = 
+        (
+            <React.Fragment>
+                <Image  onClick={() => this.inputFile.click()} src='https://react.semantic-ui.com/images/wireframe/image.png' size='small' style={{display: 'inline-block' , marginRight: '5px'}} />
+                <Image src='https://react.semantic-ui.com/images/wireframe/image.png' size='small' style={{display: 'inline-block' , marginRight: '5px'}} />
+            </React.Fragment>
+        );
+        if(this.state.imageOneUrl) {
+            image = (
+                <React.Fragment>
+                    <Image src={this.state.imageOneUrl} size='small' style={{display: 'inline-block' , marginRight: '5px'}} />
+                    <Image src='https://react.semantic-ui.com/images/wireframe/image.png' size='small' style={{display: 'inline-block' , marginRight: '5px'}} />
+                </React.Fragment>
+            ) 
+        }
+
+        if(this.state.imageOneUrl && this.state.imageTwoUrl) {
+            image = (
+                <React.Fragment>
+                    <Image src={this.state.imageOneUrl} size='small' style={{display: 'inline-block' , marginRight: '5px'}} />
+                    <Image src={this.state.imageTwoUrl} size='small' style={{display: 'inline-block' , marginRight: '5px'}} />
+                </React.Fragment>
+            ) 
+        }
+
+    
+
         return(
             <div className={classes.MainContainer}>
                 <NavLink className={classes.Back} to={{pathname: '/'}}>
                     <i style={{fontSize: '35px', color: '#3E4041'}} className="fa fa-arrow-left" aria-hidden="true"></i>
                 </NavLink>
                 <div className={classes.Form}> 
-
-
-                    <Segment inverted>
+                    <Segment >
                     <Header size='huge'>CREATE YOUR PET PROFILE</Header>
-                        <Form inverted success size={'large'}>
+                        <Form  success size={'large'}>
                             {formElementArray.map(formElement => (
                                 <SemanticInput key={formElement.id} elementType={formElement.config.elementType} 
                                     elementConfig={formElement.config.elementConfig} 
@@ -278,13 +373,25 @@ class PutUpForAdoption extends Component {
                             onClick={() => this.inputFile.click()}
                         />
                         <input style={{display:'none' }} className={classes.Input} type="file" ref = {(inputFile)=> this.inputFile = inputFile} onChange={this.fileSelectedHandler} ></input>
+                         <div>
+                             {image}
+                        </div>       
                         <Button
                             content="Submit"
                             disabled={!this.state.formIsValid}
+                            onClick={(e) => this.addPetForAdoption(e)} 
                             style={{margin: '10px 0' , display: 'block'}}
                         />
                     </Segment> 
                 </div>
+                <ToastContainer 
+                position="bottom-right"
+                autoClose={false}
+                hideProgressBar={false}
+                newestOnTop={false}
+                rtl={false}
+                draggable
+                />
             </div>
         )
     }

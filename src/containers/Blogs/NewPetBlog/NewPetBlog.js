@@ -8,6 +8,55 @@ import imageCompression from 'browser-image-compression';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// import faker from 'faker';
+// import _ from 'lodash';
+import { Dropdown } from 'semantic-ui-react'
+
+// const addressDefinitions = faker.definitions.address
+const tagOptions = [{
+  key: 'key1',
+  text: 'Tag1',
+  value: 'tag1',
+} , 
+{
+    key: 'key2',
+    text: 'Tag2',
+    value: 'tag2',
+  } , {
+    key: 'key3',
+    text: 'Tag3',
+    value: 'tag3',
+  } , 
+  {
+    key: 'key4',
+    text: 'Tag4',
+    value: 'tag4',
+  } , 
+  {
+      key: 'key5',
+      text: 'Tag5',
+      value: 'tag5',
+    } , {
+      key: 'key6',
+      text: 'Tag6',
+      value: 'tag6',
+    } , 
+    {
+        key: 'key7',
+        text: 'Tag7',
+        value: 'tag7',
+      } , 
+      {
+          key: 'key8',
+          text: 'Tag8',
+          value: 'tag8',
+        } , {
+          key: 'key9',
+          text: 'Tag9',
+          value: 'tag9',
+        } , 
+]
+
 
 
 class NewPetBlog extends Component {
@@ -17,9 +66,9 @@ class NewPetBlog extends Component {
         description: '',
         shortDesc: '',
         selectedFile: null,
-        selectedFile2: null,
         postedData: null,
-        date: ''
+        date: '',
+        tags: [],
         
     }
 
@@ -66,6 +115,18 @@ class NewPetBlog extends Component {
         })
     }
 
+    // tagHandler = event => {
+    //     console.log('event', event.target.value);
+    // }
+
+    tagHandler = (e, result) => {
+        const { name, value } = result;
+
+        this.setState({
+           [name]: value
+        });
+    }
+
     onEditorChange = event => {
         this.setState({
             description: event
@@ -86,6 +147,7 @@ class NewPetBlog extends Component {
         }
         formData.append('images', this.state.selectedFile);
         formData.append('data', JSON.stringify(data));
+
 
         if(this.state.title === '' || this.state.shortDesc === '' || this.state.description === '' || this.state.selectedFile === null ) {
             toast.error('Please fill all the details');
@@ -131,6 +193,20 @@ class NewPetBlog extends Component {
                                 <input style={{display: 'none'}} type="file" onChange={this.fileSelectedHandler} ref={fileInput => this.fileInput = fileInput}></input>
                                 <button className={classes.InputButton}  onClick={() => this.fileInput.click()}>Upload Image</button>
                                 {uploadFileText}
+
+                                <Dropdown
+                                name="tags"
+                                    placeholder='Enter tags'
+                                    fluid
+                                    multiple
+                                    search
+                                    selection
+                                    clearable
+                                    options={tagOptions}
+                                    value={this.state.tags} 
+                                    onChange={this.tagHandler}
+                                    style={{backgroundColor: 'transparent', fontSize: '18px'}}
+                                />
                             </div>
                             <div className={classes.Msg}>
                                 <QuillEditor placeholder={"Post you Blog"}

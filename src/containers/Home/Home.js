@@ -69,7 +69,9 @@ var settings = {
 
 const Home = React.forwardRef((props, ref) => {
 
-    const { homeRefClient, homeRefMainSection } = ref;
+    // const { homeRefService, homeRefClient , homeRefMainSection  } = ref;
+    const { homeRefClient , homeRefMainSection  } = ref;
+
     let homeRef = [];
     let slideIndex = 1;
     // let interval = '';

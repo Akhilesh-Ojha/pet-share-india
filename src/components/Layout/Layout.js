@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import classes from './Layout.module.scss';
-import { Switch , Route } from 'react-router';
 import Blogs from '../../containers/Blogs/Blogs';
 import Auth from '../../containers/Auth/Auth';
 import Navbar from '../Navbar/Navbar';
 import Home from '../../containers/Home/Home';
 import Adopt from '../../containers/Adopt/Adopt';
 import axios from '../../axios';
-import { withRouter }  from 'react-router-dom';
+import { Switch , Route , withRouter }  from 'react-router-dom';
 import PutUpForAdoption from '../../containers/PutUpForAdoption/PutUpForAdoption';
 
 class Layout extends Component {
@@ -26,12 +25,14 @@ class Layout extends Component {
 
     handleLogin = (response) => {
         console.log('response in handle Login', response);
+        
         sessionStorage.setItem('accessToken', response.data.accessToken);
         this.setState({
             loggedInStatus: 'Logged In',
             user: response,
             accessToken: response.data.accessToken
         })
+        
     }
     
     handleLogout = () => {
@@ -70,8 +71,15 @@ class Layout extends Component {
         // console.log('PROPSSS', this.props);
     }
 
+    // requireAuth(nextState, replaceState) {
+    //     if (this.state.loggedInStatus === 'Not_Logged_In' )
+    //       replaceState({ nextPathname: nextState.location.pathname }, '/login')
+    // }
+
+    
+
     render() {
-        console.log('THIS>STATE', this.state);
+        
         let pathName = this.props.location.pathname;
             
         let toolBar = (
@@ -113,13 +121,18 @@ class Layout extends Component {
                                 <Adopt {...props} accessToken={this.state.accessToken}/>
                             )}
                         />
-                        <Route 
-                            path={"/put-up-for-adoption"} 
-                            exact
-                            render={ props => (
-                                <PutUpForAdoption {...props} accessToken={this.state.accessToken}/>
-                            )}
-                        />
+
+                        
+
+                            <Route 
+                                onEnter={this.requireAuth}
+                                path={"/put-up-for-adoption"} 
+                                exact
+                                render={ props => (
+                                    <PutUpForAdoption {...props} accessToken={this.state.accessToken}/>
+                                )}
+                            />
+                        
                     </Switch>
                 </main>
             </div>

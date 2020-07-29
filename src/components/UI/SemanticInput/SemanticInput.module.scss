@@ -29,6 +29,10 @@ select  {
     // background-color: blue;
     text-transform: uppercase;
     padding: 0 10px;
+
+    &:active , &:focus{
+        border: 1.5px solid lightblue !important;
+    }
 }
 
 option {
