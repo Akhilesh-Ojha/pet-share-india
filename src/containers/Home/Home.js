@@ -1,4 +1,4 @@
-import React, { useEffect , useState ,useRef } from 'react';
+import React, { useEffect } from 'react';
 import classes from './Home1.module.scss';
 import Bg1 from '../../assets/bg.jpg';
 import { NavLink } from 'react-router-dom';
@@ -69,12 +69,12 @@ var settings = {
 
 const Home = React.forwardRef((props, ref) => {
 
-    const { homeRefService, homeRefClient , homeRefMainSection  } = ref;
+    const { homeRefClient, homeRefMainSection } = ref;
     let homeRef = [];
     let slideIndex = 1;
     // let interval = '';
 
-    
+
     useEffect(() => {
         window.scrollTo(0, 0);
         Aos.init({ duration: 1000 });
@@ -86,32 +86,32 @@ const Home = React.forwardRef((props, ref) => {
         homeRef.push(homeRefMainSection.current.children[2]);
 
         showSlides(slideIndex);
-        
+
         // interval = setInterval(() => {
         //     plusSlides(+1)
         //   }, 5000);
         // return () => clearInterval(interval);
     });
 
-    function showSlides (n) {
+    function showSlides(n) {
         let i;
-        
+
         let slides = homeRef;
 
-        if(n > slides.length) {
+        if (n > slides.length) {
             slideIndex = 1
         }
 
-        if(n < 1) {
+        if (n < 1) {
             slideIndex = slides.length;
         }
 
-        for(i=0 ; i < slides.length ; i++) {
+        for (i = 0; i < slides.length; i++) {
             slides[i].style.display = "none";
         }
 
-        slides[slideIndex-1].style.display = "flex";
-        
+        slides[slideIndex - 1].style.display = "flex";
+
     }
 
     function plusSlides(n) {
@@ -123,58 +123,58 @@ const Home = React.forwardRef((props, ref) => {
 
     return (
         <div className={classes.Main}>
-            
-            <div ref={homeRefMainSection}  className={classes.SlideShowContainer}>
-            <section className={classes.Banner}>
-                <div className={classes.ImageMain}>
-                    <img src={Bg1} alt="bg" className={classes.FitBgMain}></img>
-                </div>
-                <div className={classes.BannerContent}>
-                    <h1>Adopt. Don't Shop <i className="fa fa-paw" aria-hidden="true"></i></h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                    <div className={classes.ButtonArea}>
-                        <NavLink to={{ pathname: '/adopt' }}>
-                            <button>Adopt Now</button>
-                        </NavLink>
-                        
-                        
-                    </div>
-                </div>
-            </section>
 
-            <section ref={homeRefMainSection} className={classes.Banner}>
-                <div className={classes.ImageMain}>
-                    <img src={image2} alt="bg" className={classes.FitBgMain}></img>
-                </div>
-                <div className={classes.BannerContent}>
-                    <h1>Adopt. Don't Shop <i className="fa fa-paw" aria-hidden="true"></i></h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                    <div className={classes.ButtonArea}>
-                    <NavLink className={classes.BtnHide} to={{ pathname: '/put-up-for-adoption' }}>
-                            <button>Put Up For Adoption</button>
-                        </NavLink> 
+            <div ref={homeRefMainSection} className={classes.SlideShowContainer}>
+                <section className={classes.Banner}>
+                    <div className={classes.ImageMain}>
+                        <img src={Bg1} alt="bg" className={classes.FitBgMain}></img>
                     </div>
-                </div>
-            </section>
+                    <div className={classes.BannerContent}>
+                        <h1>Adopt. Don't Shop <i className="fa fa-paw" aria-hidden="true"></i></h1>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                        <div className={classes.ButtonArea}>
+                            <NavLink to={{ pathname: '/adopt' }}>
+                                <button>Adopt Now</button>
+                            </NavLink>
 
-            <section ref={homeRefMainSection} className={classes.Banner}>
-                <div className={classes.ImageMain}>
-                    <img src={image3} alt="bg" className={classes.FitBgMain}></img>
-                </div>
-                <div className={classes.BannerContent}>
-                    <h1>Adopt. Don't Shop <i className="fa fa-paw" aria-hidden="true"></i></h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
-                    <div className={classes.ButtonArea}>
-                        <NavLink to={{ pathname: '/blogs' }}>
-                            <button>Blogs</button>
-                        </NavLink>
+
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <a className={classes.Prev} onClick={() => plusSlides(-1)}>&#10094;</a>
-            <a className={classes.Next} onClick={() => plusSlides(+1)}>&#10095;</a>
-        </div>
+                <section ref={homeRefMainSection} className={classes.Banner}>
+                    <div className={classes.ImageMain}>
+                        <img src={image2} alt="bg" className={classes.FitBgMain}></img>
+                    </div>
+                    <div className={classes.BannerContent}>
+                        <h1>Adopt. Don't Shop <i className="fa fa-paw" aria-hidden="true"></i></h1>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                        <div className={classes.ButtonArea}>
+                            <NavLink className={classes.BtnHide} to={{ pathname: '/put-up-for-adoption' }}>
+                                <button>Put Up For Adoption</button>
+                            </NavLink>
+                        </div>
+                    </div>
+                </section>
+
+                <section ref={homeRefMainSection} className={classes.Banner}>
+                    <div className={classes.ImageMain}>
+                        <img src={image3} alt="bg" className={classes.FitBgMain}></img>
+                    </div>
+                    <div className={classes.BannerContent}>
+                        <h1>Adopt. Don't Shop <i className="fa fa-paw" aria-hidden="true"></i></h1>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been</p>
+                        <div className={classes.ButtonArea}>
+                            <NavLink to={{ pathname: '/blogs' }}>
+                                <button>Blogs</button>
+                            </NavLink>
+                        </div>
+                    </div>
+                </section>
+
+                <a className={classes.Prev} onClick={() => plusSlides(-1)}>&#10094;</a>
+                <a className={classes.Next} onClick={() => plusSlides(+1)}>&#10095;</a>
+            </div>
 
 
             <section className={classes.Card}>
@@ -360,42 +360,42 @@ const Home = React.forwardRef((props, ref) => {
 
                 <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__5}`}>
                     <img src={image5} alt="" className={classes.Gallary__Img} ></img>
-                </figure> 
+                </figure>
 
                 <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__6}`}>
                     <img src={image8} alt="" className={classes.Gallary__Img} ></img>
-                </figure> 
+                </figure>
 
                 <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__7}`}>
                     <img src={image14} alt="" className={classes.Gallary__Img} ></img>
-                </figure> 
+                </figure>
 
                 <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__8}`}>
                     <img src={image7} alt="" className={classes.Gallary__Img} ></img>
-                </figure> 
+                </figure>
 
                 <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__9}`}>
                     <img src={image2} alt="" className={classes.Gallary__Img} ></img>
-                </figure> 
+                </figure>
 
                 <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__10}`}>
                     <img src={image6} alt="" className={classes.Gallary__Img} ></img>
-                </figure> 
+                </figure>
 
                 <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__11}`}>
                     <img src={image11} alt="" className={classes.Gallary__Img} ></img>
-                </figure> 
+                </figure>
 
                 <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__12}`}>
                     <img src={image12} alt="" className={classes.Gallary__Img} ></img>
-                </figure> 
+                </figure>
                 <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__13}`}>
                     <img src={image13} alt="" className={classes.Gallary__Img} ></img>
-                </figure> 
+                </figure>
                 <figure className={`${classes.Gallary__Item} ${classes.Gallary__Item__14}`}>
                     <img src={image10} alt="" className={classes.Gallary__Img} ></img>
-                </figure> 
-                
+                </figure>
+
             </section>
 
             <section className={classes.Footer}>

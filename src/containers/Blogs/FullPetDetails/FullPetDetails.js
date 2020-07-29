@@ -153,7 +153,7 @@ class FullPetDetails extends Component {
                         <h2 className={classes.PostTitle}>{this.state.loadedPost.title}</h2>
                         <div className={classes.Author}>
                             <div className={classes.ImgAuthor}>
-                                <img  src={this.state.userDetails.picture}></img>
+                                <img  src={this.state.userDetails.picture} alt="user"></img>
                             </div>
 
                             <div className={classes.DescAuthor}>
@@ -164,7 +164,7 @@ class FullPetDetails extends Component {
                         </div>
                         <div className={classes.PostImage}>
 
-                            <img  src={this.state.loadedPost.image_url[0]}></img>
+                            <img  src={this.state.loadedPost.image_url[0]} alt="post"></img>
                         </div>
                         <div className={classes.PostDesc}>
                             {ReactHtmlParser(this.state.loadedPost.description)}

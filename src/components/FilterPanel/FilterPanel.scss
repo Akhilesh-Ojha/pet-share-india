@@ -1,0 +1,15 @@
+.filter-container {
+  // color: blue;
+  font-size: 1rem !important;
+  .field > label {
+    font-size: 1rem !important;
+  }
+
+  .gender-radios {
+    flex-wrap: wrap;
+  }
+
+  .filter-form-buttons {
+    margin-top: 2rem;
+  }
+}

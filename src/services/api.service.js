@@ -1,11 +1,8 @@
 import axios from 'axios';
 
-
-
-
 const BACKEND_BASE_URL = 'https://dev.petshare.in:3000/';
 
-const getJwtToken = () => {
+function getJwtToken() {
     return JSON.parse(sessionStorage.getItem('accessToken'));
 }
 
@@ -14,10 +11,12 @@ class ApiService {
     axiosInstance;
 
 
+
+
     constructor() {
         console.log('ENV: ', process.env)
         this.axiosInstance = axios.create({
-            baseURL: `${BACKEND_BASE_URL}`
+            baseURL: `${BACKEND_BASE_URL}/api/v1`
         })
 
 
@@ -26,15 +25,16 @@ class ApiService {
         // this.axiosInstance.defaults.headers.common['x-auth-token'] = this.getJwtToken().token;
 
         this.axiosInstance.interceptors.request.use(function (config) {
+            // const accessToken
             // Do something before request is sent
-            config.headers.common['Authorization'] = getJwtToken().token;
+            config.headers.common['Authorization'] = getJwtToken() ? getJwtToken().token : '';
             return config;
-          }, function (error) {
+        }, function (error) {
             // Do something with request error
             return Promise.reject(error);
-          });
-        
-        
+        });
+
+
         // Adding a response interceptor to handle errors in a common way
         this.axiosInstance.interceptors.response.use(function (response) {
             // Any status code that lie within the range of 2xx cause this function to trigger

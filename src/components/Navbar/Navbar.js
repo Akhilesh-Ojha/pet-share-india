@@ -3,7 +3,7 @@ import './Navbar.scss';
 import searchIcon from '../../assets/search.png';
 import { NavLink , withRouter }  from 'react-router-dom';
 import Aux from '../../hoc/Auxx';
-import Logo from '../../assets/Logo.png';
+import Logo from '../../assets/logo.png';
 
 
 class Navbar extends Component {

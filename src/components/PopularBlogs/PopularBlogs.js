@@ -10,7 +10,7 @@ const popularBlogCard = (props) => {
 
                     <div className={classes.Content}>
                         <div className={classes.PopularPostImg}>
-                            <img src={props.image}></img>
+                            <img src={props.image} alt="blog-img"></img>
 
                         </div>
                         <h3>{props.title}</h3>
