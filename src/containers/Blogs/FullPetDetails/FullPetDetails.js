@@ -130,7 +130,7 @@ class FullPetDetails extends Component {
                 popularBlogs = this.state.popularBlogs.map(popularBlog => {
                 return(
                         <NavLink style={{ textDecoration: 'none', color: 'black' }} to={'/blogs/' + popularBlog.id}  key={popularBlog.id} >
-                            <PopularBlogs key={popularBlog.title} author={popularBlog.author} title={popularBlog.title} description={popularBlog.shortDesc} image={popularBlog.image_url[0]}/>
+                            <PopularBlogs key={popularBlog.title} author={popularBlog.author} title={popularBlog.title} description={popularBlog.shortDesc} image={popularBlog.imageUrl[0]}/>
                         </NavLink>
                 )
             })
@@ -164,7 +164,7 @@ class FullPetDetails extends Component {
                         </div>
                         <div className={classes.PostImage}>
 
-                            <img  src={this.state.loadedPost.image_url[0]} alt="post"></img>
+                            <img  src={this.state.loadedPost.imageUrl[0]} alt="post"></img>
                         </div>
                         <div className={classes.PostDesc}>
                             {ReactHtmlParser(this.state.loadedPost.description)}

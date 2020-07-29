@@ -53,10 +53,10 @@ class Pets extends Component {
                 )
             } else {
                 petBlogs = this.state.petDetails.map(petDetail => {
-                    console.log('Pet details', petDetail.image_url);
+                    console.log('Pet details', petDetail.imageUrl);
                     return(
                         <NavLink style={{ textDecoration: 'none', color: 'black' }} to={'/blogs/' + petDetail.id}  key={petDetail.id} >
-                            <PetCard key={petDetail.title} title={petDetail.title} shortDesc={petDetail.shortDesc} image={petDetail.image_url[0]}/>
+                            <PetCard key={petDetail.title} title={petDetail.title} shortDesc={petDetail.shortDesc} image={petDetail.imageUrl[0]}/>
                         </NavLink>
                         
                     );

@@ -36,7 +36,7 @@ function PetCard(props) {
           </div>
         </Dimmer>
         <div className="pet-image">
-          <img src={petObj.image_url[0]} alt={petObj.name} />
+          <img src={petObj.imageUrl[0]} alt={petObj.name} />
         </div>
       </Dimmer.Dimmable>
       {/* <Image src={petObj.imageUrl} ui={false} className="pet-image" /> */}
